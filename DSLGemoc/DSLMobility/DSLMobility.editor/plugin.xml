@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated dSLMobility -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="dSLMobility.presentation.DSLMobilityModelWizardID"
+            name="%_UI_DSLMobilityModelWizard_label"
+            class="dSLMobility.presentation.DSLMobilityModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/DSLMobilityModelFile.gif">
+         <description>%_UI_DSLMobilityModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated dSLMobility -->
+      <editor
+            id="dSLMobility.presentation.DSLMobilityEditorID"
+            name="%_UI_DSLMobilityEditor_label"
+            icon="icons/full/obj16/DSLMobilityModelFile.gif"
+            extensions="dslmobility"
+            class="dSLMobility.presentation.DSLMobilityEditor"
+            contributorClass="dSLMobility.presentation.DSLMobilityActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
