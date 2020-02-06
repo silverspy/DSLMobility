@@ -288,34 +288,57 @@ ul, ol {
 		</div>
 	</div>
 
+
+
+
+
 	<div id="create" style="margin-top: 1%;margin-left: 3%;margin-bottom: 1%">
-		<div class="panel panel-default">
-	  		<div class="panel-heading"><h2>Create a meeting</h2></div>
-	  		<div class="panel-body">
-				  <div class="form-group">
-				    <label for="adressUser">User address</label>
-				    <input type="text" class="form-control" id="adressUser" aria-describedby="emailHelp" placeholder="Enter your adress">
-				  </div>
-				  <div class="form-group">
-				    <label for="adressRDV">RDV address</label>
-				    <input type="text" class="form-control" id="adressRDV" aria-describedby="emailHelp" placeholder="Enter RDV adress">
-				  </div>
-				  <div class="form-group">
-				    <label for="nameUser">User name</label>
-				    <input type="text" class="form-control" id="nameUser" aria-describedby="emailHelp" placeholder="Enter your name">
-				  </div>
-				  <div class="form-group">
-				  	<label for="dateRDV"> Date du RDV</label>
-					<input type="date" id="dateRDV" name="trip-start" value="2018-07-22" min="2019-01-01" max="2028-12-31">
-				  </div>
-				  <div class="form-group">
-				  	<label for="timeRDV"> Heure du RDV</label>
-					<input type="time" id="timeRDV" name="appt" min="00:00" max="23:59" required>
-				  </div>
-				  <button id="valid_Creation" class="btn btn-primary">Submit</button>
-	  		</div>
+		
+		<div class="row">
+			<div class="col-lg-6">
+				
+				<div class="panel panel-default">
+		  		<div class="panel-heading"><h2>Create a meeting</h2></div>
+		  		<div class="panel-body">
+					  <div class="form-group">
+					    <label for="adressUser">User address</label>
+					    <input type="text" class="form-control" id="adressUser" aria-describedby="emailHelp" placeholder="Enter your adress">
+					  </div>
+					  <div class="form-group">
+					    <label for="adressRDV">RDV address</label>
+					    <input type="text" class="form-control" id="adressRDV" aria-describedby="emailHelp" placeholder="Enter RDV adress">
+					  </div>
+					  <div class="form-group">
+					    <label for="nameUser">User name</label>
+					    <input type="text" class="form-control" id="nameUser" aria-describedby="emailHelp" placeholder="Enter your name">
+					  </div>
+					  <div class="form-group">
+					  	<label for="dateRDV"> Date du RDV</label>
+						<input type="date" id="dateRDV" name="trip-start" value="2018-07-22" min="2019-01-01" max="2028-12-31">
+					  </div>
+					  <div class="form-group">
+					  	<label for="timeRDV"> Heure du RDV</label>
+						<input type="time" id="timeRDV" name="appt" min="00:00" max="23:59" required>
+					  </div>
+					  <button id="valid_Creation" class="btn btn-primary">Submit</button>
+		  		</div>
+			</div>
+
+
+			</div>
+			<div class="col-lg-6" id="consigneTrajet">
+				
+			</div>
+			
 		</div>
+		
 	</div>
+
+
+
+
+
+
 
 	<div id="join"  style="margin-top: 1%;margin-left: 3%;margin-bottom: 1%">
 		<div class="row">
@@ -442,33 +465,42 @@ ul, ol {
          	 $("#"+typeBody).show();
 	       	 alert("listRDV")
 
-	       	 $.post( url+"listRDV", function(data) {
 
-				  alert( "success" );
-				})
-				  .done(function() {
-	       	 		var str = ""
-	       	 		var len = data.length;
-	       	 		for(var i = 0; i<len ; i++)
-	       	 		{
-	       	 			str += "<tr>";
-	       	 			str += "<th scope='row'>"+i+"</th>";
-	       	 			str += "<td>"+data[i].id+"</td>";
-	       	 			str += "<td>"+data[i].adress+"</td>";
-	       	 			str += "<td>"+data[i].date+"</td>";
+	       	 $.ajax({
+				  type: "POST",
+				  url: url+"listRDV",
+				  data: {},
+				  success: function(data, textStatus, jqXHR)
+				    {
+				        
+				    	var str = ""
+		       	 		var len = data.meetings.length;
+		       	 		var listRDV = data.meetings;
 
-	       	 		}
+		       	 		for(var i = 0; i<len ; i++)
+		       	 		{
+		       	 			var index = i+1;
+		       	 			str += "<tr>";
+		       	 			str += "<th scope='row'>"+index+"</th>";
+		       	 			str += "<td>"+listRDV[i].id+"</td>";
+		       	 			str += "<td>"+listRDV[i].adress+"</td>";
+		       	 			str += "<td>"+listRDV[i].date+"</td>";
+
+		       	 		}
 
 	       	 		$("#tableList").html(str);
 					alert( "second success" );
 
-				  })
-				  .fail(function() {
-				    alert( "error" );
-				  })
-				  .always(function() {
-				    alert( "finished" );
-				  });
+
+				    },
+				    error: function (jqXHR, textStatus, errorThrown)
+				    {
+						alert("error");
+						console.log(errorThrown)		 
+				    },
+				  dataType: "json"
+				});
+
 
 	    });
 
@@ -479,7 +511,7 @@ ul, ol {
 		       	obj.name = $("#nameUser").val();
 		       	obj.adress = $("#adressUser").val();
 		       	obj.adressRDV = $("#adressRDV").val();
-		       	obj.dateRDV = "" + $("#dateRDV").val() + "" + $("#timeRDV").val();
+		       	obj.dateRDV = "" + $("#dateRDV").val() + " " + $("#timeRDV").val();
 		       	$.ajax({
 				  type: "POST",
 				  url: url+"createRDV",
@@ -488,12 +520,55 @@ ul, ol {
 				    {
 				        //data - response from server
 				        console.log(data);
+
 				        alert("success")
+				        var div = $("#consigneTrajet")
+				        var str = "<h2>Vos Instructions</h2>"
+				        console.log(data.routePlannerResult.query.maxSolutions)
+				       if(data.routePlannerResult.query.maxSolutions > 0)
+				       {
+
+					       	var journey = data.routePlannerResult.journeys[0].journey;
+
+					       	console.log(journey);
+					        for(var i=0; i< journey["chunks"].length;i++)
+					        {
+
+					        	str+="<br>"
+					        	var index = i+1;
+					        	str+="Etape "+index;
+				        		if(journey.chunks[i].service)
+				        		{
+				        			str+= "<i class='fas fa-bus'></i>  "
+				        			str +=" "+journey.chunks[i].service.text.text;
+				        		}
+				        		else if(journey.chunks[i].street)
+				        		{
+				        			str += "<i class='fas fa-walking'></i>  "
+				        			str +=" "+journey.chunks[i].street.text.text;
+				        		}
+				        		else if(journey.chunks[i].stop)
+				        		{
+				        			str+= "<i class='fas fa-hand-paper'></i>  "
+				        			str +=" "+journey.chunks[i].stop.text.text;
+				        		}
+					        }
+
+					        console.log(str);
+					        div.html(str);
+
+				       }
+				       else
+				       {
+				       	console.log("icic")
+				       }
+				        
+
 				    },
 				    error: function (jqXHR, textStatus, errorThrown)
 				    {
-						console.log(data);
-						alert("error");				 
+						alert("error");
+						console.log(errorThrown)		 
 				    },
 				  dataType: "json"
 				});
