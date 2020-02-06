@@ -9,6 +9,7 @@ public class Guest {
 
     @Override
     public String toString() {
+		//toString method for Guests
         return "{\"name\" : \"" + name +"\"\n\"adress\" : \"" + adress + "\"}";
     }
 }

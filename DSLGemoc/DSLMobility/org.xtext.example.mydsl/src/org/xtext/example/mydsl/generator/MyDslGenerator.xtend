@@ -238,7 +238,7 @@ class MyDslGenerator extends AbstractGenerator {
 		
 			        <div class="row">
 			        	<div class="col-lg-12" style=" text-align: center;">
-			        		<h1>'''+ mypage.name +'''</h1>
+			        		<h1>''' + mypage.name + '''</h1>
 			        	</div>
 			        	<div id="receptacle" class="col-lg-12">
 			        	</div>
@@ -309,34 +309,57 @@ class MyDslGenerator extends AbstractGenerator {
 				</div>
 			</div>
 		
+		
+		
+		
+		
 			<div id="create" style="margin-top: 1%;margin-left: 3%;margin-bottom: 1%">
-				<div class="panel panel-default">
-			  		<div class="panel-heading"><h2>Create a meeting</h2></div>
-			  		<div class="panel-body">
-						  <div class="form-group">
-						    <label for="adressUser">User address</label>
-						    <input type="text" class="form-control" id="adressUser" aria-describedby="emailHelp" placeholder="Enter your adress">
-						  </div>
-						  <div class="form-group">
-						    <label for="adressRDV">RDV address</label>
-						    <input type="text" class="form-control" id="adressRDV" aria-describedby="emailHelp" placeholder="Enter RDV adress">
-						  </div>
-						  <div class="form-group">
-						    <label for="nameUser">User name</label>
-						    <input type="text" class="form-control" id="nameUser" aria-describedby="emailHelp" placeholder="Enter your name">
-						  </div>
-						  <div class="form-group">
-						  	<label for="dateRDV"> Date du RDV</label>
-							<input type="date" id="dateRDV" name="trip-start" value="2018-07-22" min="2019-01-01" max="2028-12-31">
-						  </div>
-						  <div class="form-group">
-						  	<label for="timeRDV"> Heure du RDV</label>
-							<input type="time" id="timeRDV" name="appt" min="00:00" max="23:59" required>
-						  </div>
-						  <button id="valid_Creation" class="btn btn-primary">Submit</button>
-			  		</div>
+				
+				<div class="row">
+					<div class="col-lg-6">
+						
+						<div class="panel panel-default">
+				  		<div class="panel-heading"><h2>Create a meeting</h2></div>
+				  		<div class="panel-body">
+							  <div class="form-group">
+							    <label for="adressUser">User address</label>
+							    <input type="text" class="form-control" id="adressUser" aria-describedby="emailHelp" placeholder="Enter your adress">
+							  </div>
+							  <div class="form-group">
+							    <label for="adressRDV">RDV address</label>
+							    <input type="text" class="form-control" id="adressRDV" aria-describedby="emailHelp" placeholder="Enter RDV adress">
+							  </div>
+							  <div class="form-group">
+							    <label for="nameUser">User name</label>
+							    <input type="text" class="form-control" id="nameUser" aria-describedby="emailHelp" placeholder="Enter your name">
+							  </div>
+							  <div class="form-group">
+							  	<label for="dateRDV"> Date du RDV</label>
+								<input type="date" id="dateRDV" name="trip-start" value="2018-07-22" min="2019-01-01" max="2028-12-31">
+							  </div>
+							  <div class="form-group">
+							  	<label for="timeRDV"> Heure du RDV</label>
+								<input type="time" id="timeRDV" name="appt" min="00:00" max="23:59" required>
+							  </div>
+							  <button id="valid_Creation" class="btn btn-primary">Submit</button>
+				  		</div>
+					</div>
+		
+		
+					</div>
+					<div class="col-lg-6" id="consigneTrajet">
+						
+					</div>
+					
 				</div>
+				
 			</div>
+		
+		
+		
+		
+		
+		
 		
 			<div id="join"  style="margin-top: 1%;margin-left: 3%;margin-bottom: 1%">
 				<div class="row">
@@ -364,6 +387,10 @@ class MyDslGenerator extends AbstractGenerator {
 					</div>
 					<div class="col-lg-5 col-xs-12" >
 						<div id="mapContainer">
+							
+		
+						</div>
+						<div id="consigneTrajet2">
 							
 		
 						</div>
@@ -412,7 +439,7 @@ class MyDslGenerator extends AbstractGenerator {
 		
 		<script type="text/javascript">
 			$(document).ready(function () {
-				var url = "http://192.168.43.201:8080/"
+				var url = "http://127.0.0.1:8080/"
 				var typeBody = "introduction"
 				var ArrayTipe = ["introduction","list","create","join"];
 				for(type in ArrayTipe)
@@ -463,33 +490,42 @@ class MyDslGenerator extends AbstractGenerator {
 		         	 $("#"+typeBody).show();
 			       	 alert("listRDV")
 		
-			       	 $.post( url+"listRDV", function(data) {
 		
-						  alert( "success" );
-						})
-						  .done(function() {
-			       	 		var str = ""
-			       	 		var len = data.length;
-			       	 		for(var i = 0; i<len ; i++)
-			       	 		{
-			       	 			str += "<tr>";
-			       	 			str += "<th scope='row'>"+i+"</th>";
-			       	 			str += "<td>"+data[i].id+"</td>";
-			       	 			str += "<td>"+data[i].adress+"</td>";
-			       	 			str += "<td>"+data[i].date+"</td>";
+			       	 $.ajax({
+						  type: "POST",
+						  url: url+"listRDV",
+						  data: {},
+						  success: function(data, textStatus, jqXHR)
+						    {
+						        
+						    	var str = ""
+				       	 		var len = data.meetings.length;
+				       	 		var listRDV = data.meetings;
 		
-			       	 		}
+				       	 		for(var i = 0; i<len ; i++)
+				       	 		{
+				       	 			var index = i+1;
+				       	 			str += "<tr>";
+				       	 			str += "<th scope='row'>"+index+"</th>";
+				       	 			str += "<td>"+listRDV[i].id+"</td>";
+				       	 			str += "<td>"+listRDV[i].adress+"</td>";
+				       	 			str += "<td>"+listRDV[i].date+"</td>";
+		
+				       	 		}
 		
 			       	 		$("#tableList").html(str);
 							alert( "second success" );
 		
-						  })
-						  .fail(function() {
-						    alert( "error" );
-						  })
-						  .always(function() {
-						    alert( "finished" );
-						  });
+		
+						    },
+						    error: function (jqXHR, textStatus, errorThrown)
+						    {
+								alert("error");
+								console.log(errorThrown)		 
+						    },
+						  dataType: "json"
+						});
+		
 		
 			    });
 		
@@ -500,7 +536,7 @@ class MyDslGenerator extends AbstractGenerator {
 				       	obj.name = $("#nameUser").val();
 				       	obj.adress = $("#adressUser").val();
 				       	obj.adressRDV = $("#adressRDV").val();
-				       	obj.dateRDV = "" + $("#dateRDV").val() + "" + $("#timeRDV").val();
+				       	obj.dateRDV = "" + $("#dateRDV").val() + " " + $("#timeRDV").val();
 				       	$.ajax({
 						  type: "POST",
 						  url: url+"createRDV",
@@ -509,12 +545,55 @@ class MyDslGenerator extends AbstractGenerator {
 						    {
 						        //data - response from server
 						        console.log(data);
+		
 						        alert("success")
+						        var div = $("#consigneTrajet")
+						        var str = "<h2>Vos Instructions</h2>"
+						        console.log(data.routePlannerResult.query.maxSolutions)
+						       if(data.routePlannerResult.query.maxSolutions > 0)
+						       {
+		
+							       	var journey = data.routePlannerResult.journeys[0].journey;
+		
+							       	console.log(journey);
+							        for(var i=0; i< journey["chunks"].length;i++)
+							        {
+		
+							        	str+="<br>"
+							        	var index = i+1;
+							        	str+="Etape "+index;
+						        		if(journey.chunks[i].service)
+						        		{
+						        			str+= "<i class='fas fa-bus'></i>  "
+						        			str +=" "+journey.chunks[i].service.text.text;
+						        		}
+						        		else if(journey.chunks[i].street)
+						        		{
+						        			str += "<i class='fas fa-walking'></i>  "
+						        			str +=" "+journey.chunks[i].street.text.text;
+						        		}
+						        		else if(journey.chunks[i].stop)
+						        		{
+						        			str+= "<i class='fas fa-hand-paper'></i>  "
+						        			str +=" "+journey.chunks[i].stop.text.text;
+						        		}
+							        }
+		
+							        console.log(str);
+							        div.html(str);
+		
+						       }
+						       else
+						       {
+						       	console.log("icic")
+						       }
+						        
+		
 						    },
 						    error: function (jqXHR, textStatus, errorThrown)
 						    {
-								console.log(data);
-								alert("error");				 
+								alert("error");
+								console.log(errorThrown)		 
 						    },
 						  dataType: "json"
 						});
@@ -540,41 +619,90 @@ class MyDslGenerator extends AbstractGenerator {
 				       	var obj = {}
 				       	obj.name = $("#nameUserJoin").val();
 				       	obj.adress = $("#adressUserJoin").val();
-				       	obj.nameRDV = $("#nameRDVJoin").val()
-				       	$.post( url+"joinRDV",obj, function() {
-						  alert( "success" );
-						})
-						  .done(function() {
-						    alert( "second success" );
-						      var mymap = L.map('mapContainer').setView([51.505, -0.09], 13);
-							    L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v9/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYmFzdGllbmRpZGllciIsImEiOiJjazY4MzYzeTkwMHZlM21xdG01bXlhbGpyIn0.r_jl86haJmqOCrgE8ywKaw', {
-								    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-								    maxZoom: 18,
-								    id: 'mapbox/streets-v11',
-								    accessToken: 'pk.eyJ1IjoiYmFzdGllbmRpZGllciIsImEiOiJjazY4MzYzeTkwMHZlM21xdG01bXlhbGpyIn0.r_jl86haJmqOCrgE8ywKaw'
-								}).addTo(mymap);
-								mymap.locate({setView: true, maxZoom: 16});
-								function onLocationFound(e) {
-								    var radius = e.accuracy;
+				       	obj.idRDV = $("#nameRDVJoin").val()
 		
-								    L.marker(e.latlng).addTo(mymap)
-								        .bindPopup("You are within " + radius + " meters from this point").openPopup();
+				       		$.ajax({
+						  type: "POST",
+						  url: url+"joinRDV",
+						  data: obj,
+						  success: function(data, textStatus, jqXHR)
+						    {
+						        //data - response from server
+						        console.log(data);
 		
-								    L.circle(e.latlng, radius).addTo(mymap);
-								}
-								mymap.on('locationfound', onLocationFound);
-								function onLocationError(e) {
-								    alert(e.message);
-								}
-								mymap.on('locationerror', onLocationError);
+						        alert("success")
+						        var div = $("#consigneTrajet2")
+						        var str = "<h2>Vos Instructions</h2>"
+						        console.log(data.routePlannerResult.query.maxSolutions)
+						       if(data.routePlannerResult.query.maxSolutions > 0)
+						       {
 		
-						  })
-						  .fail(function() {
-						    alert( "error" );
-						  })
-						  .always(function() {
-						    alert( "finished" );
-						  });
+							       	var journey = data.routePlannerResult.journeys[0].journey;
+		
+							       	console.log(journey);
+							        for(var i=0; i< journey["chunks"].length;i++)
+							        {
+		
+							        	str+="<br>"
+							        	var index = i+1;
+							        	str+="Etape "+index;
+						        		if(journey.chunks[i].service)
+						        		{
+						        			str+= "<i class='fas fa-bus'></i>  "
+						        			str +=" "+journey.chunks[i].service.text.text;
+						        		}
+						        		else if(journey.chunks[i].street)
+						        		{
+						        			str += "<i class='fas fa-walking'></i>  "
+						        			str +=" "+journey.chunks[i].street.text.text;
+						        		}
+						        		else if(journey.chunks[i].stop)
+						        		{
+						        			str+= "<i class='fas fa-hand-paper'></i>  "
+						        			str +=" "+journey.chunks[i].stop.text.text;
+						        		}
+							        }
+		
+							        console.log(str);
+							        div.html(str);
+		
+							        var mymap = L.map('mapContainer').setView([51.505, -0.09], 13);
+								    L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v9/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYmFzdGllbmRpZGllciIsImEiOiJjazY4MzYzeTkwMHZlM21xdG01bXlhbGpyIn0.r_jl86haJmqOCrgE8ywKaw', {
+									    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+									    maxZoom: 18,
+									    id: 'mapbox/streets-v11',
+									    accessToken: 'pk.eyJ1IjoiYmFzdGllbmRpZGllciIsImEiOiJjazY4MzYzeTkwMHZlM21xdG01bXlhbGpyIn0.r_jl86haJmqOCrgE8ywKaw'
+									}).addTo(mymap);
+									mymap.locate({setView: true, maxZoom: 16});
+									function onLocationFound(e) {
+									    var radius = e.accuracy;
+		
+									    L.marker(e.latlng).addTo(mymap)
+									        .bindPopup("You are within " + radius + " meters from this point").openPopup();
+		
+									    L.circle(e.latlng, radius).addTo(mymap);
+									}
+									mymap.on('locationfound', onLocationFound);
+									function onLocationError(e) {
+									    alert(e.message);
+									}
+									mymap.on('locationerror', onLocationError);
+		
+						       }
+						       else
+						       {
+						       	console.log("icic")
+						       }
+						        
+		
+						    },
+						    error: function (jqXHR, textStatus, errorThrown)
+						    {
+								alert("error");
+								console.log(errorThrown)		 
+						    },
+						  dataType: "json"
+						});
 		
 			       })
 			       
@@ -600,6 +728,7 @@ class MyDslGenerator extends AbstractGenerator {
 		
 		    @Override
 		    public String toString() {
+				//toString method for Guests
 		        return "{\"name\" : \"" + name +"\"\n\"adress\" : \"" + adress + "\"}";
 		    }
 		}''')
@@ -623,8 +752,6 @@ class MyDslGenerator extends AbstractGenerator {
 		        // Start embedded server at this port
 		        port(8080);
 		
-		        meetings.add(new Meeting("adres1","date1", "RDV1","username","adress"));
-		        System.out.println(meetings.toString());
 		
 		        after((Filter) (request, response) -> {
 		            response.header("Access-Control-Allow-Origin", "*");
@@ -632,14 +759,13 @@ class MyDslGenerator extends AbstractGenerator {
 		        });
 		
 		        post("/createRDV", (request, response) -> {
-		            String name = request.queryParams("name");
-		            String adress = request.queryParams("adress");
-		            String adressRDV = request.queryParams("adressRDV");
-		            String dateRDV = request.queryParams("dateRDV");
-		            meetings.add(new Meeting(adressRDV, "" + meetings.size() + 1 , dateRDV, name, adress));
+		            String name = request.queryParams("name").replace(" ", "+");
+		            String adress = request.queryParams("adress").replace(" ", "+");
+		            String adressRDV = request.queryParams("adressRDV").replace(" ", "+");
+		            String dateRDV = request.queryParams("dateRDV").replace(" ", "+");
+		            meetings.add(new Meeting(adressRDV, dateRDV,"" + meetings.size() + 1 , name, adress));
 		            response.status(200);
 		            response.type("application/json");
-		
 		            String APIresponse = RequestTisseoAPI.getItiniraire(adress, adressRDV, dateRDV);
 		            return APIresponse;
 		        });
@@ -657,15 +783,15 @@ class MyDslGenerator extends AbstractGenerator {
 		        });
 		
 		        post("/joinRDV", (request, response) -> {
-		            String name = request.queryParams("name");
-		            String adress = request.queryParams("adress");
-		            String idRDV = request.queryParams("idRDV");
-		            //String moyen = request.queryParams("moyen");
+		            String name = request.queryParams("name").replace(" ", "+");
+		            String adress = request.queryParams("adress").replace(" ", "+");
+		            String idRDV = request.queryParams("idRDV").replace(" ", "+");
+		            //String moyen = request.queryParams("moyen").replace(" ", "+");
 		            response.status(200);
 		            response.type("application/json");
 		            Meeting m = meetings.get(Integer.parseInt(idRDV) - 1);
 		            m.addUser(name,adress);
-		            String APIresponse = RequestTisseoAPI.getItiniraire(adress,m.adress, m.adress);
+		            String APIresponse = RequestTisseoAPI.getItiniraire(adress,m.adress, m.date);
 		            return APIresponse;
 		        });
 		
@@ -781,6 +907,138 @@ class MyDslGenerator extends AbstractGenerator {
 		    }
 		}''')
 		
+		fsa.generateFile('pom.xml', '''
+		<?xml version="1.0" encoding="UTF-8"?>
+		<project xmlns="http://maven.apache.org/POM/4.0.0"
+		         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+		    <modelVersion>4.0.0</modelVersion>
+		
+		    <groupId>BackDSLMobility</groupId>
+		    <artifactId>BackDSLMobility</artifactId>
+		    <version>1.0-SNAPSHOT</version>
+		
+		    <!-- Spark Java need Java 8 -->
+		    <properties>
+		        <maven.compiler.target>1.8</maven.compiler.target>
+		        <maven.compiler.source>1.8</maven.compiler.source>
+		        <maven.compiler.release>8</maven.compiler.release>
+		    </properties>
+		
+		    <dependencies>
+		
+		        <dependency>
+		            <groupId>com.sparkjava</groupId>
+		            <artifactId>spark-core</artifactId>
+		            <version>2.6.0</version>
+		        </dependency>
+		
+		        <dependency>
+		            <groupId>com.fasterxml.jackson.core</groupId>
+		            <artifactId>jackson-databind</artifactId>
+		            <version>2.8.8.1</version>
+		        </dependency>
+		
+		        <dependency>
+		            <groupId>ch.qos.logback</groupId>
+		            <artifactId>logback-classic</artifactId>
+		            <version>1.2.2</version>
+		        </dependency>
+		
+		        <dependency>
+		            <groupId>com.google.code.gson</groupId>
+		            <artifactId>gson</artifactId>
+		            <version>2.8.6</version>
+		        </dependency>
+		
+		    </dependencies>
+		
+		    <build>
+		        <pluginManagement>
+		            <plugins>
+		                <plugin>
+		                    <groupId>org.apache.maven.plugins</groupId>
+		                    <artifactId>maven-compiler-plugin</artifactId>
+		                    <version>3.8.1</version>
+		                </plugin>
+		                <plugin>
+		                    <artifactId>maven-clean-plugin</artifactId>
+		                    <version>3.1.0</version>
+		                </plugin>
+		                <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
+		                <plugin>
+		                    <artifactId>maven-resources-plugin</artifactId>
+		                    <version>3.0.2</version>
+		                </plugin>
+		                <plugin>
+		                    <artifactId>maven-compiler-plugin</artifactId>
+		                    <version>3.8.0</version>
+		                </plugin>
+		                <plugin>
+		                    <artifactId>maven-surefire-plugin</artifactId>
+		                    <version>2.22.1</version>
+		                </plugin>
+		                <plugin>
+		                    <artifactId>maven-jar-plugin</artifactId>
+		                    <version>3.0.2</version>
+		                    <configuration>
+		                        <archive>
+		                            <manifest>
+		                                <addClasspath>true</addClasspath>
+		                                <mainClass>Main</mainClass>
+		                            </manifest>
+		                        </archive>
+		                    </configuration>
+		                </plugin>
+		                <plugin>
+		                    <artifactId>maven-install-plugin</artifactId>
+		                    <version>2.5.2</version>
+		                </plugin>
+		                <plugin>
+		                    <artifactId>maven-deploy-plugin</artifactId>
+		                    <version>2.8.2</version>
+		                </plugin>
+		                <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
+		                <plugin>
+		                    <artifactId>maven-site-plugin</artifactId>
+		                    <version>3.7.1</version>
+		                </plugin>
+		                <plugin>
+		                    <artifactId>maven-project-info-reports-plugin</artifactId>
+		                    <version>3.0.0</version>
+		                </plugin>
+		                <plugin>
+		                    <groupId>org.apache.maven.plugins</groupId>
+		                    <artifactId>maven-compiler-plugin</artifactId>
+		                    <configuration>
+		                        <!-- or whatever version you use -->
+		                        <source>1.8</source>
+		                        <target>1.8</target>
+		                    </configuration>
+		                </plugin>
+		                <plugin>
+		                    <groupId>org.apache.maven.plugins</groupId>
+		                    <artifactId>maven-assembly-plugin</artifactId>
+		                    <executions>
+		                        <execution>
+		                            <phase>package</phase>
+		                            <goals>
+		                                <goal>single</goal>
+		                            </goals>
+		                            <configuration>
+		                                <appendAssemblyId>false</appendAssemblyId>
+		                                <descriptors>
+		                                    <descriptor>src/main/assembly/zip.xml</descriptor>
+		                                </descriptors>
+		                            </configuration>
+		                        </execution>
+		                    </executions>
+		                </plugin>
+		            </plugins>
+		        </pluginManagement>
+		    </build>
+		
+		</project>''')
 		
 		
 	}
