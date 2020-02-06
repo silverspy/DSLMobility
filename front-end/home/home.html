@@ -369,6 +369,10 @@ ul, ol {
 					
 
 				</div>
+				<div id="consigneTrajet2">
+					
+
+				</div>
 
 			</div>
 		</div>
@@ -594,41 +598,90 @@ ul, ol {
 		       	var obj = {}
 		       	obj.name = $("#nameUserJoin").val();
 		       	obj.adress = $("#adressUserJoin").val();
-		       	obj.nameRDV = $("#nameRDVJoin").val()
-		       	$.post( url+"joinRDV",obj, function() {
-				  alert( "success" );
-				})
-				  .done(function() {
-				    alert( "second success" );
-				      var mymap = L.map('mapContainer').setView([51.505, -0.09], 13);
-					    L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v9/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYmFzdGllbmRpZGllciIsImEiOiJjazY4MzYzeTkwMHZlM21xdG01bXlhbGpyIn0.r_jl86haJmqOCrgE8ywKaw', {
-						    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-						    maxZoom: 18,
-						    id: 'mapbox/streets-v11',
-						    accessToken: 'pk.eyJ1IjoiYmFzdGllbmRpZGllciIsImEiOiJjazY4MzYzeTkwMHZlM21xdG01bXlhbGpyIn0.r_jl86haJmqOCrgE8ywKaw'
-						}).addTo(mymap);
-						mymap.locate({setView: true, maxZoom: 16});
-						function onLocationFound(e) {
-						    var radius = e.accuracy;
+		       	obj.idRDV = $("#nameRDVJoin").val()
 
-						    L.marker(e.latlng).addTo(mymap)
-						        .bindPopup("You are within " + radius + " meters from this point").openPopup();
+		       		$.ajax({
+				  type: "POST",
+				  url: url+"joinRDV",
+				  data: obj,
+				  success: function(data, textStatus, jqXHR)
+				    {
+				        //data - response from server
+				        console.log(data);
 
-						    L.circle(e.latlng, radius).addTo(mymap);
-						}
-						mymap.on('locationfound', onLocationFound);
-						function onLocationError(e) {
-						    alert(e.message);
-						}
-						mymap.on('locationerror', onLocationError);
+				        alert("success")
+				        var div = $("#consigneTrajet2")
+				        var str = "<h2>Vos Instructions</h2>"
+				        console.log(data.routePlannerResult.query.maxSolutions)
+				       if(data.routePlannerResult.query.maxSolutions > 0)
+				       {
 
-				  })
-				  .fail(function() {
-				    alert( "error" );
-				  })
-				  .always(function() {
-				    alert( "finished" );
-				  });
+					       	var journey = data.routePlannerResult.journeys[0].journey;
+
+					       	console.log(journey);
+					        for(var i=0; i< journey["chunks"].length;i++)
+					        {
+
+					        	str+="<br>"
+					        	var index = i+1;
+					        	str+="Etape "+index;
+				        		if(journey.chunks[i].service)
+				        		{
+				        			str+= "<i class='fas fa-bus'></i>  "
+				        			str +=" "+journey.chunks[i].service.text.text;
+				        		}
+				        		else if(journey.chunks[i].street)
+				        		{
+				        			str += "<i class='fas fa-walking'></i>  "
+				        			str +=" "+journey.chunks[i].street.text.text;
+				        		}
+				        		else if(journey.chunks[i].stop)
+				        		{
+				        			str+= "<i class='fas fa-hand-paper'></i>  "
+				        			str +=" "+journey.chunks[i].stop.text.text;
+				        		}
+					        }
+
+					        console.log(str);
+					        div.html(str);
+
+					        var mymap = L.map('mapContainer').setView([51.505, -0.09], 13);
+						    L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v9/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYmFzdGllbmRpZGllciIsImEiOiJjazY4MzYzeTkwMHZlM21xdG01bXlhbGpyIn0.r_jl86haJmqOCrgE8ywKaw', {
+							    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+							    maxZoom: 18,
+							    id: 'mapbox/streets-v11',
+							    accessToken: 'pk.eyJ1IjoiYmFzdGllbmRpZGllciIsImEiOiJjazY4MzYzeTkwMHZlM21xdG01bXlhbGpyIn0.r_jl86haJmqOCrgE8ywKaw'
+							}).addTo(mymap);
+							mymap.locate({setView: true, maxZoom: 16});
+							function onLocationFound(e) {
+							    var radius = e.accuracy;
+
+							    L.marker(e.latlng).addTo(mymap)
+							        .bindPopup("You are within " + radius + " meters from this point").openPopup();
+
+							    L.circle(e.latlng, radius).addTo(mymap);
+							}
+							mymap.on('locationfound', onLocationFound);
+							function onLocationError(e) {
+							    alert(e.message);
+							}
+							mymap.on('locationerror', onLocationError);
+
+				       }
+				       else
+				       {
+				       	console.log("icic")
+				       }
+				        
+
+				    },
+				    error: function (jqXHR, textStatus, errorThrown)
+				    {
+						alert("error");
+						console.log(errorThrown)		 
+				    },
+				  dataType: "json"
+				});
 
 	       })
 	       
