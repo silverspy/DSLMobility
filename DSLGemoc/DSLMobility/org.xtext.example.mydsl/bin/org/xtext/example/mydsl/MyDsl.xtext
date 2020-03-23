@@ -11,7 +11,7 @@ Page returns Page:
 		'source'  source+=Source ( "," source+=Source)*  
 	;
 
-
+  
 EString returns ecore::EString:
 	STRING | ID;
 

@@ -18,7 +18,10 @@ class MyDslGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		var mypage = resource.contents.get(0) as Page
-		fsa.generateFile('home.html', '''
+		fsa.generateFile('script.sh', '''#!/bin/bash
+		git init''')
+		fsa.generateFile('script.bat', '''git init''')
+		fsa.generateFile('Front/home.html', '''
 		<!doctype html>
 		<html lang="fr">
 		<head>
@@ -716,7 +719,7 @@ class MyDslGenerator extends AbstractGenerator {
 		</script>
 		</html>''')
 		
-		fsa.generateFile('Guest.java', '''
+		fsa.generateFile('Back/src/main/java/Guest.java', '''
 		public class Guest {
 		    private String name;
 		    private String adress;
@@ -733,7 +736,7 @@ class MyDslGenerator extends AbstractGenerator {
 		    }
 		}''')
 		
-		fsa.generateFile('Main.java', '''
+		fsa.generateFile('Back/src/main/java/Main.java', '''
 		import com.google.gson.Gson;
 		import jdk.nashorn.internal.parser.JSONParser;
 		import spark.Filter;
@@ -799,7 +802,7 @@ class MyDslGenerator extends AbstractGenerator {
 		
 		}''')
 		
-		fsa.generateFile('Meeting.java', '''
+		fsa.generateFile('Back/src/main/java/Meeting.java', '''
 		import java.util.ArrayList;
 		
 		public class Meeting {
@@ -834,7 +837,7 @@ class MyDslGenerator extends AbstractGenerator {
 		
 		}''')
 		
-		fsa.generateFile('RequestTisseoAPI.java', '''
+		fsa.generateFile('Back/src/main/java/RequestTisseoAPI.java', '''
 		import java.io.BufferedReader;
 		import java.io.DataOutputStream;
 		import java.io.InputStream;
@@ -907,7 +910,7 @@ class MyDslGenerator extends AbstractGenerator {
 		    }
 		}''')
 		
-		fsa.generateFile('pom.xml', '''
+		fsa.generateFile('Back/pom.xml', '''
 		<?xml version="1.0" encoding="UTF-8"?>
 		<project xmlns="http://maven.apache.org/POM/4.0.0"
 		         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
