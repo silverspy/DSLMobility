@@ -10,8 +10,8 @@ Page returns Page:
 	
 		'source'  source+=Source ( "," source+=Source)*  
 	;
-
-
+ 
+  
 EString returns ecore::EString:
 	STRING | ID;
 
@@ -22,4 +22,4 @@ Source returns Source:
 	;
 
 enum SourceName returns SourceName:
-				Tisseo = 'Tisseo' | Uber = 'Uber' | GoogleMap = 'GoogleMap';
+				Tisseo = 'Tisseo' | GoogleMap = 'GoogleMap';

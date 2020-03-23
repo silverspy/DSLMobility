@@ -248,18 +248,10 @@ ruleSourceName returns [Enumerator current=null]
 		)
 		    |
 		(
-			enumLiteral_1='Uber'
+			enumLiteral_1='GoogleMap'
 			{
-				$current = grammarAccess.getSourceNameAccess().getUberEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_1, grammarAccess.getSourceNameAccess().getUberEnumLiteralDeclaration_1());
-			}
-		)
-		    |
-		(
-			enumLiteral_2='GoogleMap'
-			{
-				$current = grammarAccess.getSourceNameAccess().getGoogleMapEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_2, grammarAccess.getSourceNameAccess().getGoogleMapEnumLiteralDeclaration_2());
+				$current = grammarAccess.getSourceNameAccess().getGoogleMapEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getSourceNameAccess().getGoogleMapEnumLiteralDeclaration_1());
 			}
 		)
 	)

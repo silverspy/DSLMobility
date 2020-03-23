@@ -127,16 +127,14 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final EnumLiteralDeclaration cTisseoEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
 		private final Keyword cTisseoTisseoKeyword_0_0 = (Keyword)cTisseoEnumLiteralDeclaration_0.eContents().get(0);
-		private final EnumLiteralDeclaration cUberEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
-		private final Keyword cUberUberKeyword_1_0 = (Keyword)cUberEnumLiteralDeclaration_1.eContents().get(0);
-		private final EnumLiteralDeclaration cGoogleMapEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
-		private final Keyword cGoogleMapGoogleMapKeyword_2_0 = (Keyword)cGoogleMapEnumLiteralDeclaration_2.eContents().get(0);
+		private final EnumLiteralDeclaration cGoogleMapEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cGoogleMapGoogleMapKeyword_1_0 = (Keyword)cGoogleMapEnumLiteralDeclaration_1.eContents().get(0);
 		
 		//enum SourceName:
-		//	Tisseo | Uber | GoogleMap;
+		//	Tisseo | GoogleMap;
 		public EnumRule getRule() { return rule; }
 		
-		//Tisseo | Uber | GoogleMap
+		//Tisseo | GoogleMap
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//Tisseo
@@ -145,17 +143,11 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		//'Tisseo'
 		public Keyword getTisseoTisseoKeyword_0_0() { return cTisseoTisseoKeyword_0_0; }
 		
-		//Uber
-		public EnumLiteralDeclaration getUberEnumLiteralDeclaration_1() { return cUberEnumLiteralDeclaration_1; }
-		
-		//'Uber'
-		public Keyword getUberUberKeyword_1_0() { return cUberUberKeyword_1_0; }
-		
 		//GoogleMap
-		public EnumLiteralDeclaration getGoogleMapEnumLiteralDeclaration_2() { return cGoogleMapEnumLiteralDeclaration_2; }
+		public EnumLiteralDeclaration getGoogleMapEnumLiteralDeclaration_1() { return cGoogleMapEnumLiteralDeclaration_1; }
 		
 		//'GoogleMap'
-		public Keyword getGoogleMapGoogleMapKeyword_2_0() { return cGoogleMapGoogleMapKeyword_2_0; }
+		public Keyword getGoogleMapGoogleMapKeyword_1_0() { return cGoogleMapGoogleMapKeyword_1_0; }
 	}
 	
 	private final PageElements pPage;
@@ -238,7 +230,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//enum SourceName:
-	//	Tisseo | Uber | GoogleMap;
+	//	Tisseo | GoogleMap;
 	public SourceNameElements getSourceNameAccess() {
 		return eSourceName;
 	}
