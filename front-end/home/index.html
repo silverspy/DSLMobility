@@ -320,6 +320,21 @@ ul, ol {
 					  	<label for="timeRDV"> Heure du RDV</label>
 						<input type="time" id="timeRDV" name="appt" min="00:00" max="23:59" required>
 					  </div>
+					  <div class="form-group">
+					  	 <div class="form-check">
+						  <input class="form-check-input" name="type" type="radio" value="" id="tisseo">
+						  <label class="form-check-label" for="tisseo">
+						    Tisseo
+						  </label>
+					   </div>
+					   <div class="form-check">
+						  <input class="form-check-input" name="type" type="radio" value="" id="google">
+						  <label class="form-check-label" for="google">
+						    Google
+						  </label>
+					   </div>
+					  </div>
+					 
 					  <button id="valid_Creation" class="btn btn-primary">Submit</button>
 		  		</div>
 			</div>
@@ -419,7 +434,7 @@ ul, ol {
 <script type="text/javascript">
 	$(document).ready(function () {
 		//url du serveur
-		var url = "http://127.0.0.1:8080/"
+		var url = "http://54.36.98.109:8080/"
 		var typeBody = "introduction"
 		var ArrayTipe = ["introduction","list","create","join"];
 		for(type in ArrayTipe)
@@ -514,10 +529,13 @@ ul, ol {
 	       {
 
 		       	var obj = {}
+		       	var type = $("#tisseo").prop("checked") == true ? "tisseo" : "google";
+		       	console.log(type);
 		       	obj.name = $("#nameUser").val();
 		       	obj.adress = $("#adressUser").val();
 		       	obj.adressRDV = $("#adressRDV").val();
 		       	obj.dateRDV = "" + $("#dateRDV").val() + " " + $("#timeRDV").val();
+		       	obj.type = type;
 		       	$.ajax({
 				  type: "POST",
 				  url: url+"createRDV",

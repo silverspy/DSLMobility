@@ -1,24 +1,27 @@
-import $ from "jquery";
+var request = require("request");
 QUnit.test("test QUnit", function( assert ) {
 	var url = "http://127.0.0.1:8080/"
 	assert.ok(true, "QUnit OK")
 })
 QUnit.test("connection server", function( assert ) {
-	var url = "http://127.0.0.1:8080/"
-	 $.ajax({
-		  type: "POST",
-		  url: url+"test",
-		  data: {},
-		  success: function(data, textStatus, jqXHR)
-		    {
-		        
-		    	assert.ok(true, "connection Ok")
+	var url = "http://127.0.0.1:8080/test"
+	expect(0);
+	request.post(
+		url,
+		{
+		json: {
+		  
+		}
+		},
+		(error, res, body) => {
+		if (error) {
 
-		    },
-		    error: function (jqXHR, textStatus, errorThrown)
-		    {
-				assert.ok(false, "connection failed")	 
-		    },
-		  	dataType: "json"
-		});
+		  assert.ok(false,"connection server failed")
+		  return
+		}
+		else{
+			assert.ok(true, "connection server ok");
+		}
+
+	});
 })
