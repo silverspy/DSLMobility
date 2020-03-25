@@ -528,33 +528,29 @@ ul, ol {
 	       $("#valid_Creation").click(function()
 	       {
 
-		       	var obj = {}
-		       	var type = $("#tisseo").prop("checked") == true ? "tisseo" : "google";
-		       	console.log(type);
-		       	obj.name = $("#nameUser").val();
-		       	obj.adress = $("#adressUser").val();
-		       	obj.adressRDV = $("#adressRDV").val();
-		       	obj.dateRDV = "" + $("#dateRDV").val() + " " + $("#timeRDV").val();
-		       	obj.type = type;
+		       	var obj 		= {}
+		       	var type 		= $("#tisseo").prop("checked") == true ? "tisseo" : "google";
+		       	obj.name 		= $("#nameUser").val();
+		       	obj.adress 		= $("#adressUser").val();
+		       	obj.adressRDV 	= $("#adressRDV").val();
+		       	obj.dateRDV 	= "" + $("#dateRDV").val() + " " + $("#timeRDV").val();
+		       	obj.type 		=  type;
+
 		       	$.ajax({
 				  type: "POST",
-				  url: url+"createRDV",
+				  url: 	url+"createRDV",
 				  data: obj,
 				  success: function(data, textStatus, jqXHR)
 				    {
-				        //data - response from server
-				        console.log(data);
-
-				        alert("success")
+				        //data - response from serve
 				        var div = $("#consigneTrajet")
 				        var str = "<h2>Vos Instructions</h2>"
-				        console.log(data.routePlannerResult.query.maxSolutions)
-				       if(data.routePlannerResult.query.maxSolutions > 0)
-				       {
+				        
+				       	if(data.routePlannerResult.query.maxSolutions > 0)
+				       	{
 
 					       	var journey = data.routePlannerResult.journeys[0].journey;
 
-					       	console.log(journey);
 					        for(var i=0; i< journey["chunks"].length;i++)
 					        {
 
@@ -578,16 +574,11 @@ ul, ol {
 				        		}
 					        }
 
-					        console.log(str);
 					        div.html(str);
 
 				       }
-				       else
-				       {
-				       	console.log("icic")
-				       }
+				       
 				        
-
 				    },
 				    error: function (jqXHR, textStatus, errorThrown)
 				    {
@@ -606,25 +597,23 @@ ul, ol {
 	       $("#valid_Join").click(function()
 	       {
 
-		       	var obj = {}
-		       	obj.name = $("#nameUserJoin").val();
-		       	obj.adress = $("#adressUserJoin").val();
-		       	obj.idRDV = $("#nameRDVJoin").val()
+		       	var obj 	= {}
+		       	obj.name 	= $("#nameUserJoin").val();
+		       	obj.adress 	= $("#adressUserJoin").val();
+		       	obj.idRDV 	= $("#nameRDVJoin").val()
 		       	// appel asynchrone vers le serveur
-		       		$.ajax({
-				  type: "POST",
-				  url: url+"joinRDV",
-				  data: obj,
+	       		$.ajax({
+				  type: 	"POST",
+				  url: 		url+"joinRDV",
+				  data: 	obj,
 				  //en cas de succes de la requete  asynchrone
 				  success: function(data, textStatus, jqXHR)
 				    {
 				        //data - response from server
-				        console.log(data);
-
-				        alert("success")
+				        
 				        var div = $("#consigneTrajet2")
 				        var str = "<h2>Vos Instructions</h2>"
-				        console.log(data.routePlannerResult.query.maxSolutions)
+
 				       if(data.routePlannerResult.query.maxSolutions > 0)
 				       {
 
