@@ -9,5 +9,5 @@ before_script:
   - npm install request
 SCRIPT:
   - cd back/
-  - mvn INSTALL
+  - mvn install
   - cd ../front
