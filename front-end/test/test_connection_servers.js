@@ -3,8 +3,7 @@ QUnit.test("test QUnit", function( assert ) {
 	assert.ok(true, "QUnit OK")
 })
 
-QUnit.test("connection server", function( assert ) {
-	var url = "http://54.36.98.109:8080/test"
+/*	var url = "http://54.36.98.109:8080/test"
 
 	request.post(
 		url,
@@ -24,4 +23,4 @@ QUnit.test("connection server", function( assert ) {
 		}
 
 	});
-})
+})*/
