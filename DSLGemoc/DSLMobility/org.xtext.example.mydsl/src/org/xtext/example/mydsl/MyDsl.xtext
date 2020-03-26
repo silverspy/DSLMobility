@@ -22,4 +22,4 @@ Source returns Source:
 	;
 
 enum SourceName returns SourceName:
-				Tisseo = 'Tisseo' | Uber = 'Uber' | GoogleMap = 'GoogleMap';
+				Tisseo = 'tisseo' | GoogleMap = 'google';

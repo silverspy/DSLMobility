@@ -1,9 +1,8 @@
 ','=13
-'GoogleMap'=16
 'Page'=11
-'Tisseo'=14
-'Uber'=15
+'google'=15
 'source'=12
+'tisseo'=14
 RULE_ANY_OTHER=10
 RULE_ID=5
 RULE_INT=6
@@ -16,4 +15,3 @@ T__12=12
 T__13=13
 T__14=14
 T__15=15
-T__16=16

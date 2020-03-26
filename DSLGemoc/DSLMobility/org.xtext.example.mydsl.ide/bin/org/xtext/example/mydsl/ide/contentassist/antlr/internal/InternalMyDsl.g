@@ -168,20 +168,14 @@ rule__SourceName__Alternatives
 :
 	(
 		{ before(grammarAccess.getSourceNameAccess().getTisseoEnumLiteralDeclaration_0()); }
-		('Tisseo')
+		('tisseo')
 		{ after(grammarAccess.getSourceNameAccess().getTisseoEnumLiteralDeclaration_0()); }
 	)
 	|
 	(
-		{ before(grammarAccess.getSourceNameAccess().getUberEnumLiteralDeclaration_1()); }
-		('Uber')
-		{ after(grammarAccess.getSourceNameAccess().getUberEnumLiteralDeclaration_1()); }
-	)
-	|
-	(
-		{ before(grammarAccess.getSourceNameAccess().getGoogleMapEnumLiteralDeclaration_2()); }
-		('GoogleMap')
-		{ after(grammarAccess.getSourceNameAccess().getGoogleMapEnumLiteralDeclaration_2()); }
+		{ before(grammarAccess.getSourceNameAccess().getGoogleMapEnumLiteralDeclaration_1()); }
+		('google')
+		{ after(grammarAccess.getSourceNameAccess().getGoogleMapEnumLiteralDeclaration_1()); }
 	)
 ;
 finally {

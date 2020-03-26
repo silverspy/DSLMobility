@@ -61,10 +61,6 @@
               <styles xmi:type="notation:FontStyle" xmi:id="_U-rgEUdXEeq-H_UY59wlsw" fontName="Segoe UI" fontHeight="8"/>
               <layoutConstraint xmi:type="notation:Location" xmi:id="_U-rgEkdXEeq-H_UY59wlsw"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_nLeyQEdYEeq_u_BAhZ-zJA" type="3010" element="_nLCGUEdYEeq_u_BAhZ-zJA">
-              <styles xmi:type="notation:FontStyle" xmi:id="_nLeyQUdYEeq_u_BAhZ-zJA" fontName="Segoe UI" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_nLeyQkdYEeq_u_BAhZ-zJA"/>
-            </children>
             <children xmi:type="notation:Node" xmi:id="_n9wjwEdYEeq_u_BAhZ-zJA" type="3010" element="_n9bMkEdYEeq_u_BAhZ-zJA">
               <styles xmi:type="notation:FontStyle" xmi:id="_n9wjwUdYEeq_u_BAhZ-zJA" fontName="Segoe UI" fontHeight="8"/>
               <layoutConstraint xmi:type="notation:Location" xmi:id="_n9wjwkdYEeq_u_BAhZ-zJA"/>
@@ -140,14 +136,6 @@
         <target xmi:type="ecore:EEnumLiteral" href="dSLMobility.ecore#//SourceName/Tisseo"/>
         <semanticElements xmi:type="ecore:EEnumLiteral" href="dSLMobility.ecore#//SourceName/Tisseo"/>
         <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_U-i9MUdXEeq-H_UY59wlsw" labelAlignment="LEFT">
-          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']"/>
-      </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_nLCGUEdYEeq_u_BAhZ-zJA" name="Uber" tooltipText="">
-        <target xmi:type="ecore:EEnumLiteral" href="dSLMobility.ecore#//SourceName/Uber"/>
-        <semanticElements xmi:type="ecore:EEnumLiteral" href="dSLMobility.ecore#//SourceName/Uber"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_nLDUcEdYEeq_u_BAhZ-zJA" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']"/>

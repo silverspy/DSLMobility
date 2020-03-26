@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalMyDslParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'Page'", "'source'", "','", "'Tisseo'", "'Uber'", "'GoogleMap'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'Page'", "'source'", "','", "'tisseo'", "'google'"
     };
     public static final int RULE_ID=5;
     public static final int RULE_WS=9;
@@ -30,7 +30,6 @@ public class InternalMyDslParser extends AbstractInternalAntlrParser {
     public static final int RULE_ANY_OTHER=10;
     public static final int RULE_SL_COMMENT=8;
     public static final int T__15=15;
-    public static final int T__16=16;
     public static final int RULE_INT=6;
     public static final int T__11=11;
     public static final int RULE_ML_COMMENT=7;
@@ -475,7 +474,7 @@ public class InternalMyDslParser extends AbstractInternalAntlrParser {
             int alt3=2;
             int LA3_0 = input.LA(1);
 
-            if ( ((LA3_0>=14 && LA3_0<=16)) ) {
+            if ( ((LA3_0>=14 && LA3_0<=15)) ) {
                 alt3=1;
             }
             switch (alt3) {
@@ -536,52 +535,42 @@ public class InternalMyDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSourceName"
-    // InternalMyDsl.g:234:1: ruleSourceName returns [Enumerator current=null] : ( (enumLiteral_0= 'Tisseo' ) | (enumLiteral_1= 'Uber' ) | (enumLiteral_2= 'GoogleMap' ) ) ;
+    // InternalMyDsl.g:234:1: ruleSourceName returns [Enumerator current=null] : ( (enumLiteral_0= 'tisseo' ) | (enumLiteral_1= 'google' ) ) ;
     public final Enumerator ruleSourceName() throws RecognitionException {
         Enumerator current = null;
 
         Token enumLiteral_0=null;
         Token enumLiteral_1=null;
-        Token enumLiteral_2=null;
 
 
         	enterRule();
 
         try {
-            // InternalMyDsl.g:240:2: ( ( (enumLiteral_0= 'Tisseo' ) | (enumLiteral_1= 'Uber' ) | (enumLiteral_2= 'GoogleMap' ) ) )
-            // InternalMyDsl.g:241:2: ( (enumLiteral_0= 'Tisseo' ) | (enumLiteral_1= 'Uber' ) | (enumLiteral_2= 'GoogleMap' ) )
+            // InternalMyDsl.g:240:2: ( ( (enumLiteral_0= 'tisseo' ) | (enumLiteral_1= 'google' ) ) )
+            // InternalMyDsl.g:241:2: ( (enumLiteral_0= 'tisseo' ) | (enumLiteral_1= 'google' ) )
             {
-            // InternalMyDsl.g:241:2: ( (enumLiteral_0= 'Tisseo' ) | (enumLiteral_1= 'Uber' ) | (enumLiteral_2= 'GoogleMap' ) )
-            int alt4=3;
-            switch ( input.LA(1) ) {
-            case 14:
-                {
+            // InternalMyDsl.g:241:2: ( (enumLiteral_0= 'tisseo' ) | (enumLiteral_1= 'google' ) )
+            int alt4=2;
+            int LA4_0 = input.LA(1);
+
+            if ( (LA4_0==14) ) {
                 alt4=1;
-                }
-                break;
-            case 15:
-                {
+            }
+            else if ( (LA4_0==15) ) {
                 alt4=2;
-                }
-                break;
-            case 16:
-                {
-                alt4=3;
-                }
-                break;
-            default:
+            }
+            else {
                 NoViableAltException nvae =
                     new NoViableAltException("", 4, 0, input);
 
                 throw nvae;
             }
-
             switch (alt4) {
                 case 1 :
-                    // InternalMyDsl.g:242:3: (enumLiteral_0= 'Tisseo' )
+                    // InternalMyDsl.g:242:3: (enumLiteral_0= 'tisseo' )
                     {
-                    // InternalMyDsl.g:242:3: (enumLiteral_0= 'Tisseo' )
-                    // InternalMyDsl.g:243:4: enumLiteral_0= 'Tisseo'
+                    // InternalMyDsl.g:242:3: (enumLiteral_0= 'tisseo' )
+                    // InternalMyDsl.g:243:4: enumLiteral_0= 'tisseo'
                     {
                     enumLiteral_0=(Token)match(input,14,FOLLOW_2); 
 
@@ -595,32 +584,15 @@ public class InternalMyDslParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalMyDsl.g:250:3: (enumLiteral_1= 'Uber' )
+                    // InternalMyDsl.g:250:3: (enumLiteral_1= 'google' )
                     {
-                    // InternalMyDsl.g:250:3: (enumLiteral_1= 'Uber' )
-                    // InternalMyDsl.g:251:4: enumLiteral_1= 'Uber'
+                    // InternalMyDsl.g:250:3: (enumLiteral_1= 'google' )
+                    // InternalMyDsl.g:251:4: enumLiteral_1= 'google'
                     {
                     enumLiteral_1=(Token)match(input,15,FOLLOW_2); 
 
-                    				current = grammarAccess.getSourceNameAccess().getUberEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_1, grammarAccess.getSourceNameAccess().getUberEnumLiteralDeclaration_1());
-                    			
-
-                    }
-
-
-                    }
-                    break;
-                case 3 :
-                    // InternalMyDsl.g:258:3: (enumLiteral_2= 'GoogleMap' )
-                    {
-                    // InternalMyDsl.g:258:3: (enumLiteral_2= 'GoogleMap' )
-                    // InternalMyDsl.g:259:4: enumLiteral_2= 'GoogleMap'
-                    {
-                    enumLiteral_2=(Token)match(input,16,FOLLOW_2); 
-
-                    				current = grammarAccess.getSourceNameAccess().getGoogleMapEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_2, grammarAccess.getSourceNameAccess().getGoogleMapEnumLiteralDeclaration_2());
+                    				current = grammarAccess.getSourceNameAccess().getGoogleMapEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_1, grammarAccess.getSourceNameAccess().getGoogleMapEnumLiteralDeclaration_1());
                     			
 
                     }
@@ -658,7 +630,7 @@ public class InternalMyDslParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000000030L});
     public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x000000000001E000L});
+    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x000000000000E000L});
     public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000002002L});
 
 }

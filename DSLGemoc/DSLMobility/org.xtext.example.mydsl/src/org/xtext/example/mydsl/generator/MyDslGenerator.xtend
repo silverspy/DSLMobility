@@ -8,6 +8,9 @@ import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import dSLMobility.Page
+import dSLMobility.Source
+import dSLMobility.SourceName
+import org.xtext.example.mydsl.services.MyDslGrammarAccess.SourceNameElements
 
 /**
  * Generates code from your model files on save.
@@ -18,15 +21,33 @@ class MyDslGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		var mypage = resource.contents.get(0) as Page
+		var list = newArrayList()
+		for (Source s : resource.allContents.toIterable.filter(typeof(Source))) {
+			list.add(s.name)
+		}	
+		
+		var str = ""
+		
+		for (element : list) {
+			str += '<div class="form-check">
+								  <input class="form-check-input" name="type" type="radio" value="" id="'+element+'">
+								  <label class="form-check-label" for="'+element+'">
+								    '+element+'
+								  </label>
+							   </div>'
+		}
+		
 		fsa.generateFile('script.sh', '''#!/bin/bash
 		git init''')
+
 		fsa.generateFile('script.bat', '''git init''')
-		fsa.generateFile('Front/home.html', '''
+		
+		fsa.generateFile('front-end/home/index.html', '''
 		<!doctype html>
 		<html lang="fr">
 		<head>
 		  <meta charset="utf-8">
-		  <title>''' + mypage.name + '''</title>
+		  <title>''' + mypage.name +'''</title>
 		</head>
 		<style type="text/css">
 			@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
@@ -204,7 +225,7 @@ class MyDslGenerator extends AbstractGenerator {
 		    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<body>
 			<div class="wrapper">
-		
+		<!-- Begin side bar -->
 				<nav id="sidebar">
 			        <div class="sidebar-header">
 			            <h3>Mobility for all</h3>
@@ -228,7 +249,7 @@ class MyDslGenerator extends AbstractGenerator {
 			        </ul>
 		
 			    </nav>
-		
+		<!-- end sidebar -->
 			    <div id="content" style="height: 100vh;width: 100vw">
 		
 			        <nav>
@@ -288,7 +309,7 @@ class MyDslGenerator extends AbstractGenerator {
 			  		<div class="panel-body">Panel Footer</div>
 				</div>
 			</div>
-		
+		<!-- list panel -->
 			<div id="list" style="margin-top: 1%;margin-left: 3%;margin-bottom: 1%">
 		
 				<div class="panel panel-default">
@@ -311,10 +332,10 @@ class MyDslGenerator extends AbstractGenerator {
 			  		</div>
 				</div>
 			</div>
+		<!-- end list panel -->
 		
 		
-		
-		
+		<!--  create panel -->
 		
 			<div id="create" style="margin-top: 1%;margin-left: 3%;margin-bottom: 1%">
 				
@@ -344,6 +365,11 @@ class MyDslGenerator extends AbstractGenerator {
 							  	<label for="timeRDV"> Heure du RDV</label>
 								<input type="time" id="timeRDV" name="appt" min="00:00" max="23:59" required>
 							  </div>
+							  <div class="form-group">
+							  
+							  ''' + str +'''
+							  </div>
+							 
 							  <button id="valid_Creation" class="btn btn-primary">Submit</button>
 				  		</div>
 					</div>
@@ -359,11 +385,11 @@ class MyDslGenerator extends AbstractGenerator {
 			</div>
 		
 		
+		<!-- end panel create -->
 		
 		
 		
-		
-		
+		<!-- join panel -->
 			<div id="join"  style="margin-top: 1%;margin-left: 3%;margin-bottom: 1%">
 				<div class="row">
 					<div class="col-lg-7 col-xs-12">
@@ -402,7 +428,7 @@ class MyDslGenerator extends AbstractGenerator {
 				</div>
 				
 			</div>
-		
+			<!-- Write your comments here -->
 		</body>
 		
 		
@@ -442,7 +468,8 @@ class MyDslGenerator extends AbstractGenerator {
 		
 		<script type="text/javascript">
 			$(document).ready(function () {
-				var url = "http://127.0.0.1:8080/"
+				//url du serveur
+				var url = "http://54.36.98.109:8080/"
 				var typeBody = "introduction"
 				var ArrayTipe = ["introduction","list","create","join"];
 				for(type in ArrayTipe)
@@ -452,12 +479,13 @@ class MyDslGenerator extends AbstractGenerator {
 						$("#"+ArrayTipe[type]).hide();
 					}
 				}
-				$("#receptacle").append($("#"+typeBody));
 		
+				$("#receptacle").append($("#"+typeBody));
+				//cache la  side bar menu
 			    $('#sidebarCollapse').on('click', function () {
 			        $('#sidebar').toggleClass('active');
 			    });
-		
+			    //charge la page de creation du rdv
 			     $('#createRDV').on('click', function () {
 			     	$("#"+typeBody).appendTo(document.body)
 			     	$("#"+typeBody).hide()
@@ -466,7 +494,7 @@ class MyDslGenerator extends AbstractGenerator {
 		         	$("#receptacle").append($("#"+typeBody));
 		
 			    });
-		
+			     // charge la page permettant de rejoindre un rdv 
 			      $('#joinRDV').on('click', function () {
 			      	$("#"+typeBody).appendTo(document.body)
 			      	$("#"+typeBody).hide()
@@ -475,25 +503,25 @@ class MyDslGenerator extends AbstractGenerator {
 		         	 $("#"+typeBody).show();
 			       alert("joinRDV")
 			    });
-		
+			      //charge la page d'accueil
 			       $('#introductionRDV').on('click', function () {
 			      	$("#"+typeBody).appendTo(document.body)
 			      	$("#"+typeBody).hide()
-			         typeBody = "introduction";
+			        typeBody = "introduction";
 		         	$("#receptacle").append($("#"+typeBody));
-		         	 $("#"+typeBody).show();
-			       alert("introductionRDV")
+		         	$("#"+typeBody).show();
+			       	alert("introductionRDV")
 			    });
-		
+			       //charge la page listant l'ensemble des rendez vous
 			       $('#listRDV').on('click', function () {
 			       	$("#"+typeBody).appendTo(document.body)
 			       	$("#"+typeBody).hide()
-			         typeBody = "list";
+			        typeBody = "list";
 		         	$("#receptacle").append($("#"+typeBody));
-		         	 $("#"+typeBody).show();
-			       	 alert("listRDV")
+		         	$("#"+typeBody).show();
+			       	alert("listRDV")
 		
-		
+			       	//lance une  requete asynchrone vers le server permmettant de recuperer la liste des rendez vous
 			       	 $.ajax({
 						  type: "POST",
 						  url: url+"listRDV",
@@ -526,20 +554,23 @@ class MyDslGenerator extends AbstractGenerator {
 								alert("error");
 								console.log(errorThrown)		 
 						    },
-						  dataType: "json"
+						  	dataType: "json"
 						});
 		
 		
 			    });
-		
+		//function permettant de valider la creation de rendez vous
 			       $("#valid_Creation").click(function()
 			       {
 		
 				       	var obj = {}
+				       	var type = $("#tisseo").prop("checked") == true ? "tisseo" : "google";
+				       	console.log(type);
 				       	obj.name = $("#nameUser").val();
 				       	obj.adress = $("#adressUser").val();
 				       	obj.adressRDV = $("#adressRDV").val();
 				       	obj.dateRDV = "" + $("#dateRDV").val() + " " + $("#timeRDV").val();
+				       	obj.type = type;
 				       	$.ajax({
 						  type: "POST",
 						  url: url+"createRDV",
@@ -600,21 +631,12 @@ class MyDslGenerator extends AbstractGenerator {
 						    },
 						  dataType: "json"
 						});
-						/*
-				       	$.post( url+"createRDV",obj, function() {
-						  alert( "success" );
-						})
-						  .done(function() {
-						    alert( "second success" );
-						  })
-						  .fail(function() {
-						    alert( "error" );
-						  })
-						  .always(function() {
-						    alert( "finished" );
-						  });
-		*/
+		
 			       })
+		
+		
+		//rejoindre un rendez vous 
+		//cette function effectue un appel a /joinRDV et permet au participant apres qu'il est renseigné son nom et prenom de rejoindre le rdv indiqué
 		
 			       $("#valid_Join").click(function()
 			       {
@@ -623,11 +645,12 @@ class MyDslGenerator extends AbstractGenerator {
 				       	obj.name = $("#nameUserJoin").val();
 				       	obj.adress = $("#adressUserJoin").val();
 				       	obj.idRDV = $("#nameRDVJoin").val()
-		
+				       	// appel asynchrone vers le serveur
 				       		$.ajax({
 						  type: "POST",
 						  url: url+"joinRDV",
 						  data: obj,
+						  //en cas de succes de la requete  asynchrone
 						  success: function(data, textStatus, jqXHR)
 						    {
 						        //data - response from server
@@ -668,7 +691,7 @@ class MyDslGenerator extends AbstractGenerator {
 		
 							        console.log(str);
 							        div.html(str);
-		
+							        //initialisation de la carte
 							        var mymap = L.map('mapContainer').setView([51.505, -0.09], 13);
 								    L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v9/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYmFzdGllbmRpZGllciIsImEiOiJjazY4MzYzeTkwMHZlM21xdG01bXlhbGpyIn0.r_jl86haJmqOCrgE8ywKaw', {
 									    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -699,6 +722,7 @@ class MyDslGenerator extends AbstractGenerator {
 						        
 		
 						    },
+						    //en cas d'erreur de la requete asynchrone
 						    error: function (jqXHR, textStatus, errorThrown)
 						    {
 								alert("error");
@@ -713,11 +737,37 @@ class MyDslGenerator extends AbstractGenerator {
 			});
 		
 		
-		
-		
-		
 		</script>
 		</html>''')
+
+		fsa.generateFile('front-end/tests/test_connection_servers.js', '''
+		var request = require("request");
+		QUnit.test("test QUnit", function( assert ) {
+			var url = "http://127.0.0.1:8080/"
+			assert.ok(true, "QUnit OK")
+		})
+		QUnit.test("connection server", function( assert ) {
+			var url = "http://127.0.0.1:8080/test"
+			expect(0);
+			request.post(
+				url,
+				{
+				json: {
+				  
+				}
+				},
+				(error, res, body) => {
+				if (error) {
+		
+				  assert.ok(false,"connection server failed")
+				  return
+				}
+				else{
+					assert.ok(true, "connection server ok");
+				}
+		
+			});
+		})''')
 		
 		fsa.generateFile('Back/src/main/java/Guest.java', '''
 		public class Guest {
@@ -737,8 +787,6 @@ class MyDslGenerator extends AbstractGenerator {
 		}''')
 		
 		fsa.generateFile('Back/src/main/java/Main.java', '''
-		import com.google.gson.Gson;
-		import jdk.nashorn.internal.parser.JSONParser;
 		import spark.Filter;
 		
 		import java.util.ArrayList;
@@ -761,6 +809,15 @@ class MyDslGenerator extends AbstractGenerator {
 		            response.header("Access-Control-Allow-Methods", "GET");
 		        });
 		
+		        /*
+		        /createRDV + data {
+		            name : nom_user
+		            adress: adress_user
+		            dateRDV:
+		            adressRDV:
+		            api : google / tisseo
+		        } => creer le rdv et renvoie les instructions
+		         */
 		        post("/createRDV", (request, response) -> {
 		            String name = request.queryParams("name").replace(" ", "+");
 		            String adress = request.queryParams("adress").replace(" ", "+");
@@ -773,6 +830,9 @@ class MyDslGenerator extends AbstractGenerator {
 		            return APIresponse;
 		        });
 		
+		        /*
+		        /listRDV  => donne la liste des rdv
+		         */
 		        post("/listRDV", (request, response) -> {
 		            response.status(200);
 		            response.type("application/json");
@@ -785,6 +845,14 @@ class MyDslGenerator extends AbstractGenerator {
 		            return Jsonlist;
 		        });
 		
+		        /*
+		        /joinRDV  + data{
+		        name:
+		        adress:
+		        idRDV:
+		        api: google / tisseo
+		        } => renvoie le rendez vous et ajoute a la liste des participants
+		         */
 		        post("/joinRDV", (request, response) -> {
 		            String name = request.queryParams("name").replace(" ", "+");
 		            String adress = request.queryParams("adress").replace(" ", "+");
@@ -798,6 +866,18 @@ class MyDslGenerator extends AbstractGenerator {
 		            return APIresponse;
 		        });
 		
+		        /*
+		        /test => return success
+		         */
+		        get("/test", (request, response) -> {
+		            response.status(200);
+		            return "ok";
+		        });
+		
+		        post("/test", (request, response) -> {
+		            response.status(200);
+		            return "ok";
+		        });
 		    }
 		
 		}''')
@@ -839,15 +919,13 @@ class MyDslGenerator extends AbstractGenerator {
 		
 		fsa.generateFile('Back/src/main/java/RequestTisseoAPI.java', '''
 		import java.io.BufferedReader;
-		import java.io.DataOutputStream;
-		import java.io.InputStream;
 		import java.io.InputStreamReader;
 		import java.net.HttpURLConnection;
 		import java.net.URL;
 		
 		public class RequestTisseoAPI {
 		
-		    public static String requestTisseo(String service, String request) {
+		    private static String requestTisseo(String service, String request) {
 		        String key = "74f87071-9002-4103-82db-57f70e19e2d2";
 		        String targetURL = "https://api.tisseo.fr/v1/";
 		        String urlParameters = targetURL + service +
@@ -908,6 +986,21 @@ class MyDslGenerator extends AbstractGenerator {
 		    public static String getItiniraire(String departure, String arrival, String date){
 		        return requestTisseo("journeys","departurePlace=" + departure + "&arrivalPlace=" + arrival + "toulouse&firstDepartureDatetime=" + date + "&number=2&displayWording=1&lang=fr");
 		    }
+		}
+''')
+		
+		fsa.generateFile('Back/src/main/java/RequestAPI.java', '''public class RequestAPI {
+		
+		    public static String RequestAPI(String departure, String arrival, String date, String api) {
+		        if (api == "google") {
+		            return "en cours de dev";
+		        } else if (api == "tisseo") {
+		            return RequestTisseoAPI.getItiniraire(departure,arrival,date);
+		        } else {
+		            return "error wrong API";
+		        }
+		    }
+		
 		}''')
 		
 		fsa.generateFile('Back/pom.xml', '''
@@ -1043,6 +1136,9 @@ class MyDslGenerator extends AbstractGenerator {
 		
 		</project>''')
 		
+		fsa.generateFile('Back/.travis.yml', '''language: java
+		sudo: false
+		script: mvn clean verify''')
 		
 	}
 }
