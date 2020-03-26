@@ -5,10 +5,10 @@ SUDO: FALSE
 node_js:
   - 7
 before_script:
-  - npm install qunit
+  - npm install -g qunit
   - npm install request
 SCRIPT:
   - cd back/
   - mvn install
   - cd ../front
-  - qunit  'tests/test_connection_servers.js'
+  - qunit  'front-end/tests/test_connection_servers.js'
