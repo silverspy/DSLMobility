@@ -1,0 +1,695 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Titre de la page</title>
+</head>
+<style type="text/css">
+	@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+	.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    min-height: 100vh;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+}
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+a, a:hover, a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+a {
+	color :white !important;
+}
+#sidebar {
+    /* don't forget to add all the previously mentioned styles here too */
+    background: #7386D5;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: #6d7fcc;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid #47748b;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+#sidebar ul li a:hover {
+    color: #7386D5;
+    background: #fff;
+}
+
+#sidebar ul li.active > a, a[aria-expanded="true"] {
+    color: #fff;
+    background: #6d7fcc;
+}
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #6d7fcc;
+}
+
+
+
+.context-dark, .bg-gray-dark, .bg-primary {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-classic a, .footer-classic a:focus, .footer-classic a:active {
+    color: #ffffff;
+}
+.nav-list li {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.nav-list li a:hover:before {
+    margin-left: 0;
+    opacity: 1;
+    visibility: visible;
+}
+
+ul, ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.social-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 23px;
+    font: 900 13px/1 "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+}
+.social-container .col {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.nav-list li a:before {
+    content: "\f14f";
+    font: 400 21px/1 "Material Design Icons";
+    color: #4d6de6;
+    display: inline-block;
+    vertical-align: baseline;
+    margin-left: -28px;
+    margin-right: 7px;
+    opacity: 0;
+    visibility: hidden;
+    transition: .22s ease;
+}
+
+#mapContainer { height: 60%; }
+</style>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/>
+   <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+   crossorigin=""></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+   <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<body>
+	<div class="wrapper">
+<!-- Begin side bar -->
+		<nav id="sidebar">
+	        <div class="sidebar-header">
+	            <h3>Mobility for all</h3>
+	        </div>
+
+	        <ul class="list-unstyled components">
+
+	        	 <li>
+	              	<button style="color: white; width: 100%; text-align: left;" type="button" id="introductionRDV" class="btn"><i class="fas fa-home"></i> Home</button>
+                  </li>
+
+	              <li>
+	              	<button style="color: white; width: 100%; text-align: left;" type="button" id="createRDV" class="btn"><i class="far fa-calendar"></i> Create a RDV</button>
+                  </li>
+	            <li>
+	            	<button type="button" style="color: white; width: 100%; text-align: left;" id="listRDV" class="btn"> <i class="fas fa-list"></i> List all RDV</button>
+	            </li>
+	            <li>
+	            	<button type="button"  style="color: white; width: 100%; text-align: left;" id="joinRDV" class="btn"><i class="fas fa-sign-in-alt"></i> Join</button>
+	            </li>
+	        </ul>
+
+	    </nav>
+<!-- end sidebar -->
+	    <div id="content" style="height: 100vh;width: 100vw">
+
+	        <nav>
+	            <div>
+	                <button type="button" id="sidebarCollapse" class="btn btn-info">
+	                   <i class="fas fa-align-justify"></i>
+	                </button>
+	            </div>
+	        </nav>
+
+	        <div class="row">
+	        	<div class="col-lg-12" style=" text-align: center;">
+	        		<h1>Title</h1>
+	        	</div>
+	        	<div id="receptacle" class="col-lg-12">
+	        	</div>
+	        </div>
+	    </div>
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+	<div id="introduction" style="margin-top: 1%;margin-left: 3%;margin-bottom: 1%">
+		<div class="panel panel-default">
+	  		<div class="panel-heading"><h2>Introduction</h2></div>
+	  		<div class="panel-body">Panel Footer</div>
+		</div>
+	</div>
+<!-- list panel -->
+	<div id="list" style="margin-top: 1%;margin-left: 3%;margin-bottom: 1%">
+
+		<div class="panel panel-default">
+	  		<div class="panel-heading"><h2>Liste des RDV</h2></div>
+	  		<div class="panel-body">
+	  			
+	  			<table class="table">
+				  <thead>
+				    <tr>
+				      <th scope="col">#</th>
+				      <th scope="col">Id</th>
+				      <th scope="col">Adresse</th>
+				      <th scope="col">Date</th>
+				    </tr>
+				  </thead>
+				  <tbody id="tableList">
+				  </tbody>
+				</table>
+
+	  		</div>
+		</div>
+	</div>
+<!-- end list panel -->
+
+
+<!--  create panel -->
+
+	<div id="create" style="margin-top: 1%;margin-left: 3%;margin-bottom: 1%">
+		
+		<div class="row">
+			<div class="col-lg-6">
+				
+				<div class="panel panel-default">
+		  		<div class="panel-heading"><h2>Create a meeting</h2></div>
+		  		<div class="panel-body">
+					  <div class="form-group">
+					    <label for="adressUser">User address</label>
+					    <input type="text" class="form-control" id="adressUser" aria-describedby="emailHelp" placeholder="Enter your adress">
+					  </div>
+					  <div class="form-group">
+					    <label for="adressRDV">RDV address</label>
+					    <input type="text" class="form-control" id="adressRDV" aria-describedby="emailHelp" placeholder="Enter RDV adress">
+					  </div>
+					  <div class="form-group">
+					    <label for="nameUser">User name</label>
+					    <input type="text" class="form-control" id="nameUser" aria-describedby="emailHelp" placeholder="Enter your name">
+					  </div>
+					  <div class="form-group">
+					  	<label for="dateRDV"> Date du RDV</label>
+						<input type="date" id="dateRDV" name="trip-start" value="2018-07-22" min="2019-01-01" max="2028-12-31">
+					  </div>
+					  <div class="form-group">
+					  	<label for="timeRDV"> Heure du RDV</label>
+						<input type="time" id="timeRDV" name="appt" min="00:00" max="23:59" required>
+					  </div>
+					  <div class="form-group">
+					  	 <div class="form-check">
+						  <input class="form-check-input" name="type" type="radio" value="" id="tisseo">
+						  <label class="form-check-label" for="tisseo">
+						    Tisseo
+						  </label>
+					   </div>
+					   <div class="form-check">
+						  <input class="form-check-input" name="type" type="radio" value="" id="google">
+						  <label class="form-check-label" for="google">
+						    Google
+						  </label>
+					   </div>
+					  </div>
+					 
+					  <button id="valid_Creation" class="btn btn-primary">Submit</button>
+		  		</div>
+			</div>
+
+
+			</div>
+			<div class="col-lg-6" id="consigneTrajet">
+				
+			</div>
+			
+		</div>
+		
+	</div>
+
+
+<!-- end panel create -->
+
+
+
+<!-- join panel -->
+	<div id="join"  style="margin-top: 1%;margin-left: 3%;margin-bottom: 1%">
+		<div class="row">
+			<div class="col-lg-7 col-xs-12">
+				
+				<div class="panel panel-default">
+			  		<div class="panel-heading"><h2>Join a meeting</h2></div>
+			  		<div class="panel-body">
+						  <div class="form-group">
+						    <label for="adressUserJoin">User address</label>
+						    <input type="text" class="form-control" id="adressUserJoin" aria-describedby="adressHelp" placeholder="Enter your adress">
+						  </div>
+						  <div class="form-group">
+						    <label for="nameUserJoin">User name</label>
+						    <input type="text" class="form-control" id="nameUserJoin" aria-describedby="emailHelp" placeholder="Enter your name">
+						  </div>
+						  <div class="form-group">
+						   <label for="nameRDVJoin">RDV name</label>
+						    <input type="text" class="form-control" id="nameRDVJoin" aria-describedby="nameRDVhELP" placeholder="Enter rdv name">
+						  </div>
+						  <button id="valid_Join" class="btn btn-primary">Join</button>
+			  		</div>
+				</div>
+
+			</div>
+			<div class="col-lg-5 col-xs-12" >
+				<div id="mapContainer">
+					
+
+				</div>
+				<div id="consigneTrajet2">
+					
+
+				</div>
+
+			</div>
+		</div>
+		
+	</div>
+	<!-- Write your comments here -->
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		//url du serveur
+		var url = "http://54.36.98.109:8080/"
+		var typeBody = "introduction"
+		var ArrayTipe = ["introduction","list","create","join"];
+		for(type in ArrayTipe)
+		{
+			if(ArrayTipe[type] != typeBody)
+			{
+				$("#"+ArrayTipe[type]).hide();
+			}
+		}
+
+		$("#receptacle").append($("#"+typeBody));
+		//cache la  side bar menu
+	    $('#sidebarCollapse').on('click', function () {
+	        $('#sidebar').toggleClass('active');
+	    });
+	    //charge la page de creation du rdv
+	     $('#createRDV').on('click', function () {
+	     	$("#"+typeBody).appendTo(document.body)
+	     	$("#"+typeBody).hide()
+	         typeBody = "create";
+	        $("#"+typeBody).show();
+         	$("#receptacle").append($("#"+typeBody));
+
+	    });
+	     // charge la page permettant de rejoindre un rdv 
+	      $('#joinRDV').on('click', function () {
+	      	$("#"+typeBody).appendTo(document.body)
+	      	$("#"+typeBody).hide()
+	         typeBody = "join";
+         	$("#receptacle").append($("#"+typeBody));
+         	 $("#"+typeBody).show();
+	       alert("joinRDV")
+	    });
+	      //charge la page d'accueil
+	       $('#introductionRDV').on('click', function () {
+	      	$("#"+typeBody).appendTo(document.body)
+	      	$("#"+typeBody).hide()
+	        typeBody = "introduction";
+         	$("#receptacle").append($("#"+typeBody));
+         	$("#"+typeBody).show();
+	       	alert("introductionRDV")
+	    });
+	       //charge la page listant l'ensemble des rendez vous
+	       $('#listRDV').on('click', function () {
+	       	$("#"+typeBody).appendTo(document.body)
+	       	$("#"+typeBody).hide()
+	        typeBody = "list";
+         	$("#receptacle").append($("#"+typeBody));
+         	$("#"+typeBody).show();
+	       	alert("listRDV")
+
+	       	//lance une  requete asynchrone vers le server permmettant de recuperer la liste des rendez vous
+	       	 $.ajax({
+				  type: "POST",
+				  url: url+"listRDV",
+				  data: {},
+				  success: function(data, textStatus, jqXHR)
+				    {
+				        
+				    	var str = ""
+		       	 		var len = data.meetings.length;
+		       	 		var listRDV = data.meetings;
+
+		       	 		for(var i = 0; i<len ; i++)
+		       	 		{
+		       	 			var index = i+1;
+		       	 			str += "<tr>";
+		       	 			str += "<th scope='row'>"+index+"</th>";
+		       	 			str += "<td>"+listRDV[i].id+"</td>";
+		       	 			str += "<td>"+listRDV[i].adress+"</td>";
+		       	 			str += "<td>"+listRDV[i].date+"</td>";
+
+		       	 		}
+
+	       	 		$("#tableList").html(str);
+					alert( "second success" );
+
+
+				    },
+				    error: function (jqXHR, textStatus, errorThrown)
+				    {
+						alert("error");
+						console.log(errorThrown)		 
+				    },
+				  	dataType: "json"
+				});
+
+
+	    });
+//function permettant de valider la creation de rendez vous
+	       $("#valid_Creation").click(function()
+	       {
+
+		       	var obj 		= {}
+		       	var type 		= $("#tisseo").prop("checked") == true ? "tisseo" : "google";
+		       	obj.name 		= $("#nameUser").val();
+		       	obj.adress 		= $("#adressUser").val();
+		       	obj.adressRDV 	= $("#adressRDV").val();
+		       	obj.dateRDV 	= "" + $("#dateRDV").val() + " " + $("#timeRDV").val();
+		       	obj.type 		=  type;
+
+		       	$.ajax({
+				  type: "POST",
+				  url: 	url+"createRDV",
+				  data: obj,
+				  success: function(data, textStatus, jqXHR)
+				    {
+				        //data - response from serve
+				        var div = $("#consigneTrajet")
+				        var str = "<h2>Vos Instructions</h2>"
+				        
+				       	if(data.routePlannerResult.query.maxSolutions > 0)
+				       	{
+
+					       	var journey = data.routePlannerResult.journeys[0].journey;
+
+					        for(var i=0; i< journey["chunks"].length;i++)
+					        {
+
+					        	str+="<br>"
+					        	var index = i+1;
+					        	str+="Etape "+index;
+				        		if(journey.chunks[i].service)
+				        		{
+				        			str+= "<i class='fas fa-bus'></i>  "
+				        			str +=" "+journey.chunks[i].service.text.text;
+				        		}
+				        		else if(journey.chunks[i].street)
+				        		{
+				        			str += "<i class='fas fa-walking'></i>  "
+				        			str +=" "+journey.chunks[i].street.text.text;
+				        		}
+				        		else if(journey.chunks[i].stop)
+				        		{
+				        			str+= "<i class='fas fa-hand-paper'></i>  "
+				        			str +=" "+journey.chunks[i].stop.text.text;
+				        		}
+					        }
+
+					        div.html(str);
+
+				       }
+				       
+				        
+				    },
+				    error: function (jqXHR, textStatus, errorThrown)
+				    {
+						alert("error");
+						console.log(errorThrown)		 
+				    },
+				  dataType: "json"
+				});
+
+	       })
+
+
+//rejoindre un rendez vous 
+//cette function effectue un appel a /joinRDV et permet au participant apres qu'il est renseigné son nom et prenom de rejoindre le rdv indiqué
+
+	       $("#valid_Join").click(function()
+	       {
+
+		       	var obj 	= {}
+		       	obj.name 	= $("#nameUserJoin").val();
+		       	obj.adress 	= $("#adressUserJoin").val();
+		       	obj.idRDV 	= $("#nameRDVJoin").val()
+		       	// appel asynchrone vers le serveur
+	       		$.ajax({
+				  type: 	"POST",
+				  url: 		url+"joinRDV",
+				  data: 	obj,
+				  //en cas de succes de la requete  asynchrone
+				  success: function(data, textStatus, jqXHR)
+				    {
+				        //data - response from server
+				        
+				        var div = $("#consigneTrajet2")
+				        var str = "<h2>Vos Instructions</h2>"
+
+				       if(data.routePlannerResult.query.maxSolutions > 0)
+				       {
+
+					       	var journey = data.routePlannerResult.journeys[0].journey;
+
+					       	console.log(journey);
+					        for(var i=0; i< journey["chunks"].length;i++)
+					        {
+
+					        	str+="<br>"
+					        	var index = i+1;
+					        	str+="Etape "+index;
+				        		if(journey.chunks[i].service)
+				        		{
+				        			str+= "<i class='fas fa-bus'></i>  "
+				        			str +=" "+journey.chunks[i].service.text.text;
+				        		}
+				        		else if(journey.chunks[i].street)
+				        		{
+				        			str += "<i class='fas fa-walking'></i>  "
+				        			str +=" "+journey.chunks[i].street.text.text;
+				        		}
+				        		else if(journey.chunks[i].stop)
+				        		{
+				        			str+= "<i class='fas fa-hand-paper'></i>  "
+				        			str +=" "+journey.chunks[i].stop.text.text;
+				        		}
+					        }
+
+					        console.log(str);
+					        div.html(str);
+					        //initialisation de la carte
+					        var mymap = L.map('mapContainer').setView([51.505, -0.09], 13);
+						    L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v9/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYmFzdGllbmRpZGllciIsImEiOiJjazY4MzYzeTkwMHZlM21xdG01bXlhbGpyIn0.r_jl86haJmqOCrgE8ywKaw', {
+							    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+							    maxZoom: 18,
+							    id: 'mapbox/streets-v11',
+							    accessToken: 'pk.eyJ1IjoiYmFzdGllbmRpZGllciIsImEiOiJjazY4MzYzeTkwMHZlM21xdG01bXlhbGpyIn0.r_jl86haJmqOCrgE8ywKaw'
+							}).addTo(mymap);
+							mymap.locate({setView: true, maxZoom: 16});
+							function onLocationFound(e) {
+							    var radius = e.accuracy;
+
+							    L.marker(e.latlng).addTo(mymap)
+							        .bindPopup("You are within " + radius + " meters from this point").openPopup();
+
+							    L.circle(e.latlng, radius).addTo(mymap);
+							}
+							mymap.on('locationfound', onLocationFound);
+							function onLocationError(e) {
+							    alert(e.message);
+							}
+							mymap.on('locationerror', onLocationError);
+
+				       }
+				       else
+				       {
+				       	console.log("icic")
+				       }
+				        
+
+				    },
+				    //en cas d'erreur de la requete asynchrone
+				    error: function (jqXHR, textStatus, errorThrown)
+				    {
+						alert("error");
+						console.log(errorThrown)		 
+				    },
+				  dataType: "json"
+				});
+
+	       })
+	       
+
+	});
+
+
+</script>
+</html>

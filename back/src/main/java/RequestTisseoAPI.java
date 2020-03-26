@@ -1,13 +1,11 @@
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class RequestTisseoAPI {
 
-    public static String requestTisseo(String service, String request) {
+    private static String requestTisseo(String service, String request) {
         String key = "74f87071-9002-4103-82db-57f70e19e2d2";
         String targetURL = "https://api.tisseo.fr/v1/";
         String urlParameters = targetURL + service +
@@ -66,7 +64,7 @@ public class RequestTisseoAPI {
     }
 
     public static String getItiniraire(String departure, String arrival, String date){
-        return requestTisseo("journeys","departurePlace=" + departure + "&arrivalPlace=" + arrival + "toulouse&firstDepartureDatetime=" + date + "&number=2&displayWording=1&lang=fr");
+        return requestTisseo("journeys","departurePlace=" + departure + "&arrivalPlace=" + arrival + "+toulouse&firstDepartureDatetime=" + date + "&number=2&displayWording=1&lang=fr");
     }
 }
 
