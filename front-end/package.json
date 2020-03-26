@@ -1,0 +1,14 @@
+{
+  "name": "tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "test": "./node_modules/qunit/bin/qunit.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "qunit": "^2.6.1"
+  }
+}
