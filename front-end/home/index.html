@@ -493,7 +493,7 @@ ul, ol {
 				  data: {},
 				  success: function(data, textStatus, jqXHR)
 				    {
-				        
+
 				    	var str = ""
 		       	 		var len = data.meetings.length;
 		       	 		var listRDV = data.meetings;
@@ -516,10 +516,31 @@ ul, ol {
 				    },
 				    error: function (jqXHR, textStatus, errorThrown)
 				    {
-						alert("error");
-						console.log(errorThrown)		 
+
+						var data = jqXHR.responseText;
+						var pos = data.lastIndexOf(',');
+						data = data.substring(0,pos) + "" + data.substring(pos+1)
+						var datas = JSON.parse(data);
+				    	var str = ""
+		       	 		var len = datas.meetings.length;
+		       	 		var listRDV = datas.meetings;
+
+		       	 		for(var i = 0; i<len ; i++)
+		       	 		{
+		       	 			var index = i+1;
+		       	 			str += "<tr>";
+		       	 			str += "<th scope='row'>"+index+"</th>";
+		       	 			str += "<td>"+listRDV[i].id+"</td>";
+		       	 			str += "<td>"+listRDV[i].adress.replace("+"," ")+"</td>";
+		       	 			str += "<td>"+listRDV[i].date.replace("+"," ")+"</td>";
+
+		       	 		}
+
+	       	 		$("#tableList").html(str);
+					alert( "second success" );
+
 				    },
-				  	dataType: "json"
+
 				});
 
 
