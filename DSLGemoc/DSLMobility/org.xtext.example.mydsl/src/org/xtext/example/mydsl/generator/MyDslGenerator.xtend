@@ -20,6 +20,9 @@ import org.xtext.example.mydsl.services.MyDslGrammarAccess.SourceNameElements
 class MyDslGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
+		
+		/** Generate var with ressources given on the file.mydsl */
+		
 		var mypage = resource.contents.get(0) as Page
 		var list = newArrayList()
 		for (Source s : resource.allContents.toIterable.filter(typeof(Source))) {
@@ -37,12 +40,16 @@ class MyDslGenerator extends AbstractGenerator {
 							   </div>'
 		}
 		
+		/** Create script file for itialize git */
+		
 		fsa.generateFile('script.sh', '''#!/bin/bash
 		git init''')
 
 		fsa.generateFile('script.bat', '''git init''')
 		
-		fsa.generateFile('front-end/home/index.html', '''
+		/** create web page file */
+		
+		fsa.generateFile('front/front-end/home/index.html', '''
 		<!doctype html>
 		<html lang="fr">
 		<head>
@@ -739,35 +746,78 @@ class MyDslGenerator extends AbstractGenerator {
 		
 		</script>
 		</html>''')
+		
+		fsa.generateFile('front/index.php', '''
+		<?php header( 'Location: /front-end/home/index.html' ) ;  ?>''')		
+		
+		/** Create test file */
 
-		fsa.generateFile('front-end/tests/test_connection_servers.js', '''
+		fsa.generateFile('front/front-end/tests/test_connection_servers.js', '''
 		var request = require("request");
+		
 		QUnit.test("test QUnit", function( assert ) {
-			var url = "http://127.0.0.1:8080/"
+		
 			assert.ok(true, "QUnit OK")
+		
 		})
-		QUnit.test("connection server", function( assert ) {
-			var url = "http://127.0.0.1:8080/test"
-			expect(0);
+		
+		
+		
+		QUnit.test("test QUnit", function( assert ) {
+		
+			var done = assert.async();
+		
+			var url = "http://54.36.98.109:8080/test"
+		
+		
+		
 			request.post(
+		
 				url,
+		
 				{
+		
 				json: {
+		
 				  
+		
 				}
+		
 				},
+		
 				(error, res, body) => {
+		
 				if (error) {
 		
+		
+		
 				  assert.ok(false,"connection server failed")
+		
+				  done();
+		
 				  return
-				}
-				else{
-					assert.ok(true, "connection server ok");
+		
 				}
 		
+				else{
+		
+					assert.ok(true, "connection server ok");
+		
+					done();
+		
+				}
+		
+		
+		
 			});
-		})''')
+		
+		})
+		
+		/*	
+		
+		})*/''')
+		
+		/** Create Java files */
 		
 		fsa.generateFile('Back/src/main/java/Guest.java', '''
 		public class Guest {
@@ -1003,6 +1053,8 @@ class MyDslGenerator extends AbstractGenerator {
 		
 		}''')
 		
+		/** Create pom file */
+		
 		fsa.generateFile('Back/pom.xml', '''
 		<?xml version="1.0" encoding="UTF-8"?>
 		<project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -1136,9 +1188,22 @@ class MyDslGenerator extends AbstractGenerator {
 		
 		</project>''')
 		
-		fsa.generateFile('Back/.travis.yml', '''language: java
-		sudo: false
-		script: mvn clean verify''')
+		/** Create .travis file */
+		
+		fsa.generateFile('.travis.yml', '''LANGUAGE:
+		  - JAVA
+		  - node_js
+		SUDO: FALSE
+		node_js:
+		  - 7
+		before_script:
+		  - npm install -g qunit
+		  - npm install request
+		SCRIPT:
+		  - cd back/
+		  - mvn install
+		  - cd ../front
+		  - qunit  "front-end/tests/test_connection_servers.js"''')
 		
 	}
 }
