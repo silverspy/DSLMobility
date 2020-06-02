@@ -39,7 +39,7 @@
             </div>
         </nav>
         <!-- end sidebar -->
-        <div id="content" style="height: 100vh;width: 100vw">
+        <div id="content" style="width: 100vw">
             <div class="row">
                 <div class="col-lg-12" style=" text-align: center;">
                     <h1>title</h1>
@@ -54,7 +54,36 @@
             <div class="panel-heading">
                 <h2>Introduction</h2>
             </div>
-            <div class="panel-body">Panel Footer</div>
+            <div class="panel-body ">
+                <div class="row">
+                    <div class="col-lg-6" style="margin-bottom: 1vh;">
+                        <div class="card">
+                            <img class="card-img-top" src="rdv.png" alt="Card image cap" style="height: 35vh;">
+                            <div class="card-body">
+                                <button class="btn btn-primary" id="goto_create_rdv">Creer un rdv</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6" style="margin-bottom: 1vh;">
+                        <div class="card">
+                            <img class="card-img-top" src="list.png" alt="Card image cap" style="height: 35vh;">
+                            <div class="card-body">
+                                <button class="btn btn-primary" id="goto_list_rdv">voir la liste des rdv</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12" style="margin-top: 1vh;">
+                        <div class="card">
+                            <img class="card-img-top" src="join.png" alt="Card image cap">
+                            <div class="card-body">
+                                <button class="btn btn-primary" id="goto_join_rdv">Rejoindre un rdv</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                </div>
+            </div>
         </div>
     </div>
     <!-- list panel -->
@@ -165,6 +194,25 @@
             </div>
         </div>
     </div>
+    <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-6">
+                    FooterDescription
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label> <i class="fas fa-phone-square"></i> Téléphone : </label>
+                        </div>
+                        <div class="col-lg-6">
+                            <label> <i class="fas fa-envelope-square"></i> Mail : </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
     <!-- Write your comments here -->
 </body>
 <script type="text/javascript">
@@ -266,7 +314,7 @@ $(document).ready(function() {
         obj.adress = $("#adressUser").val();
         obj.adressRDV = $("#adressRDV").val();
         obj.dateRDV = "" + $("#dateRDV").val() + " " + $("#timeRDV").val();
-        obj.type = type;
+        obj.api = type;
         $.ajax({
             type: "POST",
             url: url + "createRDV",
@@ -353,20 +401,6 @@ $(document).ready(function() {
                         id: 'mapbox/streets-v11',
                         accessToken: 'pk.eyJ1IjoiYmFzdGllbmRpZGllciIsImEiOiJjazY4MzYzeTkwMHZlM21xdG01bXlhbGpyIn0.r_jl86haJmqOCrgE8ywKaw'
                     }).addTo(mymap);
-                    mymap.locate({ setView: true, maxZoom: 16 });
-
-                    function onLocationFound(e) {
-                        var radius = e.accuracy;
-                        L.marker(e.latlng).addTo(mymap)
-                            .bindPopup("You are within " + radius + " meters from this point").openPopup();
-                        L.circle(e.latlng, radius).addTo(mymap);
-                    }
-                    mymap.on('locationfound', onLocationFound);
-
-                    function onLocationError(e) {
-                        alert(e.message);
-                    }
-                    mymap.on('locationerror', onLocationError);
                 } else {
                     console.log("icic")
                 }

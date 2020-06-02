@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>title</title>
 </head>
-<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="../style.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
 <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -19,30 +19,34 @@
 <body>
     <div class="wrapper">
         <!-- Begin side bar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a id="introductionRDV" class="navbar-brand" href="#">
-                <img src="../comute.png" width="30" height="30" class="d-inline-block align-top" alt="">
-                title
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a id="createRDV" class="nav-link">createRDV</a>
-                    </li>
-                    <li class="nav-item">
-                        <a id="listRDV" class="nav-link" href="#">listRDV</a>
-                    </li>
-                </ul>
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3> <img src="../comute.png" width="30" height="30" class="d-inline-block align-top" alt=""> title</h3>
             </div>
+            <ul class="list-unstyled components">
+                <li>
+                    <button style="color: white; width: 100%; text-align: left;" type="button" id="introductionRDV" class="btn"><i class="fas fa-home"></i> home</button>
+                </li>
+                <li>
+                    <button style="color: white; width: 100%; text-align: left;" type="button" id="createRDV" class="btn"><i class="far fa-calendar"></i> Create a RDV</button>
+                </li>
+                <li>
+                    <button type="button" style="color: white; width: 100%; text-align: left;" id="listRDV" class="btn"> <i class="fas fa-list"></i> List all RDV</button>
+                </li>
+            </ul>
         </nav>
         <!-- end sidebar -->
         <div id="content" style="height: 100vh;width: 100vw">
+            <nav>
+                <div>
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+                </div>
+            </nav>
             <div class="row">
                 <div class="col-lg-12" style=" text-align: center;">
-                    <h1>title</h1>
+                    <h1> <img src="../comute.png" width="30" height="30" class="d-inline-block align-top" alt=""> title</h1>
                 </div>
                 <div id="receptacle" class="col-lg-12">
                 </div>
@@ -165,6 +169,25 @@
             </div>
         </div>
     </div>
+    <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-6">
+                    FooterDescription
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label> <i class="fas fa-phone-square"></i> Téléphone : </label>
+                        </div>
+                        <div class="col-lg-6">
+                            <label> <i class="fas fa-envelope-square"></i> Mail : </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
     <!-- Write your comments here -->
 </body>
 <script type="text/javascript">
@@ -266,7 +289,7 @@ $(document).ready(function() {
         obj.adress = $("#adressUser").val();
         obj.adressRDV = $("#adressRDV").val();
         obj.dateRDV = "" + $("#dateRDV").val() + " " + $("#timeRDV").val();
-        obj.type = type;
+        obj.api = type;
         $.ajax({
             type: "POST",
             url: url + "createRDV",
@@ -353,20 +376,7 @@ $(document).ready(function() {
                         id: 'mapbox/streets-v11',
                         accessToken: 'pk.eyJ1IjoiYmFzdGllbmRpZGllciIsImEiOiJjazY4MzYzeTkwMHZlM21xdG01bXlhbGpyIn0.r_jl86haJmqOCrgE8ywKaw'
                     }).addTo(mymap);
-                    mymap.locate({ setView: true, maxZoom: 16 });
 
-                    function onLocationFound(e) {
-                        var radius = e.accuracy;
-                        L.marker(e.latlng).addTo(mymap)
-                            .bindPopup("You are within " + radius + " meters from this point").openPopup();
-                        L.circle(e.latlng, radius).addTo(mymap);
-                    }
-                    mymap.on('locationfound', onLocationFound);
-
-                    function onLocationError(e) {
-                        alert(e.message);
-                    }
-                    mymap.on('locationerror', onLocationError);
                 } else {
                     console.log("icic")
                 }
