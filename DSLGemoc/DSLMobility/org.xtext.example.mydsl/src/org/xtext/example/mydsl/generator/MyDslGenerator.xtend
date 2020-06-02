@@ -1443,6 +1443,29 @@ class MyDslGenerator extends AbstractGenerator {
 		  - mvn install
 		  - cd ../front
 		  - qunit  "front-end/tests/test_connection_servers.js"''')
+		  
+		  fsa.generateFile('docker-compose.yml', '''version: '3.7'
+		  
+		  services:
+		      apache:
+		          image: 'bitnami/apache:latest'
+		          ports:
+		          - '80:8080'
+		          volumes:
+		          - ./front/front-end/home:/app
+		      java:
+		          build: .
+		          ports:
+		              - "8080:8080"
+		          command: java -jar ./target/Back_DSLMobility-1.0-SNAPSHOT.jar''')
+		  
+		  fsa.generateFile('DockerFile', '''FROM maven
+		  		  EXPOSE 8888
+		  		  RUN mkdir -p /usr/src/app
+		  		  WORKDIR /usr/src/app
+		  		  ADD ./Back /usr/src/app
+		  		  RUN mvn install
+		  		  RUN ls ./target''')
 		
 	}
 }
