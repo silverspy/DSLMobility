@@ -40,7 +40,10 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cSourceAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
 		private final RuleCall cSourceSourceParserRuleCall_4_1_0 = (RuleCall)cSourceAssignment_4_1.eContents().get(0);
 		
-		//Page:
+		///** generate grammar for creating a web site
+		// * just need one title for the web site 
+		// * and n source 
+		// */ Page:
 		//	'Page'
 		//	name=EString
 		//	'source' source+=Source ("," source+=Source)*;
@@ -197,7 +200,10 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	
-	//Page:
+	///** generate grammar for creating a web site
+	// * just need one title for the web site 
+	// * and n source 
+	// */ Page:
 	//	'Page'
 	//	name=EString
 	//	'source' source+=Source ("," source+=Source)*;

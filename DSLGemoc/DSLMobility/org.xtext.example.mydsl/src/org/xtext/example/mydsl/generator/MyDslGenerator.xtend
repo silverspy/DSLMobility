@@ -819,372 +819,611 @@ class MyDslGenerator extends AbstractGenerator {
 		
 		/** Create Java files */
 		
-		fsa.generateFile('Back/src/main/java/Guest.java', '''
-		public class Guest {
+		fsa.generateFile('Back/src/main/java/Guest.java', '''public class Guest {
+		
 		    private String name;
+		
 		    private String adress;
 		
+		
+		
 		    public Guest(String name, String adress){
+		
 		        this.name = name;
+		
 		        this.adress = adress;
+		
 		    }
+		
+		
 		
 		    @Override
+		
 		    public String toString() {
+		
 				//toString method for Guests
+		
 		        return "{\"name\" : \"" + name +"\"\n\"adress\" : \"" + adress + "\"}";
+		
 		    }
+		
 		}''')
 		
-		fsa.generateFile('Back/src/main/java/Main.java', '''
-		import spark.Filter;
+		fsa.generateFile('Back/src/main/java/Main.java', '''import spark.Filter;
+		
+		
 		
 		import java.util.ArrayList;
 		
+		
+		
 		import static spark.Spark.*;
+		
+		
 		
 		public class Main {
 		
 		
+		
+		
+		
 		    public static void main(String[] args) {
+		
+		
 		
 		        ArrayList<Meeting> meetings = new ArrayList<>();
 		
+		
+		
 		        // Start embedded server at this port
+		
 		        port(8080);
 		
 		
+		
+		
+		
 		        after((Filter) (request, response) -> {
+		
 		            response.header("Access-Control-Allow-Origin", "*");
+		
 		            response.header("Access-Control-Allow-Methods", "GET");
+		
 		        });
 		
+		
+		
 		        /*
+		
 		        /createRDV + data {
+		
+		
+		
 		            name : nom_user
+		
 		            adress: adress_user
+		
 		            dateRDV:
+		
 		            adressRDV:
+		
 		            api : google / tisseo
+		
+		
+		
 		        } => creer le rdv et renvoie les instructions
+		
 		         */
+		
 		        post("/createRDV", (request, response) -> {
+		
 		            String name = request.queryParams("name").replace(" ", "+");
+		
 		            String adress = request.queryParams("adress").replace(" ", "+");
+		
 		            String adressRDV = request.queryParams("adressRDV").replace(" ", "+");
+		
 		            String dateRDV = request.queryParams("dateRDV").replace(" ", "+");
+		
 		            meetings.add(new Meeting(adressRDV, dateRDV,"" + meetings.size() + 1 , name, adress));
+		
 		            response.status(200);
+		
 		            response.type("application/json");
+		
 		            String APIresponse = RequestTisseoAPI.getItiniraire(adress, adressRDV, dateRDV);
+		
 		            return APIresponse;
+		
 		        });
 		
+		
+		
 		        /*
+		
 		        /listRDV  => donne la liste des rdv
+		
 		         */
+		
 		        post("/listRDV", (request, response) -> {
+		
 		            response.status(200);
+		
 		            response.type("application/json");
+		
+		
 		
 		            String Jsonlist = "{\"meetings\": [";
+		
 		            for (int i = 0; i < meetings.size(); i++){
-		                Jsonlist += meetings.get(i).toJson();
+		
+		                if(i < meetings.size() - 1) {
+		
+		                    Jsonlist += meetings.get(i).toJson() + ",";
+		
+		                } else {
+		
+		                    Jsonlist += meetings.get(i).toJson();
+		
+		                }
+		
 		            }
+		
 		            Jsonlist += "]}";
+		
 		            return Jsonlist;
+		
 		        });
 		
+		
+		
 		        /*
+		
 		        /joinRDV  + data{
+		
 		        name:
+		
 		        adress:
+		
 		        idRDV:
+		
 		        api: google / tisseo
+		
 		        } => renvoie le rendez vous et ajoute a la liste des participants
+		
 		         */
+		
 		        post("/joinRDV", (request, response) -> {
+		
 		            String name = request.queryParams("name").replace(" ", "+");
+		
 		            String adress = request.queryParams("adress").replace(" ", "+");
+		
 		            String idRDV = request.queryParams("idRDV").replace(" ", "+");
+		
 		            //String moyen = request.queryParams("moyen").replace(" ", "+");
+		
 		            response.status(200);
+		
 		            response.type("application/json");
+		
 		            Meeting m = meetings.get(Integer.parseInt(idRDV) - 1);
+		
 		            m.addUser(name,adress);
+		
 		            String APIresponse = RequestTisseoAPI.getItiniraire(adress,m.adress, m.date);
+		
 		            return APIresponse;
+		
 		        });
 		
+		
+		
 		        /*
+		
 		        /test => return success
+		
 		         */
+		
 		        get("/test", (request, response) -> {
+		
 		            response.status(200);
+		
 		            return "ok";
+		
 		        });
+		
+		
 		
 		        post("/test", (request, response) -> {
+		
 		            response.status(200);
+		
 		            return "ok";
+		
 		        });
+		
 		    }
+		
+		
 		
 		}''')
 		
-		fsa.generateFile('Back/src/main/java/Meeting.java', '''
-		import java.util.ArrayList;
+		fsa.generateFile('Back/src/main/java/Meeting.java', '''import java.util.ArrayList;
+		
+		
 		
 		public class Meeting {
+		
 		    String adress;
+		
 		    String date;
+		
 		    String id;
+		
 		    ArrayList<Guest> GuestList = new ArrayList<>();
 		
+		
+		
 		    public Meeting(String rdvAdress, String date, String id, String userName, String userAdress){
+		
 		        this.adress = rdvAdress;
+		
 		        this.date = date;
+		
 		        this.id = id;
+		
 		        addUser(userName, userAdress);
+		
 		    }
+		
+		
 		
 		    public void addUser(String name, String adress) {
+		
 		        GuestList.add(new Guest(name,adress));
+		
 		    }
+		
+		
 		
 		    public String toJson(){
+		
 		        return "{\"adress\": \"" + adress + "\", \"date\": \"" + date + "\", \"id\": \"" + id + "\"}";
+		
 		    }
 		
+		
+		
 		    public String getAllGuest() {
+		
 		        String Jsonlist = "\"meetings\": [";
+		
 		        for (int i = 0; i < GuestList.size(); i++){
+		
 		            Jsonlist += GuestList.get(i);
+		
 		        }
+		
 		        Jsonlist += "]";
+		
 		        return Jsonlist;
+		
 		    }
+		
+		
 		
 		}''')
 		
-		fsa.generateFile('Back/src/main/java/RequestTisseoAPI.java', '''
-		import java.io.BufferedReader;
+		fsa.generateFile('Back/src/main/java/RequestTisseoAPI.java', '''import java.io.BufferedReader;
+		
 		import java.io.InputStreamReader;
+		
 		import java.net.HttpURLConnection;
+		
 		import java.net.URL;
+		
+		
 		
 		public class RequestTisseoAPI {
 		
+		
+		
 		    private static String requestTisseo(String service, String request) {
+		
 		        String key = "74f87071-9002-4103-82db-57f70e19e2d2";
+		
 		        String targetURL = "https://api.tisseo.fr/v1/";
+		
 		        String urlParameters = targetURL + service +
+		
 		                //journeys
+		
 		                ".json?" +
+		
 		                request +
+		
 		                //"departurePlace=basso cambo&arrivalPlace=françois verdiertoulouse&number=2&displayWording=1&lang=fr"
+		
 		                "&key=" + key;
+		
+		
 		
 		        try {
 		
+		
+		
 		            URL urlForGetRequest = new URL(urlParameters);
+		
+		
 		
 		            String readLine = null;
 		
+		
+		
 		            HttpURLConnection conection = (HttpURLConnection) urlForGetRequest.openConnection();
+		
+		
 		
 		            conection.setRequestMethod("GET");
 		
+		
+		
 		            conection.setRequestProperty("",""); // set userId its a sample here
+		
+		
 		
 		            int responseCode = conection.getResponseCode();
 		
+		
+		
 		            if (responseCode == HttpURLConnection.HTTP_OK) {
+		
+		
 		
 		                BufferedReader in = new BufferedReader(
 		
+		
+		
 		                        new InputStreamReader(conection.getInputStream()));
+		
+		
 		
 		                StringBuffer response = new StringBuffer();
 		
+		
+		
 		                while ((readLine = in.readLine()) != null) {
+		
+		
 		
 		                    response.append(readLine);
 		
+		
+		
 		                }
+		
 		                in.close();
+		
+		
 		
 		                // print result
 		
+		
+		
 		                System.out.println("JSON String Result " + response.toString());
 		
+		
+		
 		                //GetAndPost.POSTRequest(response.toString());
+		
 		                return response.toString();
+		
+		
 		
 		            } else {
 		
+		
+		
 		                System.out.println("GET NOT WORKED");
 		
+		
+		
 		            }
+		
 		        } catch (Exception e) {
+		
 		            System.out.println(e);
+		
 		        }
 		
+		
+		
 		        return "";
+		
 		    }
 		
+		
+		
 		    public static String getItiniraire(String departure, String arrival, String date){
-		        return requestTisseo("journeys","departurePlace=" + departure + "&arrivalPlace=" + arrival + "toulouse&firstDepartureDatetime=" + date + "&number=2&displayWording=1&lang=fr");
+		
+		        return requestTisseo("journeys","departurePlace=" + departure + "&arrivalPlace=" + arrival + "+toulouse&firstDepartureDatetime=" + date + "&number=2&displayWording=1&lang=fr");
+		
 		    }
+		
 		}
+		
+		
 ''')
 		
 		fsa.generateFile('Back/src/main/java/RequestAPI.java', '''public class RequestAPI {
 		
+		
+		
 		    public static String RequestAPI(String departure, String arrival, String date, String api) {
+		
 		        if (api == "google") {
+		
 		            return "en cours de dev";
+		
 		        } else if (api == "tisseo") {
+		
 		            return RequestTisseoAPI.getItiniraire(departure,arrival,date);
+		
 		        } else {
+		
 		            return "error wrong API";
+		
 		        }
+		
 		    }
 		
-		}''')
+		
+		
+		}
+		
+''')
 		
 		/** Create pom file */
 		
 		fsa.generateFile('Back/pom.xml', '''
 		<?xml version="1.0" encoding="UTF-8"?>
+		
 		<project xmlns="http://maven.apache.org/POM/4.0.0"
+		
 		         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		
 		         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+		
 		    <modelVersion>4.0.0</modelVersion>
 		
-		    <groupId>BackDSLMobility</groupId>
-		    <artifactId>BackDSLMobility</artifactId>
+		
+		
+		    <groupId>org.example</groupId>
+		
+		    <artifactId>Back_DSLMobility</artifactId>
+		
 		    <version>1.0-SNAPSHOT</version>
 		
+		
+		
 		    <!-- Spark Java need Java 8 -->
+		
 		    <properties>
+		
 		        <maven.compiler.target>1.8</maven.compiler.target>
+		
 		        <maven.compiler.source>1.8</maven.compiler.source>
+		
 		        <maven.compiler.release>8</maven.compiler.release>
+		
 		    </properties>
+		
+		
 		
 		    <dependencies>
 		
 		        <dependency>
+		
 		            <groupId>com.sparkjava</groupId>
+		
 		            <artifactId>spark-core</artifactId>
+		
 		            <version>2.6.0</version>
+		
 		        </dependency>
 		
 		        <dependency>
-		            <groupId>com.fasterxml.jackson.core</groupId>
-		            <artifactId>jackson-databind</artifactId>
-		            <version>2.8.8.1</version>
+		
+		            <groupId>org.slf4j</groupId>
+		
+		            <artifactId>slf4j-api</artifactId>
+		
+		            <version>1.7.5</version>
+		
 		        </dependency>
 		
 		        <dependency>
-		            <groupId>ch.qos.logback</groupId>
-		            <artifactId>logback-classic</artifactId>
-		            <version>1.2.2</version>
-		        </dependency>
 		
-		        <dependency>
-		            <groupId>com.google.code.gson</groupId>
-		            <artifactId>gson</artifactId>
-		            <version>2.8.6</version>
+		            <groupId>org.slf4j</groupId>
+		
+		            <artifactId>slf4j-log4j12</artifactId>
+		
+		            <version>1.7.5</version>
+		
 		        </dependency>
 		
 		    </dependencies>
 		
+		
+		
 		    <build>
-		        <pluginManagement>
-		            <plugins>
-		                <plugin>
-		                    <groupId>org.apache.maven.plugins</groupId>
-		                    <artifactId>maven-compiler-plugin</artifactId>
-		                    <version>3.8.1</version>
-		                </plugin>
-		                <plugin>
-		                    <artifactId>maven-clean-plugin</artifactId>
-		                    <version>3.1.0</version>
-		                </plugin>
-		                <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
-		                <plugin>
-		                    <artifactId>maven-resources-plugin</artifactId>
-		                    <version>3.0.2</version>
-		                </plugin>
-		                <plugin>
-		                    <artifactId>maven-compiler-plugin</artifactId>
-		                    <version>3.8.0</version>
-		                </plugin>
-		                <plugin>
-		                    <artifactId>maven-surefire-plugin</artifactId>
-		                    <version>2.22.1</version>
-		                </plugin>
-		                <plugin>
-		                    <artifactId>maven-jar-plugin</artifactId>
-		                    <version>3.0.2</version>
-		                    <configuration>
-		                        <archive>
-		                            <manifest>
-		                                <addClasspath>true</addClasspath>
-		                                <mainClass>Main</mainClass>
-		                            </manifest>
-		                        </archive>
-		                    </configuration>
-		                </plugin>
-		                <plugin>
-		                    <artifactId>maven-install-plugin</artifactId>
-		                    <version>2.5.2</version>
-		                </plugin>
-		                <plugin>
-		                    <artifactId>maven-deploy-plugin</artifactId>
-		                    <version>2.8.2</version>
-		                </plugin>
-		                <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
-		                <plugin>
-		                    <artifactId>maven-site-plugin</artifactId>
-		                    <version>3.7.1</version>
-		                </plugin>
-		                <plugin>
-		                    <artifactId>maven-project-info-reports-plugin</artifactId>
-		                    <version>3.0.0</version>
-		                </plugin>
-		                <plugin>
-		                    <groupId>org.apache.maven.plugins</groupId>
-		                    <artifactId>maven-compiler-plugin</artifactId>
-		                    <configuration>
-		                        <!-- or whatever version you use -->
-		                        <source>1.8</source>
-		                        <target>1.8</target>
-		                    </configuration>
-		                </plugin>
-		                <plugin>
-		                    <groupId>org.apache.maven.plugins</groupId>
-		                    <artifactId>maven-assembly-plugin</artifactId>
-		                    <executions>
-		                        <execution>
-		                            <phase>package</phase>
-		                            <goals>
-		                                <goal>single</goal>
-		                            </goals>
-		                            <configuration>
-		                                <appendAssemblyId>false</appendAssemblyId>
-		                                <descriptors>
-		                                    <descriptor>src/main/assembly/zip.xml</descriptor>
-		                                </descriptors>
-		                            </configuration>
-		                        </execution>
-		                    </executions>
-		                </plugin>
-		            </plugins>
-		        </pluginManagement>
+		
+		        <plugins>
+		
+		            <plugin>
+		
+		                <!-- Build an executable JAR -->
+		
+		                <groupId>org.apache.maven.plugins</groupId>
+		
+		                <artifactId>maven-jar-plugin</artifactId>
+		
+		                <version>3.1.0</version>
+		
+		                <configuration>
+		
+		                    <archive>
+		
+		                        <manifest>
+		
+		                            <addClasspath>true</addClasspath>
+		
+		                            <mainClass>Main</mainClass>
+		
+		                        </manifest>
+		
+		                    </archive>
+		
+		                </configuration>
+		
+		            </plugin>
+		
+		            <plugin>
+		
+		                <groupId>org.apache.maven.plugins</groupId>
+		
+		                <artifactId>maven-shade-plugin</artifactId>
+		
+		                <version>1.6</version>
+		
+		                <executions>
+		
+		                    <execution>
+		
+		                        <phase>package</phase>
+		
+		                        <goals>
+		
+		                            <goal>shade</goal>
+		
+		                        </goals>
+		
+		                    </execution>
+		
+		                </executions>
+		
+		            </plugin>
+		
+		        </plugins>
+		
 		    </build>
+		
+		
+		
+		
+		
+		
 		
 		</project>''')
 		
