@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title> <img src="../comute.png">title</title>
+    <title> <img src="http://54.36.98.109/comute.png">title</title>
 </head>
 <link rel="stylesheet" type="text/css" href="style.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
@@ -21,7 +21,7 @@
         <!-- Begin side bar -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a id="introductionRDV" class="navbar-brand" href="#">
-                <img src="../comute.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                <img src="http://54.36.98.109/comute.png" width="30" height="30" class="d-inline-block align-top" alt="">
                 title
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -131,6 +131,8 @@
                 </div>
             </div>
             <div class="col-lg-6" id="consigneTrajet">
+            	 <div id="mapContainer2">
+                </div>
             </div>
         </div>
     </div>
@@ -298,24 +300,76 @@ $(document).ready(function() {
                 var div = $("#consigneTrajet")
                 var str = "<h2>Vos Instructions</h2>"
 
-                if (data.routePlannerResult.query.maxSolutions > 0) {
-                    var journey = data.routePlannerResult.journeys[0].journey;
-                    for (var i = 0; i < journey["chunks"].length; i++) {
-                        str += "<br>"
-                        var index = i + 1;
-                        str += "Etape " + index;
-                        if (journey.chunks[i].service) {
-                            str += "<i class='fas fa-bus'></i>  "
-                            str += " " + journey.chunks[i].service.text.text;
-                        } else if (journey.chunks[i].street) {
-                            str += "<i class='fas fa-walking'></i>  "
-                            str += " " + journey.chunks[i].street.text.text;
-                        } else if (journey.chunks[i].stop) {
-                            str += "<i class='fas fa-hand-paper'></i>  "
-                            str += " " + journey.chunks[i].stop.text.text;
-                        }
-                    }
-                    div.html(str);
+                if(data.APItype == "tisseo")
+                {
+
+	                var data = data.APIresponse;
+	                if (data.routePlannerResult.query.maxSolutions > 0) {
+	                    var journey = data.routePlannerResult.journeys[0].journey;
+	                    for (var i = 0; i < journey["chunks"].length; i++) {
+	                        str += "<br>"
+	                        var index = i + 1;
+	                        str += "Etape " + index;
+	                        if (journey.chunks[i].service) {
+	                            str += "<i class='fas fa-bus'></i>  "
+	                            str += " " + journey.chunks[i].service.text.text;
+	                        } else if (journey.chunks[i].street) {
+	                            str += "<i class='fas fa-walking'></i>  "
+	                            str += " " + journey.chunks[i].street.text.text;
+	                        } else if (journey.chunks[i].stop) {
+	                            str += "<i class='fas fa-hand-paper'></i>  "
+	                            str += " " + journey.chunks[i].stop.text.text;
+	                        }
+	                    }
+	                    div.html(str);
+	                }
+
+                }
+                else if(data.APItype == "google")
+                {
+                	var data = data.APIresponse;
+                	if(data.routes.length > 0)
+                	{
+
+                		var routes = data.routes["legs"];
+                		var div = $("#consigneTrajet");
+                		var str = "<h2>Vos Instructions</h2>";
+                		str += "Vous partez de " + routes.start_address;
+
+               			var steps = routes.steps;
+
+                		for(var i = 0 ; steps.length; i++) {
+
+                			var str += "<br>";
+                			var index = i + 1;
+	                        str += "Etape " + index;
+                			
+                			if (steps[i].travel_mode == "WALKING")
+                			{
+                				for(var j=0; j<steps[i].steps.length; j++)
+                				{
+
+                					str += "<i class='fas fa-walking'></i>  ";
+                				  	str += steps[i].steps[j].html_instructions;
+                				}
+                			}
+                			else if(steps[i].travel_mode == "TRANSIT")
+                			{
+
+                				str += "<i class='fas fa-subway'></i>   ";
+                				str += "Prenez le "+steps[i].transit_details.name+" a destination de " + steps[i].transit_details.headsign + "arretez vous a l'arret "+ steps[i].transit_details.arrival_stop.name + "("+steps[i].transit_details.num_stop+" arrets)";
+
+                			}
+
+
+                		}
+
+                	}
+                	div.html(str);
+                }
+                else
+                {
+                	alert("APItype not supported")
                 }
 
 
