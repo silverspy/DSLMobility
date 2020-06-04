@@ -41,7 +41,7 @@
             </ul>
         </nav>
         <!-- end sidebar -->
-        <div id="content" style="height: 100vh;width: 100vw">
+        <div id="content" style="width: 100vw">
             <nav>
                 <div>
                     <button type="button" id="sidebarCollapse" class="btn btn-info">
@@ -137,7 +137,7 @@
                 </div>
             </div>
             <div class="col-lg-6">
-            	 <div id="mapContainer2">
+            	 <div id="mapContainer2" style="min-height: 400px;">
                 </div>
                 <div id="consigneTrajet"></div>
             </div>
@@ -170,7 +170,7 @@
                 </div>
             </div>
             <div class="col-lg-5 col-xs-12">
-                <div id="mapContainer">
+                <div id="mapContainer" style="min-height: 400px;">
                 </div>
                 <div id="consigneTrajet2">
                 </div>
@@ -339,7 +339,7 @@ $(document).ready(function() {
                   {
 
                     var routes = data.routes[0]["legs"];
-                    encoded = routes[0].overview_polyline.points;
+                    encoded = data.routes[0].overview_polyline.points;
                     
                     str += "Vous partez de " + routes[0].start_address;
 
@@ -367,6 +367,12 @@ $(document).ready(function() {
                         str += "Prenez le "+steps[i].transit_details.name+" a destination de " + steps[i].transit_details.headsign + "arretez vous a l'arret "+ steps[i].transit_details.arrival_stop.name + "("+steps[i].transit_details.num_stop+" arrets)";
 
                       }
+                      else
+                      {
+                        str += "<i class='fas fa-car'></i>";
+                        str += steps[i].html_instructions;
+                      }
+
 
 
                     }
@@ -379,7 +385,7 @@ $(document).ready(function() {
                   alert("APItype not supported")
                 }
 
-                 var mymap = L.map('mapContainer2').setView([51.505, -0.09], 13);
+                 var mymap = L.map('mapContainer2').setView([43.6043, 1.4437], 13);
                     L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v9/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYmFzdGllbmRpZGllciIsImEiOiJjazY4MzYzeTkwMHZlM21xdG01bXlhbGpyIn0.r_jl86haJmqOCrgE8ywKaw', {
                         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
                         maxZoom: 18,
@@ -425,7 +431,9 @@ $(document).ready(function() {
         var obj = {}
         obj.name = $("#nameUserJoin").val();
         obj.adress = $("#adressUserJoin").val();
-        obj.idRDV = $("#nameRDVJoin").val()
+        obj.idRDV = $("#nameRDVJoin").val();
+        var type    = $("#jointisseo").prop("checked") == true ? "tisseo" : "google";
+        obj.api     = type;
         // appel asynchrone vers le serveur
         $.ajax({
 
@@ -471,7 +479,7 @@ $(document).ready(function() {
                   {
 
                     var routes = data.routes[0]["legs"];
-                    encoded = routes[0].overview_polyline.points;
+                    encoded = data.routes[0].overview_polyline.points;
 
                     str += "Vous partez de " + routes[0].start_address;
 
@@ -499,6 +507,12 @@ $(document).ready(function() {
                         str += "Prenez le "+steps[i].transit_details.name+" a destination de " + steps[i].transit_details.headsign + "arretez vous a l'arret "+ steps[i].transit_details.arrival_stop.name + "("+steps[i].transit_details.num_stop+" arrets)";
 
                       }
+                      else
+                      {
+                        str += "<i class='fas fa-car'></i>";
+                        str += steps[i].html_instructions;
+                      }
+
 
 
                     }
@@ -511,7 +525,7 @@ $(document).ready(function() {
                   alert("APItype not supported")
                 }
 
-                 var mymap = L.map('mapContainer').setView([51.505, -0.09], 13);
+                 var mymap = L.map('mapContainer').setView([43.6043, 1.4437], 13);
                     L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v9/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYmFzdGllbmRpZGllciIsImEiOiJjazY4MzYzeTkwMHZlM21xdG01bXlhbGpyIn0.r_jl86haJmqOCrgE8ywKaw', {
                         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
                         maxZoom: 18,

@@ -43,7 +43,7 @@
             </div>
         </nav>
         <!-- end sidebar -->
-        <div id="content" style="height: 100vh;width: 100vw">
+        <div id="content" style="width: 100vw">
             <div class="row">
                 <div class="col-lg-12" style=" text-align: center;">
                     <h1>title</h1>
@@ -157,13 +157,26 @@
                             <label for="nameRDVJoin">RDV name</label>
                             <input type="text" class="form-control" id="nameRDVJoin" aria-describedby="nameRDVhELP" placeholder="Enter rdv name">
                         </div>
+
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" name="type" type="radio" value="" id="jointisseo">
+                                <label class="form-check-label" for="tisseo">
+                                    Tisseo
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" name="type" type="radio" value="" id="joingoogle">
+                                <label class="form-check-label" for="google">
+                                    Google
+                                </label>
+                            </div>
+                        </div>
                         <button id="valid_Join" class="btn btn-primary">Join</button>
                     </div>
                 </div>
             </div>
             <div class="col-lg-5 col-xs-12">
-                <div id="mapContainer">
-                </div>
                 <div id="consigneTrajet2">
                 </div>
             </div>
@@ -270,7 +283,7 @@ $(document).ready(function() {
         obj.adress = $("#adressUser").val();
         obj.adressRDV = $("#adressRDV").val();
         obj.dateRDV = "" + $("#dateRDV").val() + " " + $("#timeRDV").val();
-        obj.type = type;
+        obj.api = type;
         $.ajax({
             type: "POST",
             url: url + "createRDV",
@@ -312,7 +325,7 @@ $(document).ready(function() {
                   {
 
                     var routes = data.routes[0]["legs"];
-                    encoded = routes[0].overview_polyline.points;
+                    encoded = data.routes[0].overview_polyline.points;
 
                     str += "Vous partez de " + routes[0].start_address;
 
@@ -324,6 +337,8 @@ $(document).ready(function() {
                       var index = i + 1;
                       str += "Etape " + index;
                       
+                      console.log(steps[i]);
+
                       if (steps[i].travel_mode == "WALKING")
                       {
                         for(var j=0; j<steps[i].steps.length; j++)
@@ -339,6 +354,11 @@ $(document).ready(function() {
                         str += "<i class='fas fa-subway'></i>   ";
                         str += "Prenez le "+steps[i].transit_details.name+" a destination de " + steps[i].transit_details.headsign + "arretez vous a l'arret "+ steps[i].transit_details.arrival_stop.name + "("+steps[i].transit_details.num_stop+" arrets)";
 
+                      }
+                      else
+                      {
+                        str += "<i class='fas fa-car'></i>";
+                        str += steps[i].html_instructions;
                       }
 
 
@@ -365,10 +385,12 @@ $(document).ready(function() {
     //rejoindre un rendez vous
     //cette function effectue un appel a /joinRDV et permet au participant apres qu'il est renseigné son nom et prenom de rejoindre le rdv indiqué
     $("#valid_Join").click(function() {
-        var obj = {}
-        obj.name = $("#nameUserJoin").val();
-        obj.adress = $("#adressUserJoin").val();
-        obj.idRDV = $("#nameRDVJoin").val()
+        var obj     = {};
+        obj.name    = $("#nameUserJoin").val();
+        obj.adress  = $("#adressUserJoin").val();
+        obj.idRDV   = $("#nameRDVJoin").val();
+        var type    = $("#jointisseo").prop("checked") == true ? "tisseo" : "google";
+        obj.api     = type;
         // appel asynchrone vers le serveur
         $.ajax({
 
@@ -413,14 +435,14 @@ $(document).ready(function() {
                   {
 
                     var routes = data.routes[0]["legs"];
-                    encoded = routes[0].overview_polyline.points;
+                    encoded = data.routes[0].overview_polyline.points;
 
                     str += "Vous partez de " + routes[0].start_address;
 
                     var steps = routes[0].steps;
 
                     for(var i = 0 ; i < steps.length; i++) {
-
+                      console.log(steps[i]);
                       str += "<br>";
                       var index = i + 1;
                       str += "Etape " + index;
@@ -441,6 +463,12 @@ $(document).ready(function() {
                         str += "Prenez le "+steps[i].transit_details.name+" a destination de " + steps[i].transit_details.headsign + "arretez vous a l'arret "+ steps[i].transit_details.arrival_stop.name + "("+steps[i].transit_details.num_stop+" arrets)";
 
                       }
+                      else
+                      {
+                        str += "<i class='fas fa-car'></i>";
+                        str += steps[i].html_instructions;
+                      }
+
 
 
                     }
