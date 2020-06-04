@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title><img src="http://54.36.98.109/comute.png">title</title>
 </head>
-<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="../style.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
 <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -20,33 +20,38 @@
 <body>
     <div class="wrapper">
         <!-- Begin side bar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a id="introductionRDV" class="navbar-brand" href="#">
-                <img src="http://54.36.98.109/comute.png" width="30" height="30" class="d-inline-block align-top" alt="">
-                title
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a id="createRDV" class="nav-link">createRDV</a>
-                    </li>
-                    <li class="nav-item">
-                        <a id="listRDV" class="nav-link" href="#">listRDV</a>
-                    </li>
-                    <li class="nav-item">
-                        <a id="joinRDV" class="nav-link" href="#">joinRDV</a>
-                    </li>
-                </ul>
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3> <img src="http://54.36.98.109/comute.png" width="30" height="30" class="d-inline-block align-top" alt=""> title</h3>
             </div>
+            <ul class="list-unstyled components">
+                <li>
+                    <button style="color: white; width: 100%; text-align: left;" type="button" id="introductionRDV" class="btn"><i class="fas fa-home"></i> home</button>
+                </li>
+                <li>
+                    <button style="color: white; width: 100%; text-align: left;" type="button" id="createRDV" class="btn"><i class="far fa-calendar"></i> Create a RDV</button>
+                </li>
+                <li>
+                    <button type="button" style="color: white; width: 100%; text-align: left;" id="listRDV" class="btn"> <i class="fas fa-list"></i> List all RDV</button>
+                </li>
+
+                <li>
+                    <button type="button" style="color: white; width: 100%; text-align: left;" id="joinRDV" class="btn"> <i class="fas fa-list"></i> join RDV</button>
+                </li>
+            </ul>
         </nav>
         <!-- end sidebar -->
         <div id="content" style="width: 100vw">
+            <nav>
+                <div>
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+                </div>
+            </nav>
             <div class="row">
                 <div class="col-lg-12" style=" text-align: center;">
-                    <h1>title</h1>
+                    <h1> <img src="http://54.36.98.109/comute.png" width="30" height="30" class="d-inline-block align-top" alt=""> title</h1>
                 </div>
                 <div id="receptacle" class="col-lg-12">
                 </div>
@@ -58,7 +63,36 @@
             <div class="panel-heading">
                 <h2>Introduction</h2>
             </div>
-            <div class="panel-body">Panel Footer</div>
+            <div class="panel-body ">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <img class="card-img-top" src="http://54.36.98.109/RDV/rdv.png" alt="Card image cap" style="height: 35vh;">
+                            <div class="card-body">
+                                <button class="btn btn-primary" id="goto_create_rdv">Creer un rdv</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <img class="card-img-top" src="http://54.36.98.109/RDV/list.png" alt="Card image cap" style="height: 35vh;">
+                            <div class="card-body">
+                                <button class="btn btn-primary" id="goto_list_rdv">voir la liste des rdv</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <img class="card-img-top" src="http://54.36.98.109/RDV/join.png" alt="Card image cap" style="height: 35vh;">
+                            <div class="card-body">
+                                <button class="btn btn-primary" id="goto_join_rdv">Rejoindre un rdv</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                </div>
+            </div>
         </div>
     </div>
     <!-- list panel -->
@@ -75,6 +109,7 @@
                             <th scope="col">Id</th>
                             <th scope="col">Adresse</th>
                             <th scope="col">Date</th>
+                            <th scope="col">nb people</th>
                         </tr>
                     </thead>
                     <tbody id="tableList">
@@ -109,9 +144,9 @@
                             <label for="dateRDV"> Date du RDV</label>
                             <input type="date" id="dateRDV" name="trip-start" value="2018-07-22" min="2019-01-01" max="2028-12-31">
                         </div>
-                        <div class="form-group">
+                         <div class="form-group">
                             <label for="timeRDV"> Heure du RDV</label>
-                            <input type="time" id="timeRDV" name="appt" min="00:00" max="23:59" required>
+                            <input type="number" id="hourRDV" min="8" max="17" required>
                         </div>
                         <div class="form-group">
                             <div class="form-check">
@@ -131,7 +166,10 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6" id="consigneTrajet">
+            <div class="col-lg-6">
+            	<div id="mapContainer2" style="min-height: 400px;">
+                </div>
+                <div id="consigneTrajet"></div>
             </div>
         </div>
     </div>
@@ -153,35 +191,40 @@
                             <label for="nameUserJoin">User name</label>
                             <input type="text" class="form-control" id="nameUserJoin" aria-describedby="emailHelp" placeholder="Enter your name">
                         </div>
-                        <div class="form-group">
-                            <label for="nameRDVJoin">RDV name</label>
-                            <input type="text" class="form-control" id="nameRDVJoin" aria-describedby="nameRDVhELP" placeholder="Enter rdv name">
-                        </div>
-
-                        <div class="form-group">
-                            <div class="form-check">
-                                <input class="form-check-input" name="type" type="radio" value="" id="jointisseo">
-                                <label class="form-check-label" for="tisseo">
-                                    Tisseo
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" name="type" type="radio" value="" id="joingoogle">
-                                <label class="form-check-label" for="google">
-                                    Google
-                                </label>
-                            </div>
+                       <div class="form-group" id="select_appending">
+                           
                         </div>
                         <button id="valid_Join" class="btn btn-primary">Join</button>
                     </div>
                 </div>
             </div>
             <div class="col-lg-5 col-xs-12">
+                <div id="mapContainer" style="min-height: 400px;">
+                </div>
                 <div id="consigneTrajet2">
                 </div>
             </div>
         </div>
     </div>
+    <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-6">
+                    footer_description
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label> <i class="fas fa-phone-square"></i> Téléphone : phone_to_replace</label>
+                        </div>
+                        <div class="col-lg-6">
+                            <label> <i class="fas fa-envelope-square"></i> Mail : mail_to_replace </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
     <!-- Write your comments here -->
 </body>
 <script type="text/javascript">
@@ -195,6 +238,42 @@ $(document).ready(function() {
             $("#" + ArrayTipe[type]).hide();
         }
     }
+
+    $('#dateRDV').val(new Date().toDateInputValue());
+    
+    function fill_select(){
+
+        var div = $("#select_appending");
+        $(div).empty();
+         $.ajax({
+            type: "POST",
+            url: url + "listDispo  ",
+            data: {},
+            success: function(data, textStatus, jqXHR) {
+                var str = ""
+                var dispo = data.dispo;
+                if(data.dispo.length > 0)
+                {
+                    str = "<select id='rdvtoJoin'>";
+                    for(var i = 0 ; i< data.dispo.length; i++)
+                    {
+                        var rdvDispo = data.dispo[i];
+                        str +="<option value =\'" + rdvDispo + "\'>"+rdvDispo + "</option>";
+                    }
+                    str += "</select>";
+                }
+                $(div).html(str);
+               
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+              alert("error");
+            },
+        });
+
+
+    }
+
+
     $("#receptacle").append($("#" + typeBody));
     //cache la  side bar menu
     $('#sidebarCollapse').on('click', function() {
@@ -216,6 +295,7 @@ $(document).ready(function() {
         $("#receptacle").append($("#" + typeBody));
         $("#" + typeBody).show();
         alert("joinRDV")
+        fill_select();
     });
     //charge la page d'accueil
     $('#introductionRDV').on('click', function() {
@@ -237,7 +317,7 @@ $(document).ready(function() {
         //lance une  requete asynchrone vers le server permmettant de recuperer la liste des rendez vous
         $.ajax({
             type: "POST",
-            url: url + "listRDV",
+            url: url + "listRDVinPlanning",
             data: {},
             success: function(data, textStatus, jqXHR) {
                 var str = ""
@@ -250,12 +330,13 @@ $(document).ready(function() {
                     str += "<td>" + listRDV[i].id + "</td>";
                     str += "<td>" + listRDV[i].adress + "</td>";
                     str += "<td>" + listRDV[i].date + "</td>";
+                    str += "<td>" + listRDV[i].nbPeople + "</td>";
                 }
                 $("#tableList").html(str);
                 alert("second success");
             },
             error: function(jqXHR, textStatus, errorThrown) {
-               alert("error");
+                alert("error")
             },
         });
     });
@@ -266,18 +347,20 @@ $(document).ready(function() {
         obj.name = $("#nameUser").val();
         obj.adress = $("#adressUser").val();
         obj.adressRDV = $("#adressRDV").val();
-        obj.dateRDV = "" + $("#dateRDV").val() + " " + $("#timeRDV").val();
+        var hourRDV = $("#hourRDV").val();
+        hourRDV = "" + hourRDV + ":00";
+        obj.dateRDV = "" + $("#dateRDV").val() + "+" + hourRDV; 
         obj.api = type;
         $.ajax({
             type: "POST",
-            url: url + "createRDV",
+            url: url + "createRDVinPlanning",
             data: obj,
             success: function(data, textStatus, jqXHR) {
                 //data - response from serve
-                var div = $("#consigneTrajet")
+                 var div = $("#consigneTrajet")
                 var str = "<h2>Vos Instructions</h2>"
 
-               if(data.APItype == "tisseo")
+                if(data.APItype == "tisseo")
                 {
 
                   var data = data.APIresponse;
@@ -310,7 +393,7 @@ $(document).ready(function() {
 
                     var routes = data.routes[0]["legs"];
                     encoded = data.routes[0].overview_polyline.points;
-
+                    
                     str += "Vous partez de " + routes[0].start_address;
 
                     var steps = routes[0].steps;
@@ -319,10 +402,8 @@ $(document).ready(function() {
 
                       str += "<br>";
                       var index = i + 1;
-                      str += "Etape " + index;
+                          str += "Etape " + index;
                       
-                      console.log(steps[i]);
-
                       if (steps[i].travel_mode == "WALKING")
                       {
                         for(var j=0; j<steps[i].steps.length; j++)
@@ -346,6 +427,7 @@ $(document).ready(function() {
                       }
 
 
+
                     }
 
                   }
@@ -355,6 +437,36 @@ $(document).ready(function() {
                 {
                   alert("APItype not supported")
                 }
+
+                 var mymap = L.map('mapContainer2').setView([43.6043, 1.4437], 13);
+                    L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v9/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYmFzdGllbmRpZGllciIsImEiOiJjazY4MzYzeTkwMHZlM21xdG01bXlhbGpyIn0.r_jl86haJmqOCrgE8ywKaw', {
+                        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                        maxZoom: 18,
+                        id: 'mapbox/streets-v11',
+                        accessToken: 'pk.eyJ1IjoiYmFzdGllbmRpZGllciIsImEiOiJjazY4MzYzeTkwMHZlM21xdG01bXlhbGpyIn0.r_jl86haJmqOCrgE8ywKaw'
+                    }).addTo(mymap);
+                    mymap.locate({ setView: true, maxZoom: 16 });
+
+                    function onLocationFound(e) {
+                        var radius = e.accuracy;
+                        L.marker(e.latlng).addTo(mymap)
+                            .bindPopup("You are within " + radius + " meters from this point").openPopup();
+                        L.circle(e.latlng, radius).addTo(mymap);
+                    }
+                    mymap.on('locationfound', onLocationFound);
+
+                    function onLocationError(e) {
+                        alert(e.message);
+                    }
+                    mymap.on('locationerror', onLocationError);
+
+                    if(encoded)
+                    {
+                      
+                      var polyline = L.Polyline.fromEncoded(encoded).addTo(mymap);
+                      mymap.fitBounds(polyline.getBounds());
+
+                    }
 
 
             },
@@ -369,24 +481,24 @@ $(document).ready(function() {
     //rejoindre un rendez vous
     //cette function effectue un appel a /joinRDV et permet au participant apres qu'il est renseigné son nom et prenom de rejoindre le rdv indiqué
     $("#valid_Join").click(function() {
-        var obj     = {};
-        obj.name    = $("#nameUserJoin").val();
-        obj.adress  = $("#adressUserJoin").val();
-        obj.idRDV   = $("#nameRDVJoin").val();
+        var obj = {}
+        obj.name = $("#nameUserJoin").val();
+        obj.adress = $("#adressUserJoin").val();
+        obj.idRDV   = $("#rdvtoJoin").val();
         var type    = $("#jointisseo").prop("checked") == true ? "tisseo" : "google";
         obj.api     = type;
         // appel asynchrone vers le serveur
         $.ajax({
 
             type: "POST",
-            url: url + "joinRDV",
+            url: url + "joinRDVinPlanning",
             data: obj,
             //en cas de succes de la requete  asynchrone
             success: function(data, textStatus, jqXHR) {
                 //data - response from server
-
-                var div = $("#consigneTrajet2")
+  				var div = $("#consigneTrajet2")
                 var str = "<h2>Vos Instructions</h2>"
+
                 if(data.APItype == "tisseo")
                 {
 
@@ -426,10 +538,10 @@ $(document).ready(function() {
                     var steps = routes[0].steps;
 
                     for(var i = 0 ; i < steps.length; i++) {
-                      console.log(steps[i]);
+
                       str += "<br>";
                       var index = i + 1;
-                      str += "Etape " + index;
+                          str += "Etape " + index;
                       
                       if (steps[i].travel_mode == "WALKING")
                       {
@@ -464,6 +576,37 @@ $(document).ready(function() {
                 {
                   alert("APItype not supported")
                 }
+
+                 var mymap = L.map('mapContainer').setView([43.6043, 1.4437], 13);
+                    L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v9/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYmFzdGllbmRpZGllciIsImEiOiJjazY4MzYzeTkwMHZlM21xdG01bXlhbGpyIn0.r_jl86haJmqOCrgE8ywKaw', {
+                        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                        maxZoom: 18,
+                        id: 'mapbox/streets-v11',
+                        accessToken: 'pk.eyJ1IjoiYmFzdGllbmRpZGllciIsImEiOiJjazY4MzYzeTkwMHZlM21xdG01bXlhbGpyIn0.r_jl86haJmqOCrgE8ywKaw'
+                    }).addTo(mymap);
+                    mymap.locate({ setView: true, maxZoom: 16 });
+
+                    function onLocationFound(e) {
+                        var radius = e.accuracy;
+                        L.marker(e.latlng).addTo(mymap)
+                            .bindPopup("You are within " + radius + " meters from this point").openPopup();
+                        L.circle(e.latlng, radius).addTo(mymap);
+                    }
+                    mymap.on('locationfound', onLocationFound);
+
+                    function onLocationError(e) {
+                        alert(e.message);
+                    }
+                    mymap.on('locationerror', onLocationError);
+
+                    if(encoded)
+                    {
+                      
+                      var polyline = L.Polyline.fromEncoded(encoded).addTo(mymap);
+                      mymap.fitBounds(polyline.getBounds());
+
+                    }
+
 
             },
             //en cas d'erreur de la requete asynchrone

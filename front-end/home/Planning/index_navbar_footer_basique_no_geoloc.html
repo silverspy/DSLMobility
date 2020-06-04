@@ -75,6 +75,7 @@
                             <th scope="col">Id</th>
                             <th scope="col">Adresse</th>
                             <th scope="col">Date</th>
+                            <th scope="col">nb people</th>
                         </tr>
                     </thead>
                     <tbody id="tableList">
@@ -111,7 +112,7 @@
                         </div>
                         <div class="form-group">
                             <label for="timeRDV"> Heure du RDV</label>
-                            <input type="time" id="timeRDV" name="appt" min="00:00" max="23:59" required>
+                            <input type="number" id="hourRDV" min="8" max="17" required>
                         </div>
                         <div class="form-group">
                             <div class="form-check">
@@ -153,24 +154,8 @@
                             <label for="nameUserJoin">User name</label>
                             <input type="text" class="form-control" id="nameUserJoin" aria-describedby="emailHelp" placeholder="Enter your name">
                         </div>
-                        <div class="form-group">
-                            <label for="nameRDVJoin">RDV name</label>
-                            <input type="text" class="form-control" id="nameRDVJoin" aria-describedby="nameRDVhELP" placeholder="Enter rdv name">
-                        </div>
-
-                        <div class="form-group">
-                            <div class="form-check">
-                                <input class="form-check-input" name="type" type="radio" value="" id="jointisseo">
-                                <label class="form-check-label" for="tisseo">
-                                    Tisseo
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" name="type" type="radio" value="" id="joingoogle">
-                                <label class="form-check-label" for="google">
-                                    Google
-                                </label>
-                            </div>
+                       <div class="form-group" id="select_appending">
+                           
                         </div>
                         <button id="valid_Join" class="btn btn-primary">Join</button>
                     </div>
@@ -182,6 +167,25 @@
             </div>
         </div>
     </div>
+    <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-6">
+                    footer_description
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label> <i class="fas fa-phone-square"></i> Téléphone : phone_to_replace </label>
+                        </div>
+                        <div class="col-lg-6">
+                            <label> <i class="fas fa-envelope-square"></i> Mail : mail_to_replace </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
     <!-- Write your comments here -->
 </body>
 <script type="text/javascript">
@@ -195,6 +199,42 @@ $(document).ready(function() {
             $("#" + ArrayTipe[type]).hide();
         }
     }
+
+    $('#dateRDV').val(new Date().toDateInputValue());
+    
+    function fill_select(){
+
+        var div = $("#select_appending");
+        $(div).empty();
+         $.ajax({
+            type: "POST",
+            url: url + "listDispo  ",
+            data: {},
+            success: function(data, textStatus, jqXHR) {
+                var str = ""
+                var dispo = data.dispo;
+                if(data.dispo.length > 0)
+                {
+                    str = "<select id='rdvtoJoin'>";
+                    for(var i = 0 ; i< data.dispo.length; i++)
+                    {
+                        var rdvDispo = data.dispo[i];
+                        str +="<option value =\'" + rdvDispo + "\'>"+rdvDispo + "</option>";
+                    }
+                    str += "</select>";
+                }
+                $(div).html(str);
+               
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+              alert("error");
+            },
+        });
+
+
+    }
+
+
     $("#receptacle").append($("#" + typeBody));
     //cache la  side bar menu
     $('#sidebarCollapse').on('click', function() {
@@ -216,6 +256,7 @@ $(document).ready(function() {
         $("#receptacle").append($("#" + typeBody));
         $("#" + typeBody).show();
         alert("joinRDV")
+        fill_select();
     });
     //charge la page d'accueil
     $('#introductionRDV').on('click', function() {
@@ -237,7 +278,7 @@ $(document).ready(function() {
         //lance une  requete asynchrone vers le server permmettant de recuperer la liste des rendez vous
         $.ajax({
             type: "POST",
-            url: url + "listRDV",
+            url: url + "listRDVinPlanning",
             data: {},
             success: function(data, textStatus, jqXHR) {
                 var str = ""
@@ -250,12 +291,13 @@ $(document).ready(function() {
                     str += "<td>" + listRDV[i].id + "</td>";
                     str += "<td>" + listRDV[i].adress + "</td>";
                     str += "<td>" + listRDV[i].date + "</td>";
+                    str += "<td>" + listRDV[i].nbPeople + "</td>";
                 }
                 $("#tableList").html(str);
                 alert("second success");
             },
             error: function(jqXHR, textStatus, errorThrown) {
-               alert("error");
+                alert("error")
             },
         });
     });
@@ -266,11 +308,13 @@ $(document).ready(function() {
         obj.name = $("#nameUser").val();
         obj.adress = $("#adressUser").val();
         obj.adressRDV = $("#adressRDV").val();
-        obj.dateRDV = "" + $("#dateRDV").val() + " " + $("#timeRDV").val();
+        var hourRDV = $("#hourRDV").val();
+        hourRDV = "" + hourRDV + ":00";
+        obj.dateRDV = "" + $("#dateRDV").val() + "+" + hourRDV; 
         obj.api = type;
         $.ajax({
             type: "POST",
-            url: url + "createRDV",
+            url: url + "createRDVinPlanning",
             data: obj,
             success: function(data, textStatus, jqXHR) {
                 //data - response from serve
@@ -319,10 +363,8 @@ $(document).ready(function() {
 
                       str += "<br>";
                       var index = i + 1;
-                      str += "Etape " + index;
+                          str += "Etape " + index;
                       
-                      console.log(steps[i]);
-
                       if (steps[i].travel_mode == "WALKING")
                       {
                         for(var j=0; j<steps[i].steps.length; j++)
@@ -346,6 +388,7 @@ $(document).ready(function() {
                       }
 
 
+
                     }
 
                   }
@@ -355,7 +398,6 @@ $(document).ready(function() {
                 {
                   alert("APItype not supported")
                 }
-
 
             },
             error: function(jqXHR, textStatus, errorThrown) {
@@ -369,17 +411,17 @@ $(document).ready(function() {
     //rejoindre un rendez vous
     //cette function effectue un appel a /joinRDV et permet au participant apres qu'il est renseigné son nom et prenom de rejoindre le rdv indiqué
     $("#valid_Join").click(function() {
-        var obj     = {};
-        obj.name    = $("#nameUserJoin").val();
-        obj.adress  = $("#adressUserJoin").val();
-        obj.idRDV   = $("#nameRDVJoin").val();
+        var obj = {}
+        obj.name = $("#nameUserJoin").val();
+        obj.adress = $("#adressUserJoin").val();
+        obj.idRDV   = $("#rdvtoJoin").val();
         var type    = $("#jointisseo").prop("checked") == true ? "tisseo" : "google";
         obj.api     = type;
         // appel asynchrone vers le serveur
         $.ajax({
 
             type: "POST",
-            url: url + "joinRDV",
+            url: url + "joinRDVinPlanning",
             data: obj,
             //en cas de succes de la requete  asynchrone
             success: function(data, textStatus, jqXHR) {
@@ -426,10 +468,10 @@ $(document).ready(function() {
                     var steps = routes[0].steps;
 
                     for(var i = 0 ; i < steps.length; i++) {
-                      console.log(steps[i]);
+
                       str += "<br>";
                       var index = i + 1;
-                      str += "Etape " + index;
+                          str += "Etape " + index;
                       
                       if (steps[i].travel_mode == "WALKING")
                       {
