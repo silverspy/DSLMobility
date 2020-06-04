@@ -6,8 +6,11 @@ import dSLMobility.DSLMobilityFactory;
 import dSLMobility.DSLMobilityPackage;
 import dSLMobility.Page;
 import dSLMobility.Source;
+import dSLMobility.SourceLogo;
+import dSLMobility.SourceMenu;
 import dSLMobility.SourceName;
 
+import dSLMobility.SourcePres;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
@@ -43,6 +46,27 @@ public class DSLMobilityPackageImpl extends EPackageImpl implements DSLMobilityP
 	 * @generated
 	 */
 	private EEnum sourceNameEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum sourceMenuEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum sourcePresEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum sourceLogoEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -140,6 +164,96 @@ public class DSLMobilityPackageImpl extends EPackageImpl implements DSLMobilityP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getPage_Description() {
+		return (EAttribute) pageEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPage_Mail() {
+		return (EAttribute) pageEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPage_Telephone() {
+		return (EAttribute) pageEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPage_Menu() {
+		return (EAttribute) pageEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPage_Presentation() {
+		return (EAttribute) pageEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPage_Logo() {
+		return (EAttribute) pageEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPage_Geolocalisation() {
+		return (EAttribute) pageEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPage_Heure_ouverture() {
+		return (EAttribute) pageEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPage_Heure_fermeture() {
+		return (EAttribute) pageEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPage_Nb_Pers() {
+		return (EAttribute) pageEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSource() {
 		return sourceEClass;
 	}
@@ -160,6 +274,33 @@ public class DSLMobilityPackageImpl extends EPackageImpl implements DSLMobilityP
 	 */
 	public EEnum getSourceName() {
 		return sourceNameEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getSourceMenu() {
+		return sourceMenuEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getSourcePres() {
+		return sourcePresEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getSourceLogo() {
+		return sourceLogoEEnum;
 	}
 
 	/**
@@ -194,12 +335,25 @@ public class DSLMobilityPackageImpl extends EPackageImpl implements DSLMobilityP
 		pageEClass = createEClass(PAGE);
 		createEAttribute(pageEClass, PAGE__NAME);
 		createEReference(pageEClass, PAGE__SOURCE);
+		createEAttribute(pageEClass, PAGE__DESCRIPTION);
+		createEAttribute(pageEClass, PAGE__MAIL);
+		createEAttribute(pageEClass, PAGE__TELEPHONE);
+		createEAttribute(pageEClass, PAGE__MENU);
+		createEAttribute(pageEClass, PAGE__PRESENTATION);
+		createEAttribute(pageEClass, PAGE__LOGO);
+		createEAttribute(pageEClass, PAGE__GEOLOCALISATION);
+		createEAttribute(pageEClass, PAGE__HEURE_OUVERTURE);
+		createEAttribute(pageEClass, PAGE__HEURE_FERMETURE);
+		createEAttribute(pageEClass, PAGE__NB_PERS);
 
 		sourceEClass = createEClass(SOURCE);
 		createEAttribute(sourceEClass, SOURCE__NAME);
 
 		// Create enums
 		sourceNameEEnum = createEEnum(SOURCE_NAME);
+		sourceMenuEEnum = createEEnum(SOURCE_MENU);
+		sourcePresEEnum = createEEnum(SOURCE_PRES);
+		sourceLogoEEnum = createEEnum(SOURCE_LOGO);
 	}
 
 	/**
@@ -239,6 +393,27 @@ public class DSLMobilityPackageImpl extends EPackageImpl implements DSLMobilityP
 		initEReference(getPage_Source(), this.getSource(), null, "source", null, 1, -1, Page.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
+		initEAttribute(getPage_Description(), ecorePackage.getEString(), "description", null, 0, 1, Page.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPage_Mail(), ecorePackage.getEString(), "mail", null, 0, 1, Page.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPage_Telephone(), ecorePackage.getEString(), "telephone", null, 0, 1, Page.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPage_Menu(), this.getSourceMenu(), "menu", null, 0, 1, Page.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPage_Presentation(), this.getSourcePres(), "presentation", null, 0, 1, Page.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPage_Logo(), this.getSourceLogo(), "logo", null, 0, 1, Page.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPage_Geolocalisation(), ecorePackage.getEBooleanObject(), "geolocalisation", null, 0, 1,
+				Page.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getPage_Heure_ouverture(), ecorePackage.getEInt(), "heure_ouverture", null, 0, 1, Page.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPage_Heure_fermeture(), ecorePackage.getEInt(), "heure_fermeture", null, 0, 1, Page.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPage_Nb_Pers(), ecorePackage.getEInt(), "nb_Pers", null, 0, 1, Page.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sourceEClass, Source.class, "Source", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSource_Name(), this.getSourceName(), "name", null, 0, 1, Source.class, !IS_TRANSIENT,
@@ -247,8 +422,20 @@ public class DSLMobilityPackageImpl extends EPackageImpl implements DSLMobilityP
 		// Initialize enums and add enum literals
 		initEEnum(sourceNameEEnum, SourceName.class, "SourceName");
 		addEEnumLiteral(sourceNameEEnum, SourceName.TISSEO);
-		addEEnumLiteral(sourceNameEEnum, SourceName.UBER);
 		addEEnumLiteral(sourceNameEEnum, SourceName.GOOGLE_MAP);
+
+		initEEnum(sourceMenuEEnum, SourceMenu.class, "SourceMenu");
+		addEEnumLiteral(sourceMenuEEnum, SourceMenu.SIDE_BAR);
+		addEEnumLiteral(sourceMenuEEnum, SourceMenu.NAV_BAR);
+
+		initEEnum(sourcePresEEnum, SourcePres.class, "SourcePres");
+		addEEnumLiteral(sourcePresEEnum, SourcePres.BASIQUE);
+		addEEnumLiteral(sourcePresEEnum, SourcePres.CARD);
+
+		initEEnum(sourceLogoEEnum, SourceLogo.class, "SourceLogo");
+		addEEnumLiteral(sourceLogoEEnum, SourceLogo.COMUTE);
+		addEEnumLiteral(sourceLogoEEnum, SourceLogo.RDV);
+		addEEnumLiteral(sourceLogoEEnum, SourceLogo.TRAJET);
 
 		// Create resource
 		createResource(eNS_URI);

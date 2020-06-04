@@ -32,13 +32,23 @@ public class MyDslParser extends AbstractContentAssistParser {
 		
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, MyDslGrammarAccess grammarAccess) {
 			builder.put(grammarAccess.getEStringAccess().getAlternatives(), "rule__EString__Alternatives");
+			builder.put(grammarAccess.getSourceMenuAccess().getAlternatives(), "rule__SourceMenu__Alternatives");
+			builder.put(grammarAccess.getSourcePresAccess().getAlternatives(), "rule__SourcePres__Alternatives");
+			builder.put(grammarAccess.getSourceLogoAccess().getAlternatives(), "rule__SourceLogo__Alternatives");
 			builder.put(grammarAccess.getSourceNameAccess().getAlternatives(), "rule__SourceName__Alternatives");
 			builder.put(grammarAccess.getPageAccess().getGroup(), "rule__Page__Group__0");
-			builder.put(grammarAccess.getPageAccess().getGroup_4(), "rule__Page__Group_4__0");
+			builder.put(grammarAccess.getPageAccess().getGroup_17(), "rule__Page__Group_17__0");
 			builder.put(grammarAccess.getSourceAccess().getGroup(), "rule__Source__Group__0");
-			builder.put(grammarAccess.getPageAccess().getNameAssignment_1(), "rule__Page__NameAssignment_1");
-			builder.put(grammarAccess.getPageAccess().getSourceAssignment_3(), "rule__Page__SourceAssignment_3");
-			builder.put(grammarAccess.getPageAccess().getSourceAssignment_4_1(), "rule__Page__SourceAssignment_4_1");
+			builder.put(grammarAccess.getPageAccess().getGeolocalisationAssignment_0(), "rule__Page__GeolocalisationAssignment_0");
+			builder.put(grammarAccess.getPageAccess().getNameAssignment_2(), "rule__Page__NameAssignment_2");
+			builder.put(grammarAccess.getPageAccess().getDescriptionAssignment_4(), "rule__Page__DescriptionAssignment_4");
+			builder.put(grammarAccess.getPageAccess().getMailAssignment_6(), "rule__Page__MailAssignment_6");
+			builder.put(grammarAccess.getPageAccess().getTelephoneAssignment_8(), "rule__Page__TelephoneAssignment_8");
+			builder.put(grammarAccess.getPageAccess().getMenuAssignment_10(), "rule__Page__MenuAssignment_10");
+			builder.put(grammarAccess.getPageAccess().getPresentationAssignment_12(), "rule__Page__PresentationAssignment_12");
+			builder.put(grammarAccess.getPageAccess().getLogoAssignment_14(), "rule__Page__LogoAssignment_14");
+			builder.put(grammarAccess.getPageAccess().getSourceAssignment_16(), "rule__Page__SourceAssignment_16");
+			builder.put(grammarAccess.getPageAccess().getSourceAssignment_17_1(), "rule__Page__SourceAssignment_17_1");
 			builder.put(grammarAccess.getSourceAccess().getNameAssignment_1(), "rule__Source__NameAssignment_1");
 		}
 	}

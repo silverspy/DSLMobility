@@ -76,6 +76,12 @@ public class DSLMobilityFactoryImpl extends EFactoryImpl implements DSLMobilityF
 		switch (eDataType.getClassifierID()) {
 		case DSLMobilityPackage.SOURCE_NAME:
 			return createSourceNameFromString(eDataType, initialValue);
+		case DSLMobilityPackage.SOURCE_MENU:
+			return createSourceMenuFromString(eDataType, initialValue);
+		case DSLMobilityPackage.SOURCE_PRES:
+			return createSourcePresFromString(eDataType, initialValue);
+		case DSLMobilityPackage.SOURCE_LOGO:
+			return createSourceLogoFromString(eDataType, initialValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -91,6 +97,12 @@ public class DSLMobilityFactoryImpl extends EFactoryImpl implements DSLMobilityF
 		switch (eDataType.getClassifierID()) {
 		case DSLMobilityPackage.SOURCE_NAME:
 			return convertSourceNameToString(eDataType, instanceValue);
+		case DSLMobilityPackage.SOURCE_MENU:
+			return convertSourceMenuToString(eDataType, instanceValue);
+		case DSLMobilityPackage.SOURCE_PRES:
+			return convertSourcePresToString(eDataType, instanceValue);
+		case DSLMobilityPackage.SOURCE_LOGO:
+			return convertSourceLogoToString(eDataType, instanceValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -135,6 +147,72 @@ public class DSLMobilityFactoryImpl extends EFactoryImpl implements DSLMobilityF
 	 * @generated
 	 */
 	public String convertSourceNameToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SourceMenu createSourceMenuFromString(EDataType eDataType, String initialValue) {
+		SourceMenu result = SourceMenu.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertSourceMenuToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SourcePres createSourcePresFromString(EDataType eDataType, String initialValue) {
+		SourcePres result = SourcePres.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertSourcePresToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SourceLogo createSourceLogoFromString(EDataType eDataType, String initialValue) {
+		SourceLogo result = SourceLogo.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertSourceLogoToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

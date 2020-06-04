@@ -77,16 +77,30 @@ rulePage returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='Page'
+		(
+			(
+				lv_geolocalisation_0_0='geolocalisation'
+				{
+					newLeafNode(lv_geolocalisation_0_0, grammarAccess.getPageAccess().getGeolocalisationGeolocalisationKeyword_0_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getPageRule());
+					}
+					setWithLastConsumed($current, "geolocalisation", true, "geolocalisation");
+				}
+			)
+		)?
+		otherlv_1='Page'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getPageAccess().getPageKeyword_0());
+			newLeafNode(otherlv_1, grammarAccess.getPageAccess().getPageKeyword_1());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getPageAccess().getNameEStringParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getPageAccess().getNameEStringParserRuleCall_2_0());
 				}
-				lv_name_1_0=ruleEString
+				lv_name_2_0=ruleEString
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getPageRule());
@@ -94,22 +108,160 @@ rulePage returns [EObject current=null]
 					set(
 						$current,
 						"name",
-						lv_name_1_0,
+						lv_name_2_0,
 						"org.xtext.example.mydsl.MyDsl.EString");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_2='source'
+		otherlv_3='description'
 		{
-			newLeafNode(otherlv_2, grammarAccess.getPageAccess().getSourceKeyword_2());
+			newLeafNode(otherlv_3, grammarAccess.getPageAccess().getDescriptionKeyword_3());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getPageAccess().getSourceSourceParserRuleCall_3_0());
+					newCompositeNode(grammarAccess.getPageAccess().getDescriptionEStringParserRuleCall_4_0());
 				}
-				lv_source_3_0=ruleSource
+				lv_description_4_0=ruleEString
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getPageRule());
+					}
+					set(
+						$current,
+						"description",
+						lv_description_4_0,
+						"org.xtext.example.mydsl.MyDsl.EString");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_5='mail'
+		{
+			newLeafNode(otherlv_5, grammarAccess.getPageAccess().getMailKeyword_5());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getPageAccess().getMailEStringParserRuleCall_6_0());
+				}
+				lv_mail_6_0=ruleEString
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getPageRule());
+					}
+					set(
+						$current,
+						"mail",
+						lv_mail_6_0,
+						"org.xtext.example.mydsl.MyDsl.EString");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_7='telephone'
+		{
+			newLeafNode(otherlv_7, grammarAccess.getPageAccess().getTelephoneKeyword_7());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getPageAccess().getTelephoneEStringParserRuleCall_8_0());
+				}
+				lv_telephone_8_0=ruleEString
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getPageRule());
+					}
+					set(
+						$current,
+						"telephone",
+						lv_telephone_8_0,
+						"org.xtext.example.mydsl.MyDsl.EString");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_9='menu'
+		{
+			newLeafNode(otherlv_9, grammarAccess.getPageAccess().getMenuKeyword_9());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getPageAccess().getMenuSourceMenuEnumRuleCall_10_0());
+				}
+				lv_menu_10_0=ruleSourceMenu
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getPageRule());
+					}
+					set(
+						$current,
+						"menu",
+						lv_menu_10_0,
+						"org.xtext.example.mydsl.MyDsl.SourceMenu");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_11='presentation'
+		{
+			newLeafNode(otherlv_11, grammarAccess.getPageAccess().getPresentationKeyword_11());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getPageAccess().getPresentationSourcePresEnumRuleCall_12_0());
+				}
+				lv_presentation_12_0=ruleSourcePres
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getPageRule());
+					}
+					set(
+						$current,
+						"presentation",
+						lv_presentation_12_0,
+						"org.xtext.example.mydsl.MyDsl.SourcePres");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_13='logo'
+		{
+			newLeafNode(otherlv_13, grammarAccess.getPageAccess().getLogoKeyword_13());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getPageAccess().getLogoSourceLogoEnumRuleCall_14_0());
+				}
+				lv_logo_14_0=ruleSourceLogo
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getPageRule());
+					}
+					set(
+						$current,
+						"logo",
+						lv_logo_14_0,
+						"org.xtext.example.mydsl.MyDsl.SourceLogo");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_15='source'
+		{
+			newLeafNode(otherlv_15, grammarAccess.getPageAccess().getSourceKeyword_15());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getPageAccess().getSourceSourceParserRuleCall_16_0());
+				}
+				lv_source_16_0=ruleSource
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getPageRule());
@@ -117,23 +269,23 @@ rulePage returns [EObject current=null]
 					add(
 						$current,
 						"source",
-						lv_source_3_0,
+						lv_source_16_0,
 						"org.xtext.example.mydsl.MyDsl.Source");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
 		(
-			otherlv_4=','
+			otherlv_17=','
 			{
-				newLeafNode(otherlv_4, grammarAccess.getPageAccess().getCommaKeyword_4_0());
+				newLeafNode(otherlv_17, grammarAccess.getPageAccess().getCommaKeyword_17_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getPageAccess().getSourceSourceParserRuleCall_4_1_0());
+						newCompositeNode(grammarAccess.getPageAccess().getSourceSourceParserRuleCall_17_1_0());
 					}
-					lv_source_5_0=ruleSource
+					lv_source_18_0=ruleSource
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getPageRule());
@@ -141,7 +293,7 @@ rulePage returns [EObject current=null]
 						add(
 							$current,
 							"source",
-							lv_source_5_0,
+							lv_source_18_0,
 							"org.xtext.example.mydsl.MyDsl.Source");
 						afterParserOrEnumRuleCall();
 					}
@@ -230,6 +382,95 @@ ruleSource returns [EObject current=null]
 	)
 ;
 
+// Rule SourceMenu
+ruleSourceMenu returns [Enumerator current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			enumLiteral_0='SideBar'
+			{
+				$current = grammarAccess.getSourceMenuAccess().getSideBarEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getSourceMenuAccess().getSideBarEnumLiteralDeclaration_0());
+			}
+		)
+		    |
+		(
+			enumLiteral_1='NavBar'
+			{
+				$current = grammarAccess.getSourceMenuAccess().getNavBarEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getSourceMenuAccess().getNavBarEnumLiteralDeclaration_1());
+			}
+		)
+	)
+;
+
+// Rule SourcePres
+ruleSourcePres returns [Enumerator current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			enumLiteral_0='basique'
+			{
+				$current = grammarAccess.getSourcePresAccess().getBasiqueEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getSourcePresAccess().getBasiqueEnumLiteralDeclaration_0());
+			}
+		)
+		    |
+		(
+			enumLiteral_1='card'
+			{
+				$current = grammarAccess.getSourcePresAccess().getCardEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getSourcePresAccess().getCardEnumLiteralDeclaration_1());
+			}
+		)
+	)
+;
+
+// Rule SourceLogo
+ruleSourceLogo returns [Enumerator current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			enumLiteral_0='comute'
+			{
+				$current = grammarAccess.getSourceLogoAccess().getComuteEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getSourceLogoAccess().getComuteEnumLiteralDeclaration_0());
+			}
+		)
+		    |
+		(
+			enumLiteral_1='rdv'
+			{
+				$current = grammarAccess.getSourceLogoAccess().getRdvEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getSourceLogoAccess().getRdvEnumLiteralDeclaration_1());
+			}
+		)
+		    |
+		(
+			enumLiteral_2='trajet'
+			{
+				$current = grammarAccess.getSourceLogoAccess().getTrajetEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_2, grammarAccess.getSourceLogoAccess().getTrajetEnumLiteralDeclaration_2());
+			}
+		)
+	)
+;
+
 // Rule SourceName
 ruleSourceName returns [Enumerator current=null]
 @init {
@@ -240,7 +481,7 @@ ruleSourceName returns [Enumerator current=null]
 }:
 	(
 		(
-			enumLiteral_0='tisseo'
+			enumLiteral_0='Tisseo'
 			{
 				$current = grammarAccess.getSourceNameAccess().getTisseoEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
 				newLeafNode(enumLiteral_0, grammarAccess.getSourceNameAccess().getTisseoEnumLiteralDeclaration_0());
@@ -248,7 +489,7 @@ ruleSourceName returns [Enumerator current=null]
 		)
 		    |
 		(
-			enumLiteral_1='google'
+			enumLiteral_1='GoogleMap'
 			{
 				$current = grammarAccess.getSourceNameAccess().getGoogleMapEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
 				newLeafNode(enumLiteral_1, grammarAccess.getSourceNameAccess().getGoogleMapEnumLiteralDeclaration_1());

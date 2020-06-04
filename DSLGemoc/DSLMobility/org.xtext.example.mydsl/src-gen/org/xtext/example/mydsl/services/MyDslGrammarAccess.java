@@ -29,58 +29,144 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	public class PageElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.Page");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cPageKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameEStringParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cSourceKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cSourceAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cSourceSourceParserRuleCall_3_0 = (RuleCall)cSourceAssignment_3.eContents().get(0);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cCommaKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Assignment cSourceAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final RuleCall cSourceSourceParserRuleCall_4_1_0 = (RuleCall)cSourceAssignment_4_1.eContents().get(0);
+		private final Assignment cGeolocalisationAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final Keyword cGeolocalisationGeolocalisationKeyword_0_0 = (Keyword)cGeolocalisationAssignment_0.eContents().get(0);
+		private final Keyword cPageKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Keyword cDescriptionKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cDescriptionAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cDescriptionEStringParserRuleCall_4_0 = (RuleCall)cDescriptionAssignment_4.eContents().get(0);
+		private final Keyword cMailKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cMailAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cMailEStringParserRuleCall_6_0 = (RuleCall)cMailAssignment_6.eContents().get(0);
+		private final Keyword cTelephoneKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cTelephoneAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cTelephoneEStringParserRuleCall_8_0 = (RuleCall)cTelephoneAssignment_8.eContents().get(0);
+		private final Keyword cMenuKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Assignment cMenuAssignment_10 = (Assignment)cGroup.eContents().get(10);
+		private final RuleCall cMenuSourceMenuEnumRuleCall_10_0 = (RuleCall)cMenuAssignment_10.eContents().get(0);
+		private final Keyword cPresentationKeyword_11 = (Keyword)cGroup.eContents().get(11);
+		private final Assignment cPresentationAssignment_12 = (Assignment)cGroup.eContents().get(12);
+		private final RuleCall cPresentationSourcePresEnumRuleCall_12_0 = (RuleCall)cPresentationAssignment_12.eContents().get(0);
+		private final Keyword cLogoKeyword_13 = (Keyword)cGroup.eContents().get(13);
+		private final Assignment cLogoAssignment_14 = (Assignment)cGroup.eContents().get(14);
+		private final RuleCall cLogoSourceLogoEnumRuleCall_14_0 = (RuleCall)cLogoAssignment_14.eContents().get(0);
+		private final Keyword cSourceKeyword_15 = (Keyword)cGroup.eContents().get(15);
+		private final Assignment cSourceAssignment_16 = (Assignment)cGroup.eContents().get(16);
+		private final RuleCall cSourceSourceParserRuleCall_16_0 = (RuleCall)cSourceAssignment_16.eContents().get(0);
+		private final Group cGroup_17 = (Group)cGroup.eContents().get(17);
+		private final Keyword cCommaKeyword_17_0 = (Keyword)cGroup_17.eContents().get(0);
+		private final Assignment cSourceAssignment_17_1 = (Assignment)cGroup_17.eContents().get(1);
+		private final RuleCall cSourceSourceParserRuleCall_17_1_0 = (RuleCall)cSourceAssignment_17_1.eContents().get(0);
 		
-		///** generate grammar for creating a web site
-		// * just need one title for the web site 
-		// * and n source 
-		// */ Page:
+		//Page:
+		//	geolocalisation?='geolocalisation'?
 		//	'Page'
 		//	name=EString
+		//	'description' description=EString
+		//	'mail' mail=EString
+		//	'telephone' telephone=EString
+		//	'menu' menu=SourceMenu
+		//	'presentation' presentation=SourcePres
+		//	'logo' logo=SourceLogo
 		//	'source' source+=Source ("," source+=Source)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Page' name=EString 'source' source+=Source ("," source+=Source)*
+		//geolocalisation?='geolocalisation'? 'Page' name=EString 'description' description=EString 'mail' mail=EString
+		//'telephone' telephone=EString 'menu' menu=SourceMenu 'presentation' presentation=SourcePres 'logo' logo=SourceLogo
+		//'source' source+=Source ("," source+=Source)*
 		public Group getGroup() { return cGroup; }
 		
+		//geolocalisation?='geolocalisation'?
+		public Assignment getGeolocalisationAssignment_0() { return cGeolocalisationAssignment_0; }
+		
+		//'geolocalisation'
+		public Keyword getGeolocalisationGeolocalisationKeyword_0_0() { return cGeolocalisationGeolocalisationKeyword_0_0; }
+		
 		//'Page'
-		public Keyword getPageKeyword_0() { return cPageKeyword_0; }
+		public Keyword getPageKeyword_1() { return cPageKeyword_1; }
 		
 		//name=EString
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
 		
 		//EString
-		public RuleCall getNameEStringParserRuleCall_1_0() { return cNameEStringParserRuleCall_1_0; }
+		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
+		
+		//'description'
+		public Keyword getDescriptionKeyword_3() { return cDescriptionKeyword_3; }
+		
+		//description=EString
+		public Assignment getDescriptionAssignment_4() { return cDescriptionAssignment_4; }
+		
+		//EString
+		public RuleCall getDescriptionEStringParserRuleCall_4_0() { return cDescriptionEStringParserRuleCall_4_0; }
+		
+		//'mail'
+		public Keyword getMailKeyword_5() { return cMailKeyword_5; }
+		
+		//mail=EString
+		public Assignment getMailAssignment_6() { return cMailAssignment_6; }
+		
+		//EString
+		public RuleCall getMailEStringParserRuleCall_6_0() { return cMailEStringParserRuleCall_6_0; }
+		
+		//'telephone'
+		public Keyword getTelephoneKeyword_7() { return cTelephoneKeyword_7; }
+		
+		//telephone=EString
+		public Assignment getTelephoneAssignment_8() { return cTelephoneAssignment_8; }
+		
+		//EString
+		public RuleCall getTelephoneEStringParserRuleCall_8_0() { return cTelephoneEStringParserRuleCall_8_0; }
+		
+		//'menu'
+		public Keyword getMenuKeyword_9() { return cMenuKeyword_9; }
+		
+		//menu=SourceMenu
+		public Assignment getMenuAssignment_10() { return cMenuAssignment_10; }
+		
+		//SourceMenu
+		public RuleCall getMenuSourceMenuEnumRuleCall_10_0() { return cMenuSourceMenuEnumRuleCall_10_0; }
+		
+		//'presentation'
+		public Keyword getPresentationKeyword_11() { return cPresentationKeyword_11; }
+		
+		//presentation=SourcePres
+		public Assignment getPresentationAssignment_12() { return cPresentationAssignment_12; }
+		
+		//SourcePres
+		public RuleCall getPresentationSourcePresEnumRuleCall_12_0() { return cPresentationSourcePresEnumRuleCall_12_0; }
+		
+		//'logo'
+		public Keyword getLogoKeyword_13() { return cLogoKeyword_13; }
+		
+		//logo=SourceLogo
+		public Assignment getLogoAssignment_14() { return cLogoAssignment_14; }
+		
+		//SourceLogo
+		public RuleCall getLogoSourceLogoEnumRuleCall_14_0() { return cLogoSourceLogoEnumRuleCall_14_0; }
 		
 		//'source'
-		public Keyword getSourceKeyword_2() { return cSourceKeyword_2; }
+		public Keyword getSourceKeyword_15() { return cSourceKeyword_15; }
 		
 		//source+=Source
-		public Assignment getSourceAssignment_3() { return cSourceAssignment_3; }
+		public Assignment getSourceAssignment_16() { return cSourceAssignment_16; }
 		
 		//Source
-		public RuleCall getSourceSourceParserRuleCall_3_0() { return cSourceSourceParserRuleCall_3_0; }
+		public RuleCall getSourceSourceParserRuleCall_16_0() { return cSourceSourceParserRuleCall_16_0; }
 		
 		//("," source+=Source)*
-		public Group getGroup_4() { return cGroup_4; }
+		public Group getGroup_17() { return cGroup_17; }
 		
 		//","
-		public Keyword getCommaKeyword_4_0() { return cCommaKeyword_4_0; }
+		public Keyword getCommaKeyword_17_0() { return cCommaKeyword_17_0; }
 		
 		//source+=Source
-		public Assignment getSourceAssignment_4_1() { return cSourceAssignment_4_1; }
+		public Assignment getSourceAssignment_17_1() { return cSourceAssignment_17_1; }
 		
 		//Source
-		public RuleCall getSourceSourceParserRuleCall_4_1_0() { return cSourceSourceParserRuleCall_4_1_0; }
+		public RuleCall getSourceSourceParserRuleCall_17_1_0() { return cSourceSourceParserRuleCall_17_1_0; }
 	}
 	public class EStringElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.EString");
@@ -125,37 +211,129 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getNameSourceNameEnumRuleCall_1_0() { return cNameSourceNameEnumRuleCall_1_0; }
 	}
 	
+	public class SourceMenuElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.SourceMenu");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cSideBarEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cSideBarSideBarKeyword_0_0 = (Keyword)cSideBarEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cNavBarEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cNavBarNavBarKeyword_1_0 = (Keyword)cNavBarEnumLiteralDeclaration_1.eContents().get(0);
+		
+		//enum SourceMenu:
+		//	SideBar | NavBar;
+		public EnumRule getRule() { return rule; }
+		
+		//SideBar | NavBar
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//SideBar
+		public EnumLiteralDeclaration getSideBarEnumLiteralDeclaration_0() { return cSideBarEnumLiteralDeclaration_0; }
+		
+		//'SideBar'
+		public Keyword getSideBarSideBarKeyword_0_0() { return cSideBarSideBarKeyword_0_0; }
+		
+		//NavBar
+		public EnumLiteralDeclaration getNavBarEnumLiteralDeclaration_1() { return cNavBarEnumLiteralDeclaration_1; }
+		
+		//'NavBar'
+		public Keyword getNavBarNavBarKeyword_1_0() { return cNavBarNavBarKeyword_1_0; }
+	}
+	public class SourcePresElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.SourcePres");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cBasiqueEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cBasiqueBasiqueKeyword_0_0 = (Keyword)cBasiqueEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cCardEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cCardCardKeyword_1_0 = (Keyword)cCardEnumLiteralDeclaration_1.eContents().get(0);
+		
+		//enum SourcePres:
+		//	basique | card;
+		public EnumRule getRule() { return rule; }
+		
+		//basique | card
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//basique
+		public EnumLiteralDeclaration getBasiqueEnumLiteralDeclaration_0() { return cBasiqueEnumLiteralDeclaration_0; }
+		
+		//'basique'
+		public Keyword getBasiqueBasiqueKeyword_0_0() { return cBasiqueBasiqueKeyword_0_0; }
+		
+		//card
+		public EnumLiteralDeclaration getCardEnumLiteralDeclaration_1() { return cCardEnumLiteralDeclaration_1; }
+		
+		//'card'
+		public Keyword getCardCardKeyword_1_0() { return cCardCardKeyword_1_0; }
+	}
+	public class SourceLogoElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.SourceLogo");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cComuteEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cComuteComuteKeyword_0_0 = (Keyword)cComuteEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cRdvEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cRdvRdvKeyword_1_0 = (Keyword)cRdvEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cTrajetEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cTrajetTrajetKeyword_2_0 = (Keyword)cTrajetEnumLiteralDeclaration_2.eContents().get(0);
+		
+		//enum SourceLogo:
+		//	comute | rdv | trajet;
+		public EnumRule getRule() { return rule; }
+		
+		//comute | rdv | trajet
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//comute
+		public EnumLiteralDeclaration getComuteEnumLiteralDeclaration_0() { return cComuteEnumLiteralDeclaration_0; }
+		
+		//'comute'
+		public Keyword getComuteComuteKeyword_0_0() { return cComuteComuteKeyword_0_0; }
+		
+		//rdv
+		public EnumLiteralDeclaration getRdvEnumLiteralDeclaration_1() { return cRdvEnumLiteralDeclaration_1; }
+		
+		//'rdv'
+		public Keyword getRdvRdvKeyword_1_0() { return cRdvRdvKeyword_1_0; }
+		
+		//trajet
+		public EnumLiteralDeclaration getTrajetEnumLiteralDeclaration_2() { return cTrajetEnumLiteralDeclaration_2; }
+		
+		//'trajet'
+		public Keyword getTrajetTrajetKeyword_2_0() { return cTrajetTrajetKeyword_2_0; }
+	}
 	public class SourceNameElements extends AbstractEnumRuleElementFinder {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.SourceName");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final EnumLiteralDeclaration cTisseoEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
 		private final Keyword cTisseoTisseoKeyword_0_0 = (Keyword)cTisseoEnumLiteralDeclaration_0.eContents().get(0);
 		private final EnumLiteralDeclaration cGoogleMapEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
-		private final Keyword cGoogleMapGoogleKeyword_1_0 = (Keyword)cGoogleMapEnumLiteralDeclaration_1.eContents().get(0);
+		private final Keyword cGoogleMapGoogleMapKeyword_1_0 = (Keyword)cGoogleMapEnumLiteralDeclaration_1.eContents().get(0);
 		
 		//enum SourceName:
-		//	Tisseo='tisseo' | GoogleMap='google';
+		//	Tisseo | GoogleMap;
 		public EnumRule getRule() { return rule; }
 		
-		//Tisseo='tisseo' | GoogleMap='google'
+		//Tisseo | GoogleMap
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//Tisseo='tisseo'
+		//Tisseo
 		public EnumLiteralDeclaration getTisseoEnumLiteralDeclaration_0() { return cTisseoEnumLiteralDeclaration_0; }
 		
-		//'tisseo'
+		//'Tisseo'
 		public Keyword getTisseoTisseoKeyword_0_0() { return cTisseoTisseoKeyword_0_0; }
 		
-		//GoogleMap='google'
+		//GoogleMap
 		public EnumLiteralDeclaration getGoogleMapEnumLiteralDeclaration_1() { return cGoogleMapEnumLiteralDeclaration_1; }
 		
-		//'google'
-		public Keyword getGoogleMapGoogleKeyword_1_0() { return cGoogleMapGoogleKeyword_1_0; }
+		//'GoogleMap'
+		public Keyword getGoogleMapGoogleMapKeyword_1_0() { return cGoogleMapGoogleMapKeyword_1_0; }
 	}
 	
 	private final PageElements pPage;
 	private final EStringElements pEString;
 	private final SourceElements pSource;
+	private final SourceMenuElements eSourceMenu;
+	private final SourcePresElements eSourcePres;
+	private final SourceLogoElements eSourceLogo;
 	private final SourceNameElements eSourceName;
 	
 	private final Grammar grammar;
@@ -170,6 +348,9 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		this.pPage = new PageElements();
 		this.pEString = new EStringElements();
 		this.pSource = new SourceElements();
+		this.eSourceMenu = new SourceMenuElements();
+		this.eSourcePres = new SourcePresElements();
+		this.eSourceLogo = new SourceLogoElements();
 		this.eSourceName = new SourceNameElements();
 	}
 	
@@ -200,12 +381,16 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	
-	///** generate grammar for creating a web site
-	// * just need one title for the web site 
-	// * and n source 
-	// */ Page:
+	//Page:
+	//	geolocalisation?='geolocalisation'?
 	//	'Page'
 	//	name=EString
+	//	'description' description=EString
+	//	'mail' mail=EString
+	//	'telephone' telephone=EString
+	//	'menu' menu=SourceMenu
+	//	'presentation' presentation=SourcePres
+	//	'logo' logo=SourceLogo
 	//	'source' source+=Source ("," source+=Source)*;
 	public PageElements getPageAccess() {
 		return pPage;
@@ -235,8 +420,38 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getSourceAccess().getRule();
 	}
 	
+	//enum SourceMenu:
+	//	SideBar | NavBar;
+	public SourceMenuElements getSourceMenuAccess() {
+		return eSourceMenu;
+	}
+	
+	public EnumRule getSourceMenuRule() {
+		return getSourceMenuAccess().getRule();
+	}
+	
+	//enum SourcePres:
+	//	basique | card;
+	public SourcePresElements getSourcePresAccess() {
+		return eSourcePres;
+	}
+	
+	public EnumRule getSourcePresRule() {
+		return getSourcePresAccess().getRule();
+	}
+	
+	//enum SourceLogo:
+	//	comute | rdv | trajet;
+	public SourceLogoElements getSourceLogoAccess() {
+		return eSourceLogo;
+	}
+	
+	public EnumRule getSourceLogoRule() {
+		return getSourceLogoAccess().getRule();
+	}
+	
 	//enum SourceName:
-	//	Tisseo='tisseo' | GoogleMap='google';
+	//	Tisseo | GoogleMap;
 	public SourceNameElements getSourceNameAccess() {
 		return eSourceName;
 	}

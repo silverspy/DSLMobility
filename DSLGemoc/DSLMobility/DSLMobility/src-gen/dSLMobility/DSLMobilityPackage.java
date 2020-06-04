@@ -86,13 +86,103 @@ public interface DSLMobilityPackage extends EPackage {
 	int PAGE__SOURCE = 1;
 
 	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE__DESCRIPTION = 2;
+
+	/**
+	 * The feature id for the '<em><b>Mail</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE__MAIL = 3;
+
+	/**
+	 * The feature id for the '<em><b>Telephone</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE__TELEPHONE = 4;
+
+	/**
+	 * The feature id for the '<em><b>Menu</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE__MENU = 5;
+
+	/**
+	 * The feature id for the '<em><b>Presentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE__PRESENTATION = 6;
+
+	/**
+	 * The feature id for the '<em><b>Logo</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE__LOGO = 7;
+
+	/**
+	 * The feature id for the '<em><b>Geolocalisation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE__GEOLOCALISATION = 8;
+
+	/**
+	 * The feature id for the '<em><b>Heure ouverture</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE__HEURE_OUVERTURE = 9;
+
+	/**
+	 * The feature id for the '<em><b>Heure fermeture</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE__HEURE_FERMETURE = 10;
+
+	/**
+	 * The feature id for the '<em><b>Nb Pers</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE__NB_PERS = 11;
+
+	/**
 	 * The number of structural features of the '<em>Page</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PAGE_FEATURE_COUNT = 2;
+	int PAGE_FEATURE_COUNT = 12;
 
 	/**
 	 * The number of operations of the '<em>Page</em>' class.
@@ -151,6 +241,36 @@ public interface DSLMobilityPackage extends EPackage {
 	int SOURCE_NAME = 2;
 
 	/**
+	 * The meta object id for the '{@link dSLMobility.SourceMenu <em>Source Menu</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dSLMobility.SourceMenu
+	 * @see dSLMobility.impl.DSLMobilityPackageImpl#getSourceMenu()
+	 * @generated
+	 */
+	int SOURCE_MENU = 3;
+
+	/**
+	 * The meta object id for the '{@link dSLMobility.SourcePres <em>Source Pres</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dSLMobility.SourcePres
+	 * @see dSLMobility.impl.DSLMobilityPackageImpl#getSourcePres()
+	 * @generated
+	 */
+	int SOURCE_PRES = 4;
+
+	/**
+	 * The meta object id for the '{@link dSLMobility.SourceLogo <em>Source Logo</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dSLMobility.SourceLogo
+	 * @see dSLMobility.impl.DSLMobilityPackageImpl#getSourceLogo()
+	 * @generated
+	 */
+	int SOURCE_LOGO = 5;
+
+	/**
 	 * Returns the meta object for class '{@link dSLMobility.Page <em>Page</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -183,6 +303,116 @@ public interface DSLMobilityPackage extends EPackage {
 	EReference getPage_Source();
 
 	/**
+	 * Returns the meta object for the attribute '{@link dSLMobility.Page#getDescription <em>Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see dSLMobility.Page#getDescription()
+	 * @see #getPage()
+	 * @generated
+	 */
+	EAttribute getPage_Description();
+
+	/**
+	 * Returns the meta object for the attribute '{@link dSLMobility.Page#getMail <em>Mail</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Mail</em>'.
+	 * @see dSLMobility.Page#getMail()
+	 * @see #getPage()
+	 * @generated
+	 */
+	EAttribute getPage_Mail();
+
+	/**
+	 * Returns the meta object for the attribute '{@link dSLMobility.Page#getTelephone <em>Telephone</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Telephone</em>'.
+	 * @see dSLMobility.Page#getTelephone()
+	 * @see #getPage()
+	 * @generated
+	 */
+	EAttribute getPage_Telephone();
+
+	/**
+	 * Returns the meta object for the attribute '{@link dSLMobility.Page#getMenu <em>Menu</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Menu</em>'.
+	 * @see dSLMobility.Page#getMenu()
+	 * @see #getPage()
+	 * @generated
+	 */
+	EAttribute getPage_Menu();
+
+	/**
+	 * Returns the meta object for the attribute '{@link dSLMobility.Page#getPresentation <em>Presentation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Presentation</em>'.
+	 * @see dSLMobility.Page#getPresentation()
+	 * @see #getPage()
+	 * @generated
+	 */
+	EAttribute getPage_Presentation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link dSLMobility.Page#getLogo <em>Logo</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Logo</em>'.
+	 * @see dSLMobility.Page#getLogo()
+	 * @see #getPage()
+	 * @generated
+	 */
+	EAttribute getPage_Logo();
+
+	/**
+	 * Returns the meta object for the attribute '{@link dSLMobility.Page#getGeolocalisation <em>Geolocalisation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Geolocalisation</em>'.
+	 * @see dSLMobility.Page#getGeolocalisation()
+	 * @see #getPage()
+	 * @generated
+	 */
+	EAttribute getPage_Geolocalisation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link dSLMobility.Page#getHeure_ouverture <em>Heure ouverture</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Heure ouverture</em>'.
+	 * @see dSLMobility.Page#getHeure_ouverture()
+	 * @see #getPage()
+	 * @generated
+	 */
+	EAttribute getPage_Heure_ouverture();
+
+	/**
+	 * Returns the meta object for the attribute '{@link dSLMobility.Page#getHeure_fermeture <em>Heure fermeture</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Heure fermeture</em>'.
+	 * @see dSLMobility.Page#getHeure_fermeture()
+	 * @see #getPage()
+	 * @generated
+	 */
+	EAttribute getPage_Heure_fermeture();
+
+	/**
+	 * Returns the meta object for the attribute '{@link dSLMobility.Page#getNb_Pers <em>Nb Pers</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Nb Pers</em>'.
+	 * @see dSLMobility.Page#getNb_Pers()
+	 * @see #getPage()
+	 * @generated
+	 */
+	EAttribute getPage_Nb_Pers();
+
+	/**
 	 * Returns the meta object for class '{@link dSLMobility.Source <em>Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -212,6 +442,36 @@ public interface DSLMobilityPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getSourceName();
+
+	/**
+	 * Returns the meta object for enum '{@link dSLMobility.SourceMenu <em>Source Menu</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Source Menu</em>'.
+	 * @see dSLMobility.SourceMenu
+	 * @generated
+	 */
+	EEnum getSourceMenu();
+
+	/**
+	 * Returns the meta object for enum '{@link dSLMobility.SourcePres <em>Source Pres</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Source Pres</em>'.
+	 * @see dSLMobility.SourcePres
+	 * @generated
+	 */
+	EEnum getSourcePres();
+
+	/**
+	 * Returns the meta object for enum '{@link dSLMobility.SourceLogo <em>Source Logo</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Source Logo</em>'.
+	 * @see dSLMobility.SourceLogo
+	 * @generated
+	 */
+	EEnum getSourceLogo();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -263,6 +523,86 @@ public interface DSLMobilityPackage extends EPackage {
 		EReference PAGE__SOURCE = eINSTANCE.getPage_Source();
 
 		/**
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PAGE__DESCRIPTION = eINSTANCE.getPage_Description();
+
+		/**
+		 * The meta object literal for the '<em><b>Mail</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PAGE__MAIL = eINSTANCE.getPage_Mail();
+
+		/**
+		 * The meta object literal for the '<em><b>Telephone</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PAGE__TELEPHONE = eINSTANCE.getPage_Telephone();
+
+		/**
+		 * The meta object literal for the '<em><b>Menu</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PAGE__MENU = eINSTANCE.getPage_Menu();
+
+		/**
+		 * The meta object literal for the '<em><b>Presentation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PAGE__PRESENTATION = eINSTANCE.getPage_Presentation();
+
+		/**
+		 * The meta object literal for the '<em><b>Logo</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PAGE__LOGO = eINSTANCE.getPage_Logo();
+
+		/**
+		 * The meta object literal for the '<em><b>Geolocalisation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PAGE__GEOLOCALISATION = eINSTANCE.getPage_Geolocalisation();
+
+		/**
+		 * The meta object literal for the '<em><b>Heure ouverture</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PAGE__HEURE_OUVERTURE = eINSTANCE.getPage_Heure_ouverture();
+
+		/**
+		 * The meta object literal for the '<em><b>Heure fermeture</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PAGE__HEURE_FERMETURE = eINSTANCE.getPage_Heure_fermeture();
+
+		/**
+		 * The meta object literal for the '<em><b>Nb Pers</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PAGE__NB_PERS = eINSTANCE.getPage_Nb_Pers();
+
+		/**
 		 * The meta object literal for the '{@link dSLMobility.impl.SourceImpl <em>Source</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -289,6 +629,36 @@ public interface DSLMobilityPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum SOURCE_NAME = eINSTANCE.getSourceName();
+
+		/**
+		 * The meta object literal for the '{@link dSLMobility.SourceMenu <em>Source Menu</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dSLMobility.SourceMenu
+		 * @see dSLMobility.impl.DSLMobilityPackageImpl#getSourceMenu()
+		 * @generated
+		 */
+		EEnum SOURCE_MENU = eINSTANCE.getSourceMenu();
+
+		/**
+		 * The meta object literal for the '{@link dSLMobility.SourcePres <em>Source Pres</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dSLMobility.SourcePres
+		 * @see dSLMobility.impl.DSLMobilityPackageImpl#getSourcePres()
+		 * @generated
+		 */
+		EEnum SOURCE_PRES = eINSTANCE.getSourcePres();
+
+		/**
+		 * The meta object literal for the '{@link dSLMobility.SourceLogo <em>Source Logo</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dSLMobility.SourceLogo
+		 * @see dSLMobility.impl.DSLMobilityPackageImpl#getSourceLogo()
+		 * @generated
+		 */
+		EEnum SOURCE_LOGO = eINSTANCE.getSourceLogo();
 
 	}
 

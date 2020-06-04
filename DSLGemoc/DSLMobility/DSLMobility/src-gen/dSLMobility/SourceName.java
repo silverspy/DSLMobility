@@ -28,15 +28,6 @@ public enum SourceName implements Enumerator {
 	 */
 	TISSEO(0, "Tisseo", "Tisseo"),
 	/**
-	 * The '<em><b>Uber</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	* <!-- end-user-doc -->
-	 * @see #UBER_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	UBER(1, "Uber", "Uber"),
-	/**
 	 * The '<em><b>Google Map</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	* <!-- end-user-doc -->
@@ -44,7 +35,7 @@ public enum SourceName implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	GOOGLE_MAP(2, "GoogleMap", "GoogleMap");
+	GOOGLE_MAP(1, "GoogleMap", "GoogleMap");
 
 	/**
 	 * The '<em><b>Tisseo</b></em>' literal value.
@@ -62,21 +53,6 @@ public enum SourceName implements Enumerator {
 	public static final int TISSEO_VALUE = 0;
 
 	/**
-	 * The '<em><b>Uber</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Uber</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #UBER
-	 * @model name="Uber"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int UBER_VALUE = 1;
-
-	/**
 	 * The '<em><b>Google Map</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -89,7 +65,7 @@ public enum SourceName implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int GOOGLE_MAP_VALUE = 2;
+	public static final int GOOGLE_MAP_VALUE = 1;
 
 	/**
 	 * An array of all the '<em><b>Source Name</b></em>' enumerators.
@@ -97,7 +73,7 @@ public enum SourceName implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final SourceName[] VALUES_ARRAY = new SourceName[] { TISSEO, UBER, GOOGLE_MAP, };
+	private static final SourceName[] VALUES_ARRAY = new SourceName[] { TISSEO, GOOGLE_MAP, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Source Name</b></em>' enumerators.
@@ -155,8 +131,6 @@ public enum SourceName implements Enumerator {
 		switch (value) {
 		case TISSEO_VALUE:
 			return TISSEO;
-		case UBER_VALUE:
-			return UBER;
 		case GOOGLE_MAP_VALUE:
 			return GOOGLE_MAP;
 		}

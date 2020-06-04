@@ -47,7 +47,18 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Page returns Page
 	 *
 	 * Constraint:
-	 *     (name=EString source+=Source source+=Source*)
+	 *     (
+	 *         geolocalisation?='geolocalisation'? 
+	 *         name=EString 
+	 *         description=EString 
+	 *         mail=EString 
+	 *         telephone=EString 
+	 *         menu=SourceMenu 
+	 *         presentation=SourcePres 
+	 *         logo=SourceLogo 
+	 *         source+=Source 
+	 *         source+=Source*
+	 *     )
 	 */
 	protected void sequence_Page(ISerializationContext context, Page semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

@@ -13,9 +13,32 @@
       <genEnumLiterals ecoreEnumLiteral="dSLMobility.ecore#//SourceName/Tisseo"/>
       <genEnumLiterals ecoreEnumLiteral="dSLMobility.ecore#//SourceName/GoogleMap"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dSLMobility.ecore#//SourceMenu">
+      <genEnumLiterals ecoreEnumLiteral="dSLMobility.ecore#//SourceMenu/SideBar"/>
+      <genEnumLiterals ecoreEnumLiteral="dSLMobility.ecore#//SourceMenu/NavBar"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dSLMobility.ecore#//SourcePres">
+      <genEnumLiterals ecoreEnumLiteral="dSLMobility.ecore#//SourcePres/basique"/>
+      <genEnumLiterals ecoreEnumLiteral="dSLMobility.ecore#//SourcePres/card"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dSLMobility.ecore#//SourceLogo">
+      <genEnumLiterals ecoreEnumLiteral="dSLMobility.ecore#//SourceLogo/comute"/>
+      <genEnumLiterals ecoreEnumLiteral="dSLMobility.ecore#//SourceLogo/rdv"/>
+      <genEnumLiterals ecoreEnumLiteral="dSLMobility.ecore#//SourceLogo/trajet"/>
+    </genEnums>
     <genClasses ecoreClass="dSLMobility.ecore#//Page">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dSLMobility.ecore#//Page/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dSLMobility.ecore#//Page/source"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dSLMobility.ecore#//Page/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dSLMobility.ecore#//Page/mail"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dSLMobility.ecore#//Page/telephone"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dSLMobility.ecore#//Page/menu"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dSLMobility.ecore#//Page/presentation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dSLMobility.ecore#//Page/logo"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dSLMobility.ecore#//Page/geolocalisation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dSLMobility.ecore#//Page/heure_ouverture"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dSLMobility.ecore#//Page/heure_fermeture"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dSLMobility.ecore#//Page/nb_Pers"/>
     </genClasses>
     <genClasses ecoreClass="dSLMobility.ecore#//Source">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dSLMobility.ecore#//Source/name"/>

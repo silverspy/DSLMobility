@@ -5,6 +5,16 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
         upperBound="-1" eType="#//Source" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mail" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="telephone" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="menu" eType="#//SourceMenu"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="presentation" eType="#//SourcePres"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="logo" eType="#//SourceLogo"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="geolocalisation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="heure_ouverture" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="heure_fermeture" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nb_Pers" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Source">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="#//SourceName"/>
@@ -12,5 +22,18 @@
   <eClassifiers xsi:type="ecore:EEnum" name="SourceName">
     <eLiterals name="Tisseo"/>
     <eLiterals name="GoogleMap" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SourceMenu">
+    <eLiterals name="SideBar"/>
+    <eLiterals name="NavBar" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SourcePres">
+    <eLiterals name="basique"/>
+    <eLiterals name="card" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SourceLogo">
+    <eLiterals name="comute"/>
+    <eLiterals name="rdv" value="1"/>
+    <eLiterals name="trajet" value="2"/>
   </eClassifiers>
 </ecore:EPackage>

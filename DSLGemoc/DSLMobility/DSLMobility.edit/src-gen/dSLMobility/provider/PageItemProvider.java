@@ -57,6 +57,16 @@ public class PageItemProvider extends ItemProviderAdapter implements IEditingDom
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
+			addDescriptionPropertyDescriptor(object);
+			addMailPropertyDescriptor(object);
+			addTelephonePropertyDescriptor(object);
+			addMenuPropertyDescriptor(object);
+			addPresentationPropertyDescriptor(object);
+			addLogoPropertyDescriptor(object);
+			addGeolocalisationPropertyDescriptor(object);
+			addHeure_ouverturePropertyDescriptor(object);
+			addHeure_fermeturePropertyDescriptor(object);
+			addNb_PersPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -74,6 +84,161 @@ public class PageItemProvider extends ItemProviderAdapter implements IEditingDom
 						getString("_UI_PropertyDescriptor_description", "_UI_Page_name_feature", "_UI_Page_type"),
 						DSLMobilityPackage.Literals.PAGE__NAME, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Description feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDescriptionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Page_description_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Page_description_feature",
+								"_UI_Page_type"),
+						DSLMobilityPackage.Literals.PAGE__DESCRIPTION, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Mail feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMailPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Page_mail_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Page_mail_feature", "_UI_Page_type"),
+						DSLMobilityPackage.Literals.PAGE__MAIL, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Telephone feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTelephonePropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Page_telephone_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Page_telephone_feature", "_UI_Page_type"),
+						DSLMobilityPackage.Literals.PAGE__TELEPHONE, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Menu feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMenuPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Page_menu_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Page_menu_feature", "_UI_Page_type"),
+						DSLMobilityPackage.Literals.PAGE__MENU, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Presentation feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPresentationPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Page_presentation_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Page_presentation_feature",
+								"_UI_Page_type"),
+						DSLMobilityPackage.Literals.PAGE__PRESENTATION, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Logo feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLogoPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Page_logo_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Page_logo_feature", "_UI_Page_type"),
+						DSLMobilityPackage.Literals.PAGE__LOGO, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Geolocalisation feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addGeolocalisationPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Page_geolocalisation_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Page_geolocalisation_feature",
+								"_UI_Page_type"),
+						DSLMobilityPackage.Literals.PAGE__GEOLOCALISATION, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Heure ouverture feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addHeure_ouverturePropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Page_heure_ouverture_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Page_heure_ouverture_feature",
+								"_UI_Page_type"),
+						DSLMobilityPackage.Literals.PAGE__HEURE_OUVERTURE, true, false, false,
+						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Heure fermeture feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addHeure_fermeturePropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Page_heure_fermeture_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Page_heure_fermeture_feature",
+								"_UI_Page_type"),
+						DSLMobilityPackage.Literals.PAGE__HEURE_FERMETURE, true, false, false,
+						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Nb Pers feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNb_PersPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Page_nb_Pers_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Page_nb_Pers_feature", "_UI_Page_type"),
+						DSLMobilityPackage.Literals.PAGE__NB_PERS, true, false, false,
+						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -153,6 +318,16 @@ public class PageItemProvider extends ItemProviderAdapter implements IEditingDom
 
 		switch (notification.getFeatureID(Page.class)) {
 		case DSLMobilityPackage.PAGE__NAME:
+		case DSLMobilityPackage.PAGE__DESCRIPTION:
+		case DSLMobilityPackage.PAGE__MAIL:
+		case DSLMobilityPackage.PAGE__TELEPHONE:
+		case DSLMobilityPackage.PAGE__MENU:
+		case DSLMobilityPackage.PAGE__PRESENTATION:
+		case DSLMobilityPackage.PAGE__LOGO:
+		case DSLMobilityPackage.PAGE__GEOLOCALISATION:
+		case DSLMobilityPackage.PAGE__HEURE_OUVERTURE:
+		case DSLMobilityPackage.PAGE__HEURE_FERMETURE:
+		case DSLMobilityPackage.PAGE__NB_PERS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		case DSLMobilityPackage.PAGE__SOURCE:
