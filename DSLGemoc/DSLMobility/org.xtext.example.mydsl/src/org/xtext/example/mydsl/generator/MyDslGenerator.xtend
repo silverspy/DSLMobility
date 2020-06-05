@@ -39,7 +39,7 @@ import dSLMobility.SourcePres
 
 class MyDslGenerator extends AbstractGenerator {
 
-	def doGenerate2(IFileSystemAccess2 fsa, Page mypage, String str) {
+	def doGenerate2(IFileSystemAccess2 fsa, Page mypage, String str, String port_back) {
 		
 		
 		if (mypage.geolocalisation !== null) {
@@ -478,7 +478,7 @@ class MyDslGenerator extends AbstractGenerator {
         
             //url du serveur
         
-            var url = "http://54.36.98.109:8080/"
+            var url = "http://54.36.98.109:''' + port_back + '''/"
         
             var typeBody = "introduction"
         
@@ -1638,7 +1638,7 @@ class MyDslGenerator extends AbstractGenerator {
         
             //url du serveur
         
-            var url = "http://54.36.98.109:8080/"
+            var url = "http://54.36.98.109:''' + port_back + '''/"
         
             var typeBody = "introduction"
         
@@ -2647,7 +2647,7 @@ class MyDslGenerator extends AbstractGenerator {
         
             //url du serveur
         
-            var url = "http://54.36.98.109:8080/"
+            var url = "http://54.36.98.109:''' + port_back + '''/"
         
             var typeBody = "introduction"
         
@@ -3393,7 +3393,7 @@ class MyDslGenerator extends AbstractGenerator {
 
         }
         
-    def doGenerate3(IFileSystemAccess2 fsa, Page mypage,String str) {
+    def doGenerate3(IFileSystemAccess2 fsa, Page mypage,String str, String port_back) {
     	
     	
 		if (mypage.geolocalisation === null) {
@@ -3774,7 +3774,7 @@ class MyDslGenerator extends AbstractGenerator {
     	
     	    //url du serveur
     	
-    	    var url = "http://54.36.98.109:8080/"
+    	    var url = "http://54.36.98.109:''' + port_back + '''/"
     	
     	    var typeBody = "introduction"
     	
@@ -4841,7 +4841,7 @@ class MyDslGenerator extends AbstractGenerator {
         
             //url du serveur
         
-            var url = "http://54.36.98.109:8080/"
+            var url = "http://54.36.98.109:''' + port_back + '''/"
         
             var typeBody = "introduction"
         
@@ -6024,7 +6024,7 @@ class MyDslGenerator extends AbstractGenerator {
         
             //url du serveur
         
-            var url = "http://54.36.98.109:8080/"
+            var url = "http://54.36.98.109:''' + port_back + '''/"
         
             var typeBody = "introduction"
         
@@ -6610,7 +6610,7 @@ class MyDslGenerator extends AbstractGenerator {
     }
 
 
-	def doGenerate4(IFileSystemAccess2 fsa, Page mypage,String str) {
+	def doGenerate4(IFileSystemAccess2 fsa, Page mypage,String str, String port_back) {
 		fsa.generateFile('front/front-end/home/index.html', '''<!doctype html>
 		
 		
@@ -6962,7 +6962,7 @@ class MyDslGenerator extends AbstractGenerator {
 		
 						//url du serveur
 		
-						var url = "http://54.36.98.109:8080/"
+						var url = "http://54.36.98.109:''' + port_back + '''/"
 		
 						var typeBody = "introduction"
 		
@@ -7452,7 +7452,18 @@ class MyDslGenerator extends AbstractGenerator {
 			list.add(s.name)
 
 		}	
+		
+		var port_back = 8080
+		
+		var port_front = 80
 
+		if (mypage.port_back !== null) {
+			port_back = mypage.port_back
+		} 
+		if (mypage.port_back !== null) {
+			port_back = mypage.port_front
+		}
+		
 		
 
 		var str = ""
@@ -8169,7 +8180,7 @@ class MyDslGenerator extends AbstractGenerator {
 					
 					    //url du serveur
 					
-					    var url = "http://54.36.98.109:8080/"
+					    var url = "http://54.36.98.109:''' + port_back + '''/"
 					
 					    var typeBody = "introduction"
 					
@@ -9284,7 +9295,7 @@ class MyDslGenerator extends AbstractGenerator {
 					
 					    //url du serveur
 					
-					    var url = "http://54.36.98.109:8080/"
+					    var url = "http://54.36.98.109:''' + port_back + '''/"
 					
 					    var typeBody = "introduction"
 					
@@ -9903,11 +9914,11 @@ class MyDslGenerator extends AbstractGenerator {
 		}
 
 		
-		doGenerate2(fsa, mypage, str)
+		doGenerate2(fsa, mypage, str, port_back)
 		
-		doGenerate3(fsa, mypage, str)
+		doGenerate3(fsa, mypage, str, port_back)
 		
-		doGenerate4(fsa, mypage, str)
+		doGenerate4(fsa, mypage, str, port_back)
 		
 		/** Create script file for itialize git */
 
@@ -9979,7 +9990,7 @@ class MyDslGenerator extends AbstractGenerator {
 
 		
 
-			var url = "http://54.36.98.109:8080/test"
+			var url = "http://54.36.98.109:''' + port_back + '''/test"
 
 		
 
@@ -10167,11 +10178,13 @@ class MyDslGenerator extends AbstractGenerator {
 		
 		        ArrayList<Meeting> meetings = new ArrayList<>();
 		
+		        Planning planning = new Planning();
+		
 		
 		
 		        // Start embedded server at this port
 		
-		        port(8080);
+		        port(''' + port_back + ''');
 		
 		
 		
@@ -10323,6 +10336,184 @@ class MyDslGenerator extends AbstractGenerator {
 		
 		        /*
 		
+		            /joinRDVinPlanning  + data{
+		
+		            name:
+		
+		            adress:
+		
+		            idRDV:
+		
+		            api: google / tisseo
+		
+		            } => renvoie le rendez vous et ajoute a la liste des participants
+		
+		         */
+		
+		        post("/joinRDVinPlanning", (request, response) -> {
+		
+		            String name = request.queryParams("name").replace(" ", "+");
+		
+		            String adress = request.queryParams("adress").replace(" ", "+");
+		
+		            String idRDV = request.queryParams("idRDV").replace(" ", "+");
+		
+		            String API = request.queryParams("api").replace(" ", "+");
+		
+		            //String moyen = request.queryParams("moyen").replace(" ", "+");
+		
+		            if (planning.joinMeeting(idRDV,name,adress)){
+		
+		                System.out.println("je rentre");
+		
+		                response.status(200);
+		
+		                response.type("application/json");
+		
+		                Meeting m = planning.getMeeting(idRDV);
+		
+		                String APIresponse = RequestAPI.getItiniraire(adress, m.adress, m.date, API);
+		
+		                String Response = "{\"APIresponse\":" + APIresponse + ",\"APItype\":\"" + API + "\"" + "}";
+		
+		                return Response;
+		
+		            } else {
+		
+		                response.status(420);
+		
+		                response.type("application/json");
+		
+		                return "Meeting full";
+		
+		            }
+		
+		
+		
+		        });
+		
+		
+		
+		        /*
+		
+		        /createRDVinPlanning + data {
+		
+		
+		
+		            name : nom_user
+		
+		            adress: adress_user
+		
+		            dateRDV:
+		
+		            adressRDV:
+		
+		            api : google / tisseo
+		
+		
+		
+		        } => creer le rdv dans le planning et renvoie les instructions
+		
+		        */
+		
+		        post("/createRDVinPlanning", (request, response) -> {
+		
+		            String name = request.queryParams("name").replace(" ", "+");
+		
+		            String adress = request.queryParams("adress").replace(" ", "+");
+		
+		            String adressRDV = request.queryParams("adressRDV").replace(" ", "+");
+		
+		            String dateRDV = request.queryParams("dateRDV").replace(" ", "+");
+		
+		            String API = request.queryParams("api").replace(" ", "+");
+		
+		            if(planning.addMeeting(adressRDV, dateRDV, name, adress)) {
+		
+		                response.status(200);
+		
+		                response.type("application/json");
+		
+		                String APIresponse = RequestAPI.getItiniraire(adress, adressRDV, dateRDV, API);
+		
+		                String Response = "{\"APIresponse\":" + APIresponse + ",\"APItype\":\"" + API + "\"" + "}";
+		
+		                return Response;
+		
+		            } else {
+		
+		                response.status(420);
+		
+		                response.type("application/json");
+		
+		                return "Already exist or not in the time slot";
+		
+		            }
+		
+		
+		
+		        });
+		
+		
+		
+		        /*
+		
+		        /listRDVinPlanning => liste les rendez vous du planning
+		
+		        */
+		
+		        post("/listRDVinPlanning", (request, response) -> {
+		
+		            response.status(200);
+		
+		            response.type("application/json");
+		
+		            return planning.JsonListRDV();
+		
+		        });
+		
+		
+		
+		        /*
+		
+		        /listDispo => liste les horaires disponible
+		
+		        */
+		
+		        post("/listDispo", (request, response) -> {
+		
+		            response.status(200);
+		
+		            response.type("application/json");
+		
+		            return planning.getDispo();
+		
+		        });
+		
+		
+		
+		        /*
+		
+		        /getHoraire => Liste des horaire
+		
+		        */
+		
+		        post("/getHoraire", (request, response) -> {
+		
+		            response.status(200);
+		
+		            response.type("application/json");
+		
+		            return planning.getJsonHoraire();
+		
+		        });
+		
+		
+		
+		
+		
+		        /*
+		
 		        /test => return success
 		
 		         */
@@ -10354,133 +10545,77 @@ class MyDslGenerator extends AbstractGenerator {
 		
 
 		fsa.generateFile('Back/src/main/java/Meeting.java', '''import java.util.ArrayList;
-
 		
-
 		
-
 		
-
 		public class Meeting {
-
 		
-
 		    String adress;
-
 		
-
 		    String date;
-
 		
-
 		    String id;
-
 		
-
 		    ArrayList<Guest> GuestList = new ArrayList<>();
-
 		
-
 		
-
 		
-
 		    public Meeting(String rdvAdress, String date, String id, String userName, String userAdress){
-
 		
-
 		        this.adress = rdvAdress;
-
 		
-
 		        this.date = date;
-
 		
-
 		        this.id = id;
-
 		
-
 		        addUser(userName, userAdress);
-
 		
-
 		    }
-
 		
-
 		
-
 		
-
 		    public void addUser(String name, String adress) {
-
 		
-
 		        GuestList.add(new Guest(name,adress));
-
 		
-
 		    }
-
 		
-
 		
-
 		
-
 		    public String toJson(){
-
 		
-
-		        return "{\"adress\": \"" + adress + "\", \"date\": \"" + date + "\", \"id\": \"" + id + "\"}";
-
+		        return "{\"adress\": \"" + adress + "\", \"date\": \"" + date + "\", \"id\": \"" + id + "\", \"nbPeople\": \"" + GuestList.size() + "\"}";
 		
-
 		    }
-
 		
-
 		
-
 		
-
 		    public String getAllGuest() {
-
 		
-
 		        String Jsonlist = "\"meetings\": [";
-
 		
-
 		        for (int i = 0; i < GuestList.size(); i++){
-
 		
-
 		            Jsonlist += GuestList.get(i);
-
 		
-
 		        }
-
 		
-
 		        Jsonlist += "]";
-
 		
-
 		        return Jsonlist;
-
 		
-
 		    }
-
 		
-
 		
-
 		
-
+		    public int nbUser(){
+		
+		        return GuestList.size();
+		
+		    }
+		
+		
+		
 		}''')
 
 		
@@ -11240,7 +11375,7 @@ class MyDslGenerator extends AbstractGenerator {
 
 		          ports:
 
-		          - '80:8080'
+		          - "''' + port_front + ''':''' + port_back + '''"
 
 		          volumes:
 
@@ -11252,7 +11387,7 @@ class MyDslGenerator extends AbstractGenerator {
 
 		          ports:
 
-		              - "8080:8080"
+		              - "''' + port_back + ''':''' + port_back + '''"
 
 		          command: java -jar ./target/Back_DSLMobility-1.0-SNAPSHOT.jar''')
 
@@ -11271,6 +11406,219 @@ class MyDslGenerator extends AbstractGenerator {
 		  		  RUN mvn install
 
 		  		  RUN ls ./target''')
+		  		  
+		  		  
+		  fsa.generateFile('Back/src/main/resources/Planing.properties', '''
+		  
+		  openAt=''' + mypage.heure_ouverture + '''
+		  
+		  closeAt=''' + mypage.heure_fermeture + '''
+		  
+		  nbPerHour=''' + mypage.nb_Pers + ''' ''')
+		  
+		  fsa.generateFile('Back/src/main/java/Planning.java', '''import java.io.FileInputStream;
+		  
+		  import java.io.InputStream;
+		  
+		  import java.text.SimpleDateFormat;
+		  
+		  import java.util.HashMap;
+		  
+		  import java.util.Calendar;
+		  
+		  import java.util.Properties;
+		  
+		  
+		  
+		  public class Planning {
+		  
+		      int hstart;
+		  
+		      int hend;
+		  
+		      int nbPers;
+		  
+		      HashMap<String, Meeting> Listerdv = new HashMap<>();
+		  
+		  
+		  
+		  
+		  
+		      public Planning(){
+		  
+		          try {
+		  
+		  
+		  
+		              Properties prop = new Properties();
+		  
+		              InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("Planing.properties");
+		  
+		              prop.load(in);
+		  
+		              hstart = Integer.parseInt(prop.getProperty("openAt"));
+		  
+		              hend = Integer.parseInt(prop.getProperty("closeAt"));
+		  
+		              nbPers = Integer.parseInt(prop.getProperty("nbPerHour"));
+		  
+		  
+		  
+		          } catch(Exception e){
+		  
+		              System.out.println(e);
+		  
+		              System.out.println("error no Planing.properties default properties loaded (9h to 18h, 2 person)");
+		  
+		              hstart = 9;
+		  
+		              hend = 18;
+		  
+		              nbPers = 2;
+		  
+		          }
+		  
+		          System.out.println("Open at : " + hstart + " \nClose at : " + hend + " \nNumber of people per meeting : " + nbPers);
+		  
+		      }
+		  
+		  
+		  
+		      public boolean addMeeting(String rdvAdress, String date, String userName, String userAdress){
+		  
+		          String day = date.split("\\+")[0];
+		  
+		          int heurerdv  = Integer.parseInt(date.split("\\+")[1].split(":")[0]);
+		  
+		          if(heurerdv > hstart && heurerdv < hend) {
+		  
+		              if (Listerdv.containsKey(day + "+" + heurerdv)){
+		  
+		                  return false;
+		  
+		              } else {
+		  
+		                  Listerdv.put(date , new Meeting(rdvAdress, date, date, userName, userAdress));
+		  
+		                  return true;
+		  
+		              }
+		  
+		          } else {
+		  
+		              return false;
+		  
+		          }
+		  
+		      }
+		  
+		  
+		  
+		      public boolean joinMeeting(String id, String name, String adress){
+		  
+		          System.out.println(Listerdv.containsKey(id) + " : " + id);
+		  
+		          if (Listerdv.containsKey(id)){
+		  
+		              if(Listerdv.get(id).nbUser() < nbPers){
+		  
+		                  Listerdv.get(id).addUser(name,adress);
+		  
+		                  return true;
+		  
+		              } else {
+		  
+		                  return false;
+		  
+		              }
+		  
+		          } else {
+		  
+		              return false;
+		  
+		          }
+		  
+		      }
+		  
+		  
+		  
+		      public Meeting getMeeting(String id){
+		  
+		          return Listerdv.get(id);
+		  
+		      }
+		  
+		  
+		  
+		      public String JsonListRDV(){
+		  
+		          String ListJson = "{\"meetings\": [";
+		  
+		          for (String name: Listerdv.keySet()){
+		  
+		              ListJson += (Listerdv.get(name).toJson() +",");
+		  
+		          }
+		  
+		          return new StringBuilder(ListJson).deleteCharAt(ListJson.length()-1).toString() + "]}";
+		  
+		      }
+		  
+		  
+		  
+		      public String getDispo(){
+		  
+		  
+		  
+		          Calendar calendar = Calendar.getInstance();
+		  
+		  
+		  
+		          //définir le format de la date
+		  
+		          SimpleDateFormat sdf = new SimpleDateFormat("yyyy-dd-MM");
+		  
+		          String ListJson = "{\"dispo\": [";
+		  
+		  
+		  
+		          for (int i = 0; i < 7; i++) {
+		  
+		              String stringdate = sdf.format(calendar.getTime());
+		  
+		              calendar.add(Calendar.DATE, 1);
+		  
+		              for (int j = hstart; j < hend; j++){
+		  
+		                  String idRDV = stringdate + "+" + j + ":00";
+		  
+		                  if(!Listerdv.containsKey(idRDV)) {
+		  
+		                      ListJson += "\"" + idRDV +  "\",";
+		  
+		                  }
+		  
+		              }
+		  
+		          }
+		  
+		          return new StringBuilder(ListJson).deleteCharAt(ListJson.length()-1).toString() + "]}";
+		  
+		      }
+		  
+		  
+		  
+		      public String getJsonHoraire(){
+		  
+		          return "{ \"open\" : \"" + hstart + "\", \"close\" : \"" + hend + "\"}";
+		  
+		      }
+		  
+		  
+		  
+		  
+		  
+		  }''')
 
 		
 

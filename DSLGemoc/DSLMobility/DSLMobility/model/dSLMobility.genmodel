@@ -39,6 +39,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dSLMobility.ecore#//Page/heure_ouverture"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dSLMobility.ecore#//Page/heure_fermeture"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dSLMobility.ecore#//Page/nb_Pers"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dSLMobility.ecore#//Page/Port_back"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dSLMobility.ecore#//Page/Port_front"/>
     </genClasses>
     <genClasses ecoreClass="dSLMobility.ecore#//Source">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dSLMobility.ecore#//Source/name"/>

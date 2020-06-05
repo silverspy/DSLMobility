@@ -254,6 +254,24 @@ public class DSLMobilityPackageImpl extends EPackageImpl implements DSLMobilityP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getPage_Port_back() {
+		return (EAttribute) pageEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPage_Port_front() {
+		return (EAttribute) pageEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSource() {
 		return sourceEClass;
 	}
@@ -345,6 +363,8 @@ public class DSLMobilityPackageImpl extends EPackageImpl implements DSLMobilityP
 		createEAttribute(pageEClass, PAGE__HEURE_OUVERTURE);
 		createEAttribute(pageEClass, PAGE__HEURE_FERMETURE);
 		createEAttribute(pageEClass, PAGE__NB_PERS);
+		createEAttribute(pageEClass, PAGE__PORT_BACK);
+		createEAttribute(pageEClass, PAGE__PORT_FRONT);
 
 		sourceEClass = createEClass(SOURCE);
 		createEAttribute(sourceEClass, SOURCE__NAME);
@@ -414,6 +434,10 @@ public class DSLMobilityPackageImpl extends EPackageImpl implements DSLMobilityP
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPage_Nb_Pers(), ecorePackage.getEInt(), "nb_Pers", null, 0, 1, Page.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPage_Port_back(), ecorePackage.getEInt(), "Port_back", null, 0, 1, Page.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPage_Port_front(), ecorePackage.getEInt(), "Port_front", null, 0, 1, Page.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sourceEClass, Source.class, "Source", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSource_Name(), this.getSourceName(), "name", null, 0, 1, Source.class, !IS_TRANSIENT,

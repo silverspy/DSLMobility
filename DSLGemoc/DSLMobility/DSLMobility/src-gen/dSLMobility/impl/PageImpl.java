@@ -45,6 +45,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link dSLMobility.impl.PageImpl#getHeure_ouverture <em>Heure ouverture</em>}</li>
  *   <li>{@link dSLMobility.impl.PageImpl#getHeure_fermeture <em>Heure fermeture</em>}</li>
  *   <li>{@link dSLMobility.impl.PageImpl#getNb_Pers <em>Nb Pers</em>}</li>
+ *   <li>{@link dSLMobility.impl.PageImpl#getPort_back <em>Port back</em>}</li>
+ *   <li>{@link dSLMobility.impl.PageImpl#getPort_front <em>Port front</em>}</li>
  * </ul>
  *
  * @generated
@@ -279,6 +281,46 @@ public class PageImpl extends MinimalEObjectImpl.Container implements Page {
 	 * @ordered
 	 */
 	protected int nb_Pers = NB_PERS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPort_back() <em>Port back</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPort_back()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int PORT_BACK_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getPort_back() <em>Port back</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPort_back()
+	 * @generated
+	 * @ordered
+	 */
+	protected int port_back = PORT_BACK_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPort_front() <em>Port front</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPort_front()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int PORT_FRONT_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getPort_front() <em>Port front</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPort_front()
+	 * @generated
+	 * @ordered
+	 */
+	protected int port_front = PORT_FRONT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -554,6 +596,50 @@ public class PageImpl extends MinimalEObjectImpl.Container implements Page {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getPort_back() {
+		return port_back;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPort_back(int newPort_back) {
+		int oldPort_back = port_back;
+		port_back = newPort_back;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DSLMobilityPackage.PAGE__PORT_BACK, oldPort_back,
+					port_back));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getPort_front() {
+		return port_front;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPort_front(int newPort_front) {
+		int oldPort_front = port_front;
+		port_front = newPort_front;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DSLMobilityPackage.PAGE__PORT_FRONT, oldPort_front,
+					port_front));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -595,6 +681,10 @@ public class PageImpl extends MinimalEObjectImpl.Container implements Page {
 			return getHeure_fermeture();
 		case DSLMobilityPackage.PAGE__NB_PERS:
 			return getNb_Pers();
+		case DSLMobilityPackage.PAGE__PORT_BACK:
+			return getPort_back();
+		case DSLMobilityPackage.PAGE__PORT_FRONT:
+			return getPort_front();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -645,6 +735,12 @@ public class PageImpl extends MinimalEObjectImpl.Container implements Page {
 		case DSLMobilityPackage.PAGE__NB_PERS:
 			setNb_Pers((Integer) newValue);
 			return;
+		case DSLMobilityPackage.PAGE__PORT_BACK:
+			setPort_back((Integer) newValue);
+			return;
+		case DSLMobilityPackage.PAGE__PORT_FRONT:
+			setPort_front((Integer) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -693,6 +789,12 @@ public class PageImpl extends MinimalEObjectImpl.Container implements Page {
 		case DSLMobilityPackage.PAGE__NB_PERS:
 			setNb_Pers(NB_PERS_EDEFAULT);
 			return;
+		case DSLMobilityPackage.PAGE__PORT_BACK:
+			setPort_back(PORT_BACK_EDEFAULT);
+			return;
+		case DSLMobilityPackage.PAGE__PORT_FRONT:
+			setPort_front(PORT_FRONT_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -730,6 +832,10 @@ public class PageImpl extends MinimalEObjectImpl.Container implements Page {
 			return heure_fermeture != HEURE_FERMETURE_EDEFAULT;
 		case DSLMobilityPackage.PAGE__NB_PERS:
 			return nb_Pers != NB_PERS_EDEFAULT;
+		case DSLMobilityPackage.PAGE__PORT_BACK:
+			return port_back != PORT_BACK_EDEFAULT;
+		case DSLMobilityPackage.PAGE__PORT_FRONT:
+			return port_front != PORT_FRONT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -767,6 +873,10 @@ public class PageImpl extends MinimalEObjectImpl.Container implements Page {
 		result.append(heure_fermeture);
 		result.append(", nb_Pers: ");
 		result.append(nb_Pers);
+		result.append(", Port_back: ");
+		result.append(port_back);
+		result.append(", Port_front: ");
+		result.append(port_front);
 		result.append(')');
 		return result.toString();
 	}

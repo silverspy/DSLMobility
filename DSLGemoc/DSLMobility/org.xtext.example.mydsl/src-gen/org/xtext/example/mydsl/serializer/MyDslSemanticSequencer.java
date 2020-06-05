@@ -53,6 +53,11 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *         description=EString 
 	 *         mail=EString 
 	 *         telephone=EString 
+	 *         heure_ouverture=EString 
+	 *         heure_fermeture=EString 
+	 *         nb_Pers=EString 
+	 *         Port_back=EString? 
+	 *         Port_front=EString? 
 	 *         menu=SourceMenu 
 	 *         presentation=SourcePres 
 	 *         logo=SourceLogo 

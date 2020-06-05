@@ -27,6 +27,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link dSLMobility.Page#getHeure_ouverture <em>Heure ouverture</em>}</li>
  *   <li>{@link dSLMobility.Page#getHeure_fermeture <em>Heure fermeture</em>}</li>
  *   <li>{@link dSLMobility.Page#getNb_Pers <em>Nb Pers</em>}</li>
+ *   <li>{@link dSLMobility.Page#getPort_back <em>Port back</em>}</li>
+ *   <li>{@link dSLMobility.Page#getPort_front <em>Port front</em>}</li>
  * </ul>
  *
  * @see dSLMobility.DSLMobilityPackage#getPage()
@@ -344,5 +346,57 @@ public interface Page extends EObject {
 	 * @generated
 	 */
 	void setNb_Pers(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Port back</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Port back</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Port back</em>' attribute.
+	 * @see #setPort_back(int)
+	 * @see dSLMobility.DSLMobilityPackage#getPage_Port_back()
+	 * @model
+	 * @generated
+	 */
+	int getPort_back();
+
+	/**
+	 * Sets the value of the '{@link dSLMobility.Page#getPort_back <em>Port back</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Port back</em>' attribute.
+	 * @see #getPort_back()
+	 * @generated
+	 */
+	void setPort_back(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Port front</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Port front</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Port front</em>' attribute.
+	 * @see #setPort_front(int)
+	 * @see dSLMobility.DSLMobilityPackage#getPage_Port_front()
+	 * @model
+	 * @generated
+	 */
+	int getPort_front();
+
+	/**
+	 * Sets the value of the '{@link dSLMobility.Page#getPort_front <em>Port front</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Port front</em>' attribute.
+	 * @see #getPort_front()
+	 * @generated
+	 */
+	void setPort_front(int value);
 
 } // Page

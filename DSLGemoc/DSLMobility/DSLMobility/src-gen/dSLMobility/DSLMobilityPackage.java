@@ -176,13 +176,31 @@ public interface DSLMobilityPackage extends EPackage {
 	int PAGE__NB_PERS = 11;
 
 	/**
+	 * The feature id for the '<em><b>Port back</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE__PORT_BACK = 12;
+
+	/**
+	 * The feature id for the '<em><b>Port front</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE__PORT_FRONT = 13;
+
+	/**
 	 * The number of structural features of the '<em>Page</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PAGE_FEATURE_COUNT = 12;
+	int PAGE_FEATURE_COUNT = 14;
 
 	/**
 	 * The number of operations of the '<em>Page</em>' class.
@@ -413,6 +431,28 @@ public interface DSLMobilityPackage extends EPackage {
 	EAttribute getPage_Nb_Pers();
 
 	/**
+	 * Returns the meta object for the attribute '{@link dSLMobility.Page#getPort_back <em>Port back</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Port back</em>'.
+	 * @see dSLMobility.Page#getPort_back()
+	 * @see #getPage()
+	 * @generated
+	 */
+	EAttribute getPage_Port_back();
+
+	/**
+	 * Returns the meta object for the attribute '{@link dSLMobility.Page#getPort_front <em>Port front</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Port front</em>'.
+	 * @see dSLMobility.Page#getPort_front()
+	 * @see #getPage()
+	 * @generated
+	 */
+	EAttribute getPage_Port_front();
+
+	/**
 	 * Returns the meta object for class '{@link dSLMobility.Source <em>Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -601,6 +641,22 @@ public interface DSLMobilityPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PAGE__NB_PERS = eINSTANCE.getPage_Nb_Pers();
+
+		/**
+		 * The meta object literal for the '<em><b>Port back</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PAGE__PORT_BACK = eINSTANCE.getPage_Port_back();
+
+		/**
+		 * The meta object literal for the '<em><b>Port front</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PAGE__PORT_FRONT = eINSTANCE.getPage_Port_front();
 
 		/**
 		 * The meta object literal for the '{@link dSLMobility.impl.SourceImpl <em>Source</em>}' class.
