@@ -69,6 +69,7 @@ public class PageItemProvider extends ItemProviderAdapter implements IEditingDom
 			addNb_PersPropertyDescriptor(object);
 			addPort_backPropertyDescriptor(object);
 			addPort_frontPropertyDescriptor(object);
+			addSelectionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -274,6 +275,21 @@ public class PageItemProvider extends ItemProviderAdapter implements IEditingDom
 	}
 
 	/**
+	 * This adds a property descriptor for the Selection feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSelectionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Page_Selection_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Page_Selection_feature", "_UI_Page_type"),
+						DSLMobilityPackage.Literals.PAGE__SELECTION, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -362,6 +378,7 @@ public class PageItemProvider extends ItemProviderAdapter implements IEditingDom
 		case DSLMobilityPackage.PAGE__NB_PERS:
 		case DSLMobilityPackage.PAGE__PORT_BACK:
 		case DSLMobilityPackage.PAGE__PORT_FRONT:
+		case DSLMobilityPackage.PAGE__SELECTION:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		case DSLMobilityPackage.PAGE__SOURCE:

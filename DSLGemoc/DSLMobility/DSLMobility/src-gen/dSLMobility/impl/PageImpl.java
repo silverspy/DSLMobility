@@ -9,6 +9,7 @@ import dSLMobility.Source;
 import dSLMobility.SourceLogo;
 import dSLMobility.SourceMenu;
 import dSLMobility.SourcePres;
+import dSLMobility.SourceSelection;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -47,6 +48,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link dSLMobility.impl.PageImpl#getNb_Pers <em>Nb Pers</em>}</li>
  *   <li>{@link dSLMobility.impl.PageImpl#getPort_back <em>Port back</em>}</li>
  *   <li>{@link dSLMobility.impl.PageImpl#getPort_front <em>Port front</em>}</li>
+ *   <li>{@link dSLMobility.impl.PageImpl#getSelection <em>Selection</em>}</li>
  * </ul>
  *
  * @generated
@@ -321,6 +323,26 @@ public class PageImpl extends MinimalEObjectImpl.Container implements Page {
 	 * @ordered
 	 */
 	protected int port_front = PORT_FRONT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSelection() <em>Selection</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSelection()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final SourceSelection SELECTION_EDEFAULT = SourceSelection.PLANNING;
+
+	/**
+	 * The cached value of the '{@link #getSelection() <em>Selection</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSelection()
+	 * @generated
+	 * @ordered
+	 */
+	protected SourceSelection selection = SELECTION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -640,6 +662,28 @@ public class PageImpl extends MinimalEObjectImpl.Container implements Page {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public SourceSelection getSelection() {
+		return selection;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSelection(SourceSelection newSelection) {
+		SourceSelection oldSelection = selection;
+		selection = newSelection == null ? SELECTION_EDEFAULT : newSelection;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DSLMobilityPackage.PAGE__SELECTION, oldSelection,
+					selection));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -685,6 +729,8 @@ public class PageImpl extends MinimalEObjectImpl.Container implements Page {
 			return getPort_back();
 		case DSLMobilityPackage.PAGE__PORT_FRONT:
 			return getPort_front();
+		case DSLMobilityPackage.PAGE__SELECTION:
+			return getSelection();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -741,6 +787,9 @@ public class PageImpl extends MinimalEObjectImpl.Container implements Page {
 		case DSLMobilityPackage.PAGE__PORT_FRONT:
 			setPort_front((Integer) newValue);
 			return;
+		case DSLMobilityPackage.PAGE__SELECTION:
+			setSelection((SourceSelection) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -795,6 +844,9 @@ public class PageImpl extends MinimalEObjectImpl.Container implements Page {
 		case DSLMobilityPackage.PAGE__PORT_FRONT:
 			setPort_front(PORT_FRONT_EDEFAULT);
 			return;
+		case DSLMobilityPackage.PAGE__SELECTION:
+			setSelection(SELECTION_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -836,6 +888,8 @@ public class PageImpl extends MinimalEObjectImpl.Container implements Page {
 			return port_back != PORT_BACK_EDEFAULT;
 		case DSLMobilityPackage.PAGE__PORT_FRONT:
 			return port_front != PORT_FRONT_EDEFAULT;
+		case DSLMobilityPackage.PAGE__SELECTION:
+			return selection != SELECTION_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -877,6 +931,8 @@ public class PageImpl extends MinimalEObjectImpl.Container implements Page {
 		result.append(port_back);
 		result.append(", Port_front: ");
 		result.append(port_front);
+		result.append(", Selection: ");
+		result.append(selection);
 		result.append(')');
 		return result.toString();
 	}

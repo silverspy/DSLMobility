@@ -190,9 +190,9 @@ rulePage returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getPageAccess().getHeure_ouvertureEStringParserRuleCall_10_0());
+					newCompositeNode(grammarAccess.getPageAccess().getHeure_ouvertureEIntParserRuleCall_10_0());
 				}
-				lv_heure_ouverture_10_0=ruleEString
+				lv_heure_ouverture_10_0=ruleEInt
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getPageRule());
@@ -201,7 +201,7 @@ rulePage returns [EObject current=null]
 						$current,
 						"heure_ouverture",
 						lv_heure_ouverture_10_0,
-						"org.xtext.example.mydsl.MyDsl.EString");
+						"org.xtext.example.mydsl.MyDsl.EInt");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -213,9 +213,9 @@ rulePage returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getPageAccess().getHeure_fermetureEStringParserRuleCall_12_0());
+					newCompositeNode(grammarAccess.getPageAccess().getHeure_fermetureEIntParserRuleCall_12_0());
 				}
-				lv_heure_fermeture_12_0=ruleEString
+				lv_heure_fermeture_12_0=ruleEInt
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getPageRule());
@@ -224,7 +224,7 @@ rulePage returns [EObject current=null]
 						$current,
 						"heure_fermeture",
 						lv_heure_fermeture_12_0,
-						"org.xtext.example.mydsl.MyDsl.EString");
+						"org.xtext.example.mydsl.MyDsl.EInt");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -236,9 +236,9 @@ rulePage returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getPageAccess().getNb_PersEStringParserRuleCall_14_0());
+					newCompositeNode(grammarAccess.getPageAccess().getNb_PersEIntParserRuleCall_14_0());
 				}
-				lv_nb_Pers_14_0=ruleEString
+				lv_nb_Pers_14_0=ruleEInt
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getPageRule());
@@ -247,71 +247,21 @@ rulePage returns [EObject current=null]
 						$current,
 						"nb_Pers",
 						lv_nb_Pers_14_0,
-						"org.xtext.example.mydsl.MyDsl.EString");
+						"org.xtext.example.mydsl.MyDsl.EInt");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		(
-			otherlv_15='Port_back'
-			{
-				newLeafNode(otherlv_15, grammarAccess.getPageAccess().getPort_backKeyword_15_0());
-			}
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getPageAccess().getPort_backEStringParserRuleCall_15_1_0());
-					}
-					lv_Port_back_16_0=ruleEString
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getPageRule());
-						}
-						set(
-							$current,
-							"Port_back",
-							lv_Port_back_16_0,
-							"org.xtext.example.mydsl.MyDsl.EString");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-		)?
-		(
-			otherlv_17='Port_front'
-			{
-				newLeafNode(otherlv_17, grammarAccess.getPageAccess().getPort_frontKeyword_16_0());
-			}
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getPageAccess().getPort_frontEStringParserRuleCall_16_1_0());
-					}
-					lv_Port_front_18_0=ruleEString
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getPageRule());
-						}
-						set(
-							$current,
-							"Port_front",
-							lv_Port_front_18_0,
-							"org.xtext.example.mydsl.MyDsl.EString");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-		)?
-		otherlv_19='menu'
+		otherlv_15='menu'
 		{
-			newLeafNode(otherlv_19, grammarAccess.getPageAccess().getMenuKeyword_17());
+			newLeafNode(otherlv_15, grammarAccess.getPageAccess().getMenuKeyword_15());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getPageAccess().getMenuSourceMenuEnumRuleCall_18_0());
+					newCompositeNode(grammarAccess.getPageAccess().getMenuSourceMenuEnumRuleCall_16_0());
 				}
-				lv_menu_20_0=ruleSourceMenu
+				lv_menu_16_0=ruleSourceMenu
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getPageRule());
@@ -319,22 +269,45 @@ rulePage returns [EObject current=null]
 					set(
 						$current,
 						"menu",
-						lv_menu_20_0,
+						lv_menu_16_0,
 						"org.xtext.example.mydsl.MyDsl.SourceMenu");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_21='presentation'
+		otherlv_17='Selection'
 		{
-			newLeafNode(otherlv_21, grammarAccess.getPageAccess().getPresentationKeyword_19());
+			newLeafNode(otherlv_17, grammarAccess.getPageAccess().getSelectionKeyword_17());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getPageAccess().getSelectionSourceSelectionEnumRuleCall_18_0());
+				}
+				lv_Selection_18_0=ruleSourceSelection
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getPageRule());
+					}
+					set(
+						$current,
+						"Selection",
+						lv_Selection_18_0,
+						"org.xtext.example.mydsl.MyDsl.SourceSelection");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_19='presentation'
+		{
+			newLeafNode(otherlv_19, grammarAccess.getPageAccess().getPresentationKeyword_19());
 		}
 		(
 			(
 				{
 					newCompositeNode(grammarAccess.getPageAccess().getPresentationSourcePresEnumRuleCall_20_0());
 				}
-				lv_presentation_22_0=ruleSourcePres
+				lv_presentation_20_0=ruleSourcePres
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getPageRule());
@@ -342,22 +315,22 @@ rulePage returns [EObject current=null]
 					set(
 						$current,
 						"presentation",
-						lv_presentation_22_0,
+						lv_presentation_20_0,
 						"org.xtext.example.mydsl.MyDsl.SourcePres");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_23='logo'
+		otherlv_21='logo'
 		{
-			newLeafNode(otherlv_23, grammarAccess.getPageAccess().getLogoKeyword_21());
+			newLeafNode(otherlv_21, grammarAccess.getPageAccess().getLogoKeyword_21());
 		}
 		(
 			(
 				{
 					newCompositeNode(grammarAccess.getPageAccess().getLogoSourceLogoEnumRuleCall_22_0());
 				}
-				lv_logo_24_0=ruleSourceLogo
+				lv_logo_22_0=ruleSourceLogo
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getPageRule());
@@ -365,22 +338,22 @@ rulePage returns [EObject current=null]
 					set(
 						$current,
 						"logo",
-						lv_logo_24_0,
+						lv_logo_22_0,
 						"org.xtext.example.mydsl.MyDsl.SourceLogo");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_25='source'
+		otherlv_23='source'
 		{
-			newLeafNode(otherlv_25, grammarAccess.getPageAccess().getSourceKeyword_23());
+			newLeafNode(otherlv_23, grammarAccess.getPageAccess().getSourceKeyword_23());
 		}
 		(
 			(
 				{
 					newCompositeNode(grammarAccess.getPageAccess().getSourceSourceParserRuleCall_24_0());
 				}
-				lv_source_26_0=ruleSource
+				lv_source_24_0=ruleSource
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getPageRule());
@@ -388,23 +361,23 @@ rulePage returns [EObject current=null]
 					add(
 						$current,
 						"source",
-						lv_source_26_0,
+						lv_source_24_0,
 						"org.xtext.example.mydsl.MyDsl.Source");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
 		(
-			otherlv_27=','
+			otherlv_25=','
 			{
-				newLeafNode(otherlv_27, grammarAccess.getPageAccess().getCommaKeyword_25_0());
+				newLeafNode(otherlv_25, grammarAccess.getPageAccess().getCommaKeyword_25_0());
 			}
 			(
 				(
 					{
 						newCompositeNode(grammarAccess.getPageAccess().getSourceSourceParserRuleCall_25_1_0());
 					}
-					lv_source_28_0=ruleSource
+					lv_source_26_0=ruleSource
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getPageRule());
@@ -412,13 +385,63 @@ rulePage returns [EObject current=null]
 						add(
 							$current,
 							"source",
-							lv_source_28_0,
+							lv_source_26_0,
 							"org.xtext.example.mydsl.MyDsl.Source");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 		)*
+		(
+			otherlv_27='Port_back'
+			{
+				newLeafNode(otherlv_27, grammarAccess.getPageAccess().getPort_backKeyword_26_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getPageAccess().getPort_backEIntParserRuleCall_26_1_0());
+					}
+					lv_Port_back_28_0=ruleEInt
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getPageRule());
+						}
+						set(
+							$current,
+							"Port_back",
+							lv_Port_back_28_0,
+							"org.xtext.example.mydsl.MyDsl.EInt");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)?
+		(
+			otherlv_29='Port_front'
+			{
+				newLeafNode(otherlv_29, grammarAccess.getPageAccess().getPort_frontKeyword_27_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getPageAccess().getPort_frontEIntParserRuleCall_27_1_0());
+					}
+					lv_Port_front_30_0=ruleEInt
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getPageRule());
+						}
+						set(
+							$current,
+							"Port_front",
+							lv_Port_front_30_0,
+							"org.xtext.example.mydsl.MyDsl.EInt");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)?
 	)
 ;
 
@@ -501,6 +524,39 @@ ruleSource returns [EObject current=null]
 	)
 ;
 
+// Entry rule entryRuleEInt
+entryRuleEInt returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getEIntRule()); }
+	iv_ruleEInt=ruleEInt
+	{ $current=$iv_ruleEInt.current.getText(); }
+	EOF;
+
+// Rule EInt
+ruleEInt returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			kw='-'
+			{
+				$current.merge(kw);
+				newLeafNode(kw, grammarAccess.getEIntAccess().getHyphenMinusKeyword_0());
+			}
+		)?
+		this_INT_1=RULE_INT
+		{
+			$current.merge(this_INT_1);
+		}
+		{
+			newLeafNode(this_INT_1, grammarAccess.getEIntAccess().getINTTerminalRuleCall_1());
+		}
+	)
+;
+
 // Rule SourceMenu
 ruleSourceMenu returns [Enumerator current=null]
 @init {
@@ -523,6 +579,33 @@ ruleSourceMenu returns [Enumerator current=null]
 			{
 				$current = grammarAccess.getSourceMenuAccess().getNavBarEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
 				newLeafNode(enumLiteral_1, grammarAccess.getSourceMenuAccess().getNavBarEnumLiteralDeclaration_1());
+			}
+		)
+	)
+;
+
+// Rule SourceSelection
+ruleSourceSelection returns [Enumerator current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			enumLiteral_0='Planning'
+			{
+				$current = grammarAccess.getSourceSelectionAccess().getPlanningEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getSourceSelectionAccess().getPlanningEnumLiteralDeclaration_0());
+			}
+		)
+		    |
+		(
+			enumLiteral_1='RDV'
+			{
+				$current = grammarAccess.getSourceSelectionAccess().getRDVEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getSourceSelectionAccess().getRDVEnumLiteralDeclaration_1());
 			}
 		)
 	)

@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link dSLMobility.Page#getNb_Pers <em>Nb Pers</em>}</li>
  *   <li>{@link dSLMobility.Page#getPort_back <em>Port back</em>}</li>
  *   <li>{@link dSLMobility.Page#getPort_front <em>Port front</em>}</li>
+ *   <li>{@link dSLMobility.Page#getSelection <em>Selection</em>}</li>
  * </ul>
  *
  * @see dSLMobility.DSLMobilityPackage#getPage()
@@ -398,5 +399,34 @@ public interface Page extends EObject {
 	 * @generated
 	 */
 	void setPort_front(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Selection</b></em>' attribute.
+	 * The literals are from the enumeration {@link dSLMobility.SourceSelection}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Selection</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Selection</em>' attribute.
+	 * @see dSLMobility.SourceSelection
+	 * @see #setSelection(SourceSelection)
+	 * @see dSLMobility.DSLMobilityPackage#getPage_Selection()
+	 * @model
+	 * @generated
+	 */
+	SourceSelection getSelection();
+
+	/**
+	 * Sets the value of the '{@link dSLMobility.Page#getSelection <em>Selection</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Selection</em>' attribute.
+	 * @see dSLMobility.SourceSelection
+	 * @see #getSelection()
+	 * @generated
+	 */
+	void setSelection(SourceSelection value);
 
 } // Page

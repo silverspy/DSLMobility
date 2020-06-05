@@ -26,6 +26,15 @@
       <genEnumLiterals ecoreEnumLiteral="dSLMobility.ecore#//SourceLogo/rdv"/>
       <genEnumLiterals ecoreEnumLiteral="dSLMobility.ecore#//SourceLogo/trajet"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dSLMobility.ecore#//SourceSelect">
+      <genEnumLiterals ecoreEnumLiteral="dSLMobility.ecore#//SourceSelect/comute"/>
+      <genEnumLiterals ecoreEnumLiteral="dSLMobility.ecore#//SourceSelect/rdv"/>
+      <genEnumLiterals ecoreEnumLiteral="dSLMobility.ecore#//SourceSelect/trajet"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dSLMobility.ecore#//SourceSelection">
+      <genEnumLiterals ecoreEnumLiteral="dSLMobility.ecore#//SourceSelection/Planning"/>
+      <genEnumLiterals ecoreEnumLiteral="dSLMobility.ecore#//SourceSelection/RDV"/>
+    </genEnums>
     <genClasses ecoreClass="dSLMobility.ecore#//Page">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dSLMobility.ecore#//Page/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dSLMobility.ecore#//Page/source"/>
@@ -41,6 +50,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dSLMobility.ecore#//Page/nb_Pers"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dSLMobility.ecore#//Page/Port_back"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dSLMobility.ecore#//Page/Port_front"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dSLMobility.ecore#//Page/Selection"/>
     </genClasses>
     <genClasses ecoreClass="dSLMobility.ecore#//Source">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dSLMobility.ecore#//Source/name"/>

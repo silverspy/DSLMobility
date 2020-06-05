@@ -17,6 +17,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="nb_Pers" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Port_back" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Port_front" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Selection" eType="#//SourceSelection"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Source">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="#//SourceName"/>
@@ -37,5 +38,14 @@
     <eLiterals name="comute"/>
     <eLiterals name="rdv" value="1"/>
     <eLiterals name="trajet" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SourceSelect">
+    <eLiterals name="comute"/>
+    <eLiterals name="rdv" value="1"/>
+    <eLiterals name="trajet" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SourceSelection">
+    <eLiterals name="Planning"/>
+    <eLiterals name="RDV" value="1"/>
   </eClassifiers>
 </ecore:EPackage>

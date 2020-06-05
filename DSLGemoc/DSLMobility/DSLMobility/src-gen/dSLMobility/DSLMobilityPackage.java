@@ -194,13 +194,22 @@ public interface DSLMobilityPackage extends EPackage {
 	int PAGE__PORT_FRONT = 13;
 
 	/**
+	 * The feature id for the '<em><b>Selection</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE__SELECTION = 14;
+
+	/**
 	 * The number of structural features of the '<em>Page</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PAGE_FEATURE_COUNT = 14;
+	int PAGE_FEATURE_COUNT = 15;
 
 	/**
 	 * The number of operations of the '<em>Page</em>' class.
@@ -287,6 +296,26 @@ public interface DSLMobilityPackage extends EPackage {
 	 * @generated
 	 */
 	int SOURCE_LOGO = 5;
+
+	/**
+	 * The meta object id for the '{@link dSLMobility.SourceSelect <em>Source Select</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dSLMobility.SourceSelect
+	 * @see dSLMobility.impl.DSLMobilityPackageImpl#getSourceSelect()
+	 * @generated
+	 */
+	int SOURCE_SELECT = 6;
+
+	/**
+	 * The meta object id for the '{@link dSLMobility.SourceSelection <em>Source Selection</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dSLMobility.SourceSelection
+	 * @see dSLMobility.impl.DSLMobilityPackageImpl#getSourceSelection()
+	 * @generated
+	 */
+	int SOURCE_SELECTION = 7;
 
 	/**
 	 * Returns the meta object for class '{@link dSLMobility.Page <em>Page</em>}'.
@@ -453,6 +482,17 @@ public interface DSLMobilityPackage extends EPackage {
 	EAttribute getPage_Port_front();
 
 	/**
+	 * Returns the meta object for the attribute '{@link dSLMobility.Page#getSelection <em>Selection</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Selection</em>'.
+	 * @see dSLMobility.Page#getSelection()
+	 * @see #getPage()
+	 * @generated
+	 */
+	EAttribute getPage_Selection();
+
+	/**
 	 * Returns the meta object for class '{@link dSLMobility.Source <em>Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -512,6 +552,26 @@ public interface DSLMobilityPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getSourceLogo();
+
+	/**
+	 * Returns the meta object for enum '{@link dSLMobility.SourceSelect <em>Source Select</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Source Select</em>'.
+	 * @see dSLMobility.SourceSelect
+	 * @generated
+	 */
+	EEnum getSourceSelect();
+
+	/**
+	 * Returns the meta object for enum '{@link dSLMobility.SourceSelection <em>Source Selection</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Source Selection</em>'.
+	 * @see dSLMobility.SourceSelection
+	 * @generated
+	 */
+	EEnum getSourceSelection();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -659,6 +719,14 @@ public interface DSLMobilityPackage extends EPackage {
 		EAttribute PAGE__PORT_FRONT = eINSTANCE.getPage_Port_front();
 
 		/**
+		 * The meta object literal for the '<em><b>Selection</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PAGE__SELECTION = eINSTANCE.getPage_Selection();
+
+		/**
 		 * The meta object literal for the '{@link dSLMobility.impl.SourceImpl <em>Source</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -715,6 +783,26 @@ public interface DSLMobilityPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum SOURCE_LOGO = eINSTANCE.getSourceLogo();
+
+		/**
+		 * The meta object literal for the '{@link dSLMobility.SourceSelect <em>Source Select</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dSLMobility.SourceSelect
+		 * @see dSLMobility.impl.DSLMobilityPackageImpl#getSourceSelect()
+		 * @generated
+		 */
+		EEnum SOURCE_SELECT = eINSTANCE.getSourceSelect();
+
+		/**
+		 * The meta object literal for the '{@link dSLMobility.SourceSelection <em>Source Selection</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dSLMobility.SourceSelection
+		 * @see dSLMobility.impl.DSLMobilityPackageImpl#getSourceSelection()
+		 * @generated
+		 */
+		EEnum SOURCE_SELECTION = eINSTANCE.getSourceSelection();
 
 	}
 

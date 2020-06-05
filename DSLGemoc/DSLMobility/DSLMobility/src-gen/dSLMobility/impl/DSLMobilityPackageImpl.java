@@ -11,6 +11,8 @@ import dSLMobility.SourceMenu;
 import dSLMobility.SourceName;
 
 import dSLMobility.SourcePres;
+import dSLMobility.SourceSelect;
+import dSLMobility.SourceSelection;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
@@ -67,6 +69,20 @@ public class DSLMobilityPackageImpl extends EPackageImpl implements DSLMobilityP
 	 * @generated
 	 */
 	private EEnum sourceLogoEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum sourceSelectEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum sourceSelectionEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -272,6 +288,15 @@ public class DSLMobilityPackageImpl extends EPackageImpl implements DSLMobilityP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getPage_Selection() {
+		return (EAttribute) pageEClass.getEStructuralFeatures().get(14);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSource() {
 		return sourceEClass;
 	}
@@ -326,6 +351,24 @@ public class DSLMobilityPackageImpl extends EPackageImpl implements DSLMobilityP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getSourceSelect() {
+		return sourceSelectEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getSourceSelection() {
+		return sourceSelectionEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public DSLMobilityFactory getDSLMobilityFactory() {
 		return (DSLMobilityFactory) getEFactoryInstance();
 	}
@@ -365,6 +408,7 @@ public class DSLMobilityPackageImpl extends EPackageImpl implements DSLMobilityP
 		createEAttribute(pageEClass, PAGE__NB_PERS);
 		createEAttribute(pageEClass, PAGE__PORT_BACK);
 		createEAttribute(pageEClass, PAGE__PORT_FRONT);
+		createEAttribute(pageEClass, PAGE__SELECTION);
 
 		sourceEClass = createEClass(SOURCE);
 		createEAttribute(sourceEClass, SOURCE__NAME);
@@ -374,6 +418,8 @@ public class DSLMobilityPackageImpl extends EPackageImpl implements DSLMobilityP
 		sourceMenuEEnum = createEEnum(SOURCE_MENU);
 		sourcePresEEnum = createEEnum(SOURCE_PRES);
 		sourceLogoEEnum = createEEnum(SOURCE_LOGO);
+		sourceSelectEEnum = createEEnum(SOURCE_SELECT);
+		sourceSelectionEEnum = createEEnum(SOURCE_SELECTION);
 	}
 
 	/**
@@ -438,6 +484,8 @@ public class DSLMobilityPackageImpl extends EPackageImpl implements DSLMobilityP
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPage_Port_front(), ecorePackage.getEInt(), "Port_front", null, 0, 1, Page.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPage_Selection(), this.getSourceSelection(), "Selection", null, 0, 1, Page.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sourceEClass, Source.class, "Source", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSource_Name(), this.getSourceName(), "name", null, 0, 1, Source.class, !IS_TRANSIENT,
@@ -460,6 +508,15 @@ public class DSLMobilityPackageImpl extends EPackageImpl implements DSLMobilityP
 		addEEnumLiteral(sourceLogoEEnum, SourceLogo.COMUTE);
 		addEEnumLiteral(sourceLogoEEnum, SourceLogo.RDV);
 		addEEnumLiteral(sourceLogoEEnum, SourceLogo.TRAJET);
+
+		initEEnum(sourceSelectEEnum, SourceSelect.class, "SourceSelect");
+		addEEnumLiteral(sourceSelectEEnum, SourceSelect.COMUTE);
+		addEEnumLiteral(sourceSelectEEnum, SourceSelect.RDV);
+		addEEnumLiteral(sourceSelectEEnum, SourceSelect.TRAJET);
+
+		initEEnum(sourceSelectionEEnum, SourceSelection.class, "SourceSelection");
+		addEEnumLiteral(sourceSelectionEEnum, SourceSelection.PLANNING);
+		addEEnumLiteral(sourceSelectionEEnum, SourceSelection.RDV);
 
 		// Create resource
 		createResource(eNS_URI);

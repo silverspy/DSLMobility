@@ -82,6 +82,10 @@ public class DSLMobilityFactoryImpl extends EFactoryImpl implements DSLMobilityF
 			return createSourcePresFromString(eDataType, initialValue);
 		case DSLMobilityPackage.SOURCE_LOGO:
 			return createSourceLogoFromString(eDataType, initialValue);
+		case DSLMobilityPackage.SOURCE_SELECT:
+			return createSourceSelectFromString(eDataType, initialValue);
+		case DSLMobilityPackage.SOURCE_SELECTION:
+			return createSourceSelectionFromString(eDataType, initialValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -103,6 +107,10 @@ public class DSLMobilityFactoryImpl extends EFactoryImpl implements DSLMobilityF
 			return convertSourcePresToString(eDataType, instanceValue);
 		case DSLMobilityPackage.SOURCE_LOGO:
 			return convertSourceLogoToString(eDataType, instanceValue);
+		case DSLMobilityPackage.SOURCE_SELECT:
+			return convertSourceSelectToString(eDataType, instanceValue);
+		case DSLMobilityPackage.SOURCE_SELECTION:
+			return convertSourceSelectionToString(eDataType, instanceValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -213,6 +221,50 @@ public class DSLMobilityFactoryImpl extends EFactoryImpl implements DSLMobilityF
 	 * @generated
 	 */
 	public String convertSourceLogoToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SourceSelect createSourceSelectFromString(EDataType eDataType, String initialValue) {
+		SourceSelect result = SourceSelect.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertSourceSelectToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SourceSelection createSourceSelectionFromString(EDataType eDataType, String initialValue) {
+		SourceSelection result = SourceSelection.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertSourceSelectionToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

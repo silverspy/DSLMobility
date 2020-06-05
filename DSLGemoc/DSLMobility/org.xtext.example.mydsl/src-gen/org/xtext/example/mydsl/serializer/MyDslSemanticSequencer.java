@@ -53,16 +53,17 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *         description=EString 
 	 *         mail=EString 
 	 *         telephone=EString 
-	 *         heure_ouverture=EString 
-	 *         heure_fermeture=EString 
-	 *         nb_Pers=EString 
-	 *         Port_back=EString? 
-	 *         Port_front=EString? 
+	 *         heure_ouverture=EInt 
+	 *         heure_fermeture=EInt 
+	 *         nb_Pers=EInt 
 	 *         menu=SourceMenu 
+	 *         Selection=SourceSelection 
 	 *         presentation=SourcePres 
 	 *         logo=SourceLogo 
 	 *         source+=Source 
-	 *         source+=Source*
+	 *         source+=Source* 
+	 *         Port_back=EInt? 
+	 *         Port_front=EInt?
 	 *     )
 	 */
 	protected void sequence_Page(ISerializationContext context, Page semanticObject) {
