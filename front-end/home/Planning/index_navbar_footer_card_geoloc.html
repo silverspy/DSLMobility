@@ -141,7 +141,7 @@
                         </div>
                          <div class="form-group">
                             <label for="timeRDV"> Heure du RDV</label>
-                            <input type="number" id="hourRDV" min="8" max="17" required>
+                            <input type="number" id="hourRDV" min="8" max="17" required>  <label for="timeRDV">h 00</label>
                         </div>
                         <div class="form-group">
                             <div class="form-check">
@@ -234,39 +234,47 @@ $(document).ready(function() {
         }
     }
 
-    $('#dateRDV').val(new Date().toDateInputValue());
-    
-    function fill_select(){
+    $("#dateRDV").val(new Date().toJSON().slice(0,19));
 
-        var div = $("#select_appending");
-        $(div).empty();
-         $.ajax({
-            type: "POST",
-            url: url + "listDispo  ",
-            data: {},
-            success: function(data, textStatus, jqXHR) {
-                var str = ""
-                var dispo = data.dispo;
-                if(data.dispo.length > 0)
-                {
-                    str = "<select id='rdvtoJoin'>";
-                    for(var i = 0 ; i< data.dispo.length; i++)
-                    {
-                        var rdvDispo = data.dispo[i];
-                        str +="<option value =\'" + rdvDispo + "\'>"+rdvDispo + "</option>";
-                    }
-                    str += "</select>";
-                }
-                $(div).html(str);
-               
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-              alert("error");
-            },
-        });
+       function fill_select(){
+
+           var div = $("#select_appending");
+           $(div).empty();
+            $.ajax({
+               type: "POST",
+               url: url + "getHoraireRDV",
+               data: {},
+               success: function(data, textStatus, jqXHR) {
+                   var str = ""
+                   var dispo = data.horaire;
+                   console.log(dispo);
+                   console.log(data);
+                   if(dispo.length > 0)
+                   {
+                       $("#valid_Join").prop("disabled",false);
+                       str = "<select id='rdvtoJoin'>";
+                       for(var i = 0 ; i< dispo.length; i++)
+                       {
+                           var rdvDispo = dispo[i];
+                           str +="<option value =\'" + rdvDispo + "\'>"+rdvDispo + "</option>";
+                       }
+                       str += "</select>";
+                   }
+                   else
+                   {
+                       alert("aucun rendez vous disponible actuellement/ aucun rendez vous creer");
+                       $("#valid_Join").prop("disabled",true);
+                   }
+                   $(div).html(str);
+                  
+               },
+               error: function(jqXHR, textStatus, errorThrown) {
+                 alert("error");
+               },
+           });
 
 
-    }
+       }
 
 
     $("#receptacle").append($("#" + typeBody));
@@ -603,7 +611,7 @@ $(document).ready(function() {
             },
             //en cas d'erreur de la requete asynchrone
             error: function(jqXHR, textStatus, errorThrown) {
-                alert("error");
+                alert("Vous ne pouvez pas joindre ce rendez vous");
                 console.log(errorThrown)
             },
             dataType: "json"
