@@ -39,9 +39,12 @@ public class MyDslParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getSourceLogoAccess().getAlternatives(), "rule__SourceLogo__Alternatives");
 			builder.put(grammarAccess.getSourceNameAccess().getAlternatives(), "rule__SourceName__Alternatives");
 			builder.put(grammarAccess.getPageAccess().getGroup(), "rule__Page__Group__0");
-			builder.put(grammarAccess.getPageAccess().getGroup_25(), "rule__Page__Group_25__0");
-			builder.put(grammarAccess.getPageAccess().getGroup_26(), "rule__Page__Group_26__0");
-			builder.put(grammarAccess.getPageAccess().getGroup_27(), "rule__Page__Group_27__0");
+			builder.put(grammarAccess.getPageAccess().getGroup_13(), "rule__Page__Group_13__0");
+			builder.put(grammarAccess.getPageAccess().getGroup_14(), "rule__Page__Group_14__0");
+			builder.put(grammarAccess.getPageAccess().getGroup_15(), "rule__Page__Group_15__0");
+			builder.put(grammarAccess.getPageAccess().getGroup_22(), "rule__Page__Group_22__0");
+			builder.put(grammarAccess.getPageAccess().getGroup_23(), "rule__Page__Group_23__0");
+			builder.put(grammarAccess.getPageAccess().getGroup_24(), "rule__Page__Group_24__0");
 			builder.put(grammarAccess.getSourceAccess().getGroup(), "rule__Source__Group__0");
 			builder.put(grammarAccess.getEIntAccess().getGroup(), "rule__EInt__Group__0");
 			builder.put(grammarAccess.getPageAccess().getGeolocalisationAssignment_0(), "rule__Page__GeolocalisationAssignment_0");
@@ -49,17 +52,17 @@ public class MyDslParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getPageAccess().getDescriptionAssignment_4(), "rule__Page__DescriptionAssignment_4");
 			builder.put(grammarAccess.getPageAccess().getMailAssignment_6(), "rule__Page__MailAssignment_6");
 			builder.put(grammarAccess.getPageAccess().getTelephoneAssignment_8(), "rule__Page__TelephoneAssignment_8");
-			builder.put(grammarAccess.getPageAccess().getHeure_ouvertureAssignment_10(), "rule__Page__Heure_ouvertureAssignment_10");
-			builder.put(grammarAccess.getPageAccess().getHeure_fermetureAssignment_12(), "rule__Page__Heure_fermetureAssignment_12");
-			builder.put(grammarAccess.getPageAccess().getNb_PersAssignment_14(), "rule__Page__Nb_PersAssignment_14");
-			builder.put(grammarAccess.getPageAccess().getMenuAssignment_16(), "rule__Page__MenuAssignment_16");
-			builder.put(grammarAccess.getPageAccess().getSelectionAssignment_18(), "rule__Page__SelectionAssignment_18");
-			builder.put(grammarAccess.getPageAccess().getPresentationAssignment_20(), "rule__Page__PresentationAssignment_20");
-			builder.put(grammarAccess.getPageAccess().getLogoAssignment_22(), "rule__Page__LogoAssignment_22");
-			builder.put(grammarAccess.getPageAccess().getSourceAssignment_24(), "rule__Page__SourceAssignment_24");
-			builder.put(grammarAccess.getPageAccess().getSourceAssignment_25_1(), "rule__Page__SourceAssignment_25_1");
-			builder.put(grammarAccess.getPageAccess().getPort_backAssignment_26_1(), "rule__Page__Port_backAssignment_26_1");
-			builder.put(grammarAccess.getPageAccess().getPort_frontAssignment_27_1(), "rule__Page__Port_frontAssignment_27_1");
+			builder.put(grammarAccess.getPageAccess().getMenuAssignment_10(), "rule__Page__MenuAssignment_10");
+			builder.put(grammarAccess.getPageAccess().getSelectionAssignment_12(), "rule__Page__SelectionAssignment_12");
+			builder.put(grammarAccess.getPageAccess().getHeure_ouvertureAssignment_13_1(), "rule__Page__Heure_ouvertureAssignment_13_1");
+			builder.put(grammarAccess.getPageAccess().getHeure_fermetureAssignment_14_1(), "rule__Page__Heure_fermetureAssignment_14_1");
+			builder.put(grammarAccess.getPageAccess().getNb_PersAssignment_15_1(), "rule__Page__Nb_PersAssignment_15_1");
+			builder.put(grammarAccess.getPageAccess().getPresentationAssignment_17(), "rule__Page__PresentationAssignment_17");
+			builder.put(grammarAccess.getPageAccess().getLogoAssignment_19(), "rule__Page__LogoAssignment_19");
+			builder.put(grammarAccess.getPageAccess().getSourceAssignment_21(), "rule__Page__SourceAssignment_21");
+			builder.put(grammarAccess.getPageAccess().getSourceAssignment_22_1(), "rule__Page__SourceAssignment_22_1");
+			builder.put(grammarAccess.getPageAccess().getPort_backAssignment_23_1(), "rule__Page__Port_backAssignment_23_1");
+			builder.put(grammarAccess.getPageAccess().getPort_frontAssignment_24_1(), "rule__Page__Port_frontAssignment_24_1");
 			builder.put(grammarAccess.getSourceAccess().getNameAssignment_1(), "rule__Source__NameAssignment_1");
 		}
 	}

@@ -43,42 +43,45 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cTelephoneKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		private final Assignment cTelephoneAssignment_8 = (Assignment)cGroup.eContents().get(8);
 		private final RuleCall cTelephoneEStringParserRuleCall_8_0 = (RuleCall)cTelephoneAssignment_8.eContents().get(0);
-		private final Keyword cHeure_ouvertureKeyword_9 = (Keyword)cGroup.eContents().get(9);
-		private final Assignment cHeure_ouvertureAssignment_10 = (Assignment)cGroup.eContents().get(10);
-		private final RuleCall cHeure_ouvertureEIntParserRuleCall_10_0 = (RuleCall)cHeure_ouvertureAssignment_10.eContents().get(0);
-		private final Keyword cHeure_fermetureKeyword_11 = (Keyword)cGroup.eContents().get(11);
-		private final Assignment cHeure_fermetureAssignment_12 = (Assignment)cGroup.eContents().get(12);
-		private final RuleCall cHeure_fermetureEIntParserRuleCall_12_0 = (RuleCall)cHeure_fermetureAssignment_12.eContents().get(0);
-		private final Keyword cNb_PersKeyword_13 = (Keyword)cGroup.eContents().get(13);
-		private final Assignment cNb_PersAssignment_14 = (Assignment)cGroup.eContents().get(14);
-		private final RuleCall cNb_PersEIntParserRuleCall_14_0 = (RuleCall)cNb_PersAssignment_14.eContents().get(0);
-		private final Keyword cMenuKeyword_15 = (Keyword)cGroup.eContents().get(15);
-		private final Assignment cMenuAssignment_16 = (Assignment)cGroup.eContents().get(16);
-		private final RuleCall cMenuSourceMenuEnumRuleCall_16_0 = (RuleCall)cMenuAssignment_16.eContents().get(0);
-		private final Keyword cSelectionKeyword_17 = (Keyword)cGroup.eContents().get(17);
-		private final Assignment cSelectionAssignment_18 = (Assignment)cGroup.eContents().get(18);
-		private final RuleCall cSelectionSourceSelectionEnumRuleCall_18_0 = (RuleCall)cSelectionAssignment_18.eContents().get(0);
-		private final Keyword cPresentationKeyword_19 = (Keyword)cGroup.eContents().get(19);
-		private final Assignment cPresentationAssignment_20 = (Assignment)cGroup.eContents().get(20);
-		private final RuleCall cPresentationSourcePresEnumRuleCall_20_0 = (RuleCall)cPresentationAssignment_20.eContents().get(0);
-		private final Keyword cLogoKeyword_21 = (Keyword)cGroup.eContents().get(21);
-		private final Assignment cLogoAssignment_22 = (Assignment)cGroup.eContents().get(22);
-		private final RuleCall cLogoSourceLogoEnumRuleCall_22_0 = (RuleCall)cLogoAssignment_22.eContents().get(0);
-		private final Keyword cSourceKeyword_23 = (Keyword)cGroup.eContents().get(23);
-		private final Assignment cSourceAssignment_24 = (Assignment)cGroup.eContents().get(24);
-		private final RuleCall cSourceSourceParserRuleCall_24_0 = (RuleCall)cSourceAssignment_24.eContents().get(0);
-		private final Group cGroup_25 = (Group)cGroup.eContents().get(25);
-		private final Keyword cCommaKeyword_25_0 = (Keyword)cGroup_25.eContents().get(0);
-		private final Assignment cSourceAssignment_25_1 = (Assignment)cGroup_25.eContents().get(1);
-		private final RuleCall cSourceSourceParserRuleCall_25_1_0 = (RuleCall)cSourceAssignment_25_1.eContents().get(0);
-		private final Group cGroup_26 = (Group)cGroup.eContents().get(26);
-		private final Keyword cPort_backKeyword_26_0 = (Keyword)cGroup_26.eContents().get(0);
-		private final Assignment cPort_backAssignment_26_1 = (Assignment)cGroup_26.eContents().get(1);
-		private final RuleCall cPort_backEIntParserRuleCall_26_1_0 = (RuleCall)cPort_backAssignment_26_1.eContents().get(0);
-		private final Group cGroup_27 = (Group)cGroup.eContents().get(27);
-		private final Keyword cPort_frontKeyword_27_0 = (Keyword)cGroup_27.eContents().get(0);
-		private final Assignment cPort_frontAssignment_27_1 = (Assignment)cGroup_27.eContents().get(1);
-		private final RuleCall cPort_frontEIntParserRuleCall_27_1_0 = (RuleCall)cPort_frontAssignment_27_1.eContents().get(0);
+		private final Keyword cMenuKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Assignment cMenuAssignment_10 = (Assignment)cGroup.eContents().get(10);
+		private final RuleCall cMenuSourceMenuEnumRuleCall_10_0 = (RuleCall)cMenuAssignment_10.eContents().get(0);
+		private final Keyword cSelectionKeyword_11 = (Keyword)cGroup.eContents().get(11);
+		private final Assignment cSelectionAssignment_12 = (Assignment)cGroup.eContents().get(12);
+		private final RuleCall cSelectionSourceSelectionEnumRuleCall_12_0 = (RuleCall)cSelectionAssignment_12.eContents().get(0);
+		private final Group cGroup_13 = (Group)cGroup.eContents().get(13);
+		private final Keyword cHeure_ouvertureKeyword_13_0 = (Keyword)cGroup_13.eContents().get(0);
+		private final Assignment cHeure_ouvertureAssignment_13_1 = (Assignment)cGroup_13.eContents().get(1);
+		private final RuleCall cHeure_ouvertureEIntParserRuleCall_13_1_0 = (RuleCall)cHeure_ouvertureAssignment_13_1.eContents().get(0);
+		private final Group cGroup_14 = (Group)cGroup.eContents().get(14);
+		private final Keyword cHeure_fermetureKeyword_14_0 = (Keyword)cGroup_14.eContents().get(0);
+		private final Assignment cHeure_fermetureAssignment_14_1 = (Assignment)cGroup_14.eContents().get(1);
+		private final RuleCall cHeure_fermetureEIntParserRuleCall_14_1_0 = (RuleCall)cHeure_fermetureAssignment_14_1.eContents().get(0);
+		private final Group cGroup_15 = (Group)cGroup.eContents().get(15);
+		private final Keyword cNb_PersKeyword_15_0 = (Keyword)cGroup_15.eContents().get(0);
+		private final Assignment cNb_PersAssignment_15_1 = (Assignment)cGroup_15.eContents().get(1);
+		private final RuleCall cNb_PersEIntParserRuleCall_15_1_0 = (RuleCall)cNb_PersAssignment_15_1.eContents().get(0);
+		private final Keyword cPresentationKeyword_16 = (Keyword)cGroup.eContents().get(16);
+		private final Assignment cPresentationAssignment_17 = (Assignment)cGroup.eContents().get(17);
+		private final RuleCall cPresentationSourcePresEnumRuleCall_17_0 = (RuleCall)cPresentationAssignment_17.eContents().get(0);
+		private final Keyword cLogoKeyword_18 = (Keyword)cGroup.eContents().get(18);
+		private final Assignment cLogoAssignment_19 = (Assignment)cGroup.eContents().get(19);
+		private final RuleCall cLogoSourceLogoEnumRuleCall_19_0 = (RuleCall)cLogoAssignment_19.eContents().get(0);
+		private final Keyword cSourceKeyword_20 = (Keyword)cGroup.eContents().get(20);
+		private final Assignment cSourceAssignment_21 = (Assignment)cGroup.eContents().get(21);
+		private final RuleCall cSourceSourceParserRuleCall_21_0 = (RuleCall)cSourceAssignment_21.eContents().get(0);
+		private final Group cGroup_22 = (Group)cGroup.eContents().get(22);
+		private final Keyword cCommaKeyword_22_0 = (Keyword)cGroup_22.eContents().get(0);
+		private final Assignment cSourceAssignment_22_1 = (Assignment)cGroup_22.eContents().get(1);
+		private final RuleCall cSourceSourceParserRuleCall_22_1_0 = (RuleCall)cSourceAssignment_22_1.eContents().get(0);
+		private final Group cGroup_23 = (Group)cGroup.eContents().get(23);
+		private final Keyword cPort_backKeyword_23_0 = (Keyword)cGroup_23.eContents().get(0);
+		private final Assignment cPort_backAssignment_23_1 = (Assignment)cGroup_23.eContents().get(1);
+		private final RuleCall cPort_backEIntParserRuleCall_23_1_0 = (RuleCall)cPort_backAssignment_23_1.eContents().get(0);
+		private final Group cGroup_24 = (Group)cGroup.eContents().get(24);
+		private final Keyword cPort_frontKeyword_24_0 = (Keyword)cGroup_24.eContents().get(0);
+		private final Assignment cPort_frontAssignment_24_1 = (Assignment)cGroup_24.eContents().get(1);
+		private final RuleCall cPort_frontEIntParserRuleCall_24_1_0 = (RuleCall)cPort_frontAssignment_24_1.eContents().get(0);
 		
 		//Page:
 		//	geolocalisation?='geolocalisation'?
@@ -87,21 +90,19 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		//	'description' description=EString
 		//	'mail' mail=EString
 		//	'telephone' telephone=EString
-		//	'heure_ouverture' heure_ouverture=EInt
-		//	'heure_fermeture' heure_fermeture=EInt
-		//	'nb_Pers' nb_Pers=EInt
 		//	'menu' menu=SourceMenu
-		//	'Selection' Selection=SourceSelection
+		//	'Selection' Selection=SourceSelection ('heure_ouverture' heure_ouverture=EInt)? ('heure_fermeture'
+		//	heure_fermeture=EInt)? ('nb_Pers' nb_Pers=EInt)?
 		//	'presentation' presentation=SourcePres
 		//	'logo' logo=SourceLogo
 		//	'source' source+=Source ("," source+=Source)* ('Port_back' Port_back=EInt)? ('Port_front' Port_front=EInt)?;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//geolocalisation?='geolocalisation'? 'Page' name=EString 'description' description=EString 'mail' mail=EString
-		//'telephone' telephone=EString 'heure_ouverture' heure_ouverture=EInt 'heure_fermeture' heure_fermeture=EInt 'nb_Pers'
-		//nb_Pers=EInt 'menu' menu=SourceMenu 'Selection' Selection=SourceSelection 'presentation' presentation=SourcePres
-		//'logo' logo=SourceLogo 'source' source+=Source ("," source+=Source)* ('Port_back' Port_back=EInt)? ('Port_front'
-		//Port_front=EInt)?
+		//'telephone' telephone=EString 'menu' menu=SourceMenu 'Selection' Selection=SourceSelection ('heure_ouverture'
+		//heure_ouverture=EInt)? ('heure_fermeture' heure_fermeture=EInt)? ('nb_Pers' nb_Pers=EInt)? 'presentation'
+		//presentation=SourcePres 'logo' logo=SourceLogo 'source' source+=Source ("," source+=Source)* ('Port_back'
+		//Port_back=EInt)? ('Port_front' Port_front=EInt)?
 		public Group getGroup() { return cGroup; }
 		
 		//geolocalisation?='geolocalisation'?
@@ -146,113 +147,122 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		//EString
 		public RuleCall getTelephoneEStringParserRuleCall_8_0() { return cTelephoneEStringParserRuleCall_8_0; }
 		
-		//'heure_ouverture'
-		public Keyword getHeure_ouvertureKeyword_9() { return cHeure_ouvertureKeyword_9; }
-		
-		//heure_ouverture=EInt
-		public Assignment getHeure_ouvertureAssignment_10() { return cHeure_ouvertureAssignment_10; }
-		
-		//EInt
-		public RuleCall getHeure_ouvertureEIntParserRuleCall_10_0() { return cHeure_ouvertureEIntParserRuleCall_10_0; }
-		
-		//'heure_fermeture'
-		public Keyword getHeure_fermetureKeyword_11() { return cHeure_fermetureKeyword_11; }
-		
-		//heure_fermeture=EInt
-		public Assignment getHeure_fermetureAssignment_12() { return cHeure_fermetureAssignment_12; }
-		
-		//EInt
-		public RuleCall getHeure_fermetureEIntParserRuleCall_12_0() { return cHeure_fermetureEIntParserRuleCall_12_0; }
-		
-		//'nb_Pers'
-		public Keyword getNb_PersKeyword_13() { return cNb_PersKeyword_13; }
-		
-		//nb_Pers=EInt
-		public Assignment getNb_PersAssignment_14() { return cNb_PersAssignment_14; }
-		
-		//EInt
-		public RuleCall getNb_PersEIntParserRuleCall_14_0() { return cNb_PersEIntParserRuleCall_14_0; }
-		
 		//'menu'
-		public Keyword getMenuKeyword_15() { return cMenuKeyword_15; }
+		public Keyword getMenuKeyword_9() { return cMenuKeyword_9; }
 		
 		//menu=SourceMenu
-		public Assignment getMenuAssignment_16() { return cMenuAssignment_16; }
+		public Assignment getMenuAssignment_10() { return cMenuAssignment_10; }
 		
 		//SourceMenu
-		public RuleCall getMenuSourceMenuEnumRuleCall_16_0() { return cMenuSourceMenuEnumRuleCall_16_0; }
+		public RuleCall getMenuSourceMenuEnumRuleCall_10_0() { return cMenuSourceMenuEnumRuleCall_10_0; }
 		
 		//'Selection'
-		public Keyword getSelectionKeyword_17() { return cSelectionKeyword_17; }
+		public Keyword getSelectionKeyword_11() { return cSelectionKeyword_11; }
 		
 		//Selection=SourceSelection
-		public Assignment getSelectionAssignment_18() { return cSelectionAssignment_18; }
+		public Assignment getSelectionAssignment_12() { return cSelectionAssignment_12; }
 		
 		//SourceSelection
-		public RuleCall getSelectionSourceSelectionEnumRuleCall_18_0() { return cSelectionSourceSelectionEnumRuleCall_18_0; }
+		public RuleCall getSelectionSourceSelectionEnumRuleCall_12_0() { return cSelectionSourceSelectionEnumRuleCall_12_0; }
+		
+		//('heure_ouverture' heure_ouverture=EInt)?
+		public Group getGroup_13() { return cGroup_13; }
+		
+		//'heure_ouverture'
+		public Keyword getHeure_ouvertureKeyword_13_0() { return cHeure_ouvertureKeyword_13_0; }
+		
+		//heure_ouverture=EInt
+		public Assignment getHeure_ouvertureAssignment_13_1() { return cHeure_ouvertureAssignment_13_1; }
+		
+		//EInt
+		public RuleCall getHeure_ouvertureEIntParserRuleCall_13_1_0() { return cHeure_ouvertureEIntParserRuleCall_13_1_0; }
+		
+		//('heure_fermeture' heure_fermeture=EInt)?
+		public Group getGroup_14() { return cGroup_14; }
+		
+		//'heure_fermeture'
+		public Keyword getHeure_fermetureKeyword_14_0() { return cHeure_fermetureKeyword_14_0; }
+		
+		//heure_fermeture=EInt
+		public Assignment getHeure_fermetureAssignment_14_1() { return cHeure_fermetureAssignment_14_1; }
+		
+		//EInt
+		public RuleCall getHeure_fermetureEIntParserRuleCall_14_1_0() { return cHeure_fermetureEIntParserRuleCall_14_1_0; }
+		
+		//('nb_Pers' nb_Pers=EInt)?
+		public Group getGroup_15() { return cGroup_15; }
+		
+		//'nb_Pers'
+		public Keyword getNb_PersKeyword_15_0() { return cNb_PersKeyword_15_0; }
+		
+		//nb_Pers=EInt
+		public Assignment getNb_PersAssignment_15_1() { return cNb_PersAssignment_15_1; }
+		
+		//EInt
+		public RuleCall getNb_PersEIntParserRuleCall_15_1_0() { return cNb_PersEIntParserRuleCall_15_1_0; }
 		
 		//'presentation'
-		public Keyword getPresentationKeyword_19() { return cPresentationKeyword_19; }
+		public Keyword getPresentationKeyword_16() { return cPresentationKeyword_16; }
 		
 		//presentation=SourcePres
-		public Assignment getPresentationAssignment_20() { return cPresentationAssignment_20; }
+		public Assignment getPresentationAssignment_17() { return cPresentationAssignment_17; }
 		
 		//SourcePres
-		public RuleCall getPresentationSourcePresEnumRuleCall_20_0() { return cPresentationSourcePresEnumRuleCall_20_0; }
+		public RuleCall getPresentationSourcePresEnumRuleCall_17_0() { return cPresentationSourcePresEnumRuleCall_17_0; }
 		
 		//'logo'
-		public Keyword getLogoKeyword_21() { return cLogoKeyword_21; }
+		public Keyword getLogoKeyword_18() { return cLogoKeyword_18; }
 		
 		//logo=SourceLogo
-		public Assignment getLogoAssignment_22() { return cLogoAssignment_22; }
+		public Assignment getLogoAssignment_19() { return cLogoAssignment_19; }
 		
 		//SourceLogo
-		public RuleCall getLogoSourceLogoEnumRuleCall_22_0() { return cLogoSourceLogoEnumRuleCall_22_0; }
+		public RuleCall getLogoSourceLogoEnumRuleCall_19_0() { return cLogoSourceLogoEnumRuleCall_19_0; }
 		
 		//'source'
-		public Keyword getSourceKeyword_23() { return cSourceKeyword_23; }
+		public Keyword getSourceKeyword_20() { return cSourceKeyword_20; }
 		
 		//source+=Source
-		public Assignment getSourceAssignment_24() { return cSourceAssignment_24; }
+		public Assignment getSourceAssignment_21() { return cSourceAssignment_21; }
 		
 		//Source
-		public RuleCall getSourceSourceParserRuleCall_24_0() { return cSourceSourceParserRuleCall_24_0; }
+		public RuleCall getSourceSourceParserRuleCall_21_0() { return cSourceSourceParserRuleCall_21_0; }
 		
 		//("," source+=Source)*
-		public Group getGroup_25() { return cGroup_25; }
+		public Group getGroup_22() { return cGroup_22; }
 		
 		//","
-		public Keyword getCommaKeyword_25_0() { return cCommaKeyword_25_0; }
+		public Keyword getCommaKeyword_22_0() { return cCommaKeyword_22_0; }
 		
 		//source+=Source
-		public Assignment getSourceAssignment_25_1() { return cSourceAssignment_25_1; }
+		public Assignment getSourceAssignment_22_1() { return cSourceAssignment_22_1; }
 		
 		//Source
-		public RuleCall getSourceSourceParserRuleCall_25_1_0() { return cSourceSourceParserRuleCall_25_1_0; }
+		public RuleCall getSourceSourceParserRuleCall_22_1_0() { return cSourceSourceParserRuleCall_22_1_0; }
 		
 		//('Port_back' Port_back=EInt)?
-		public Group getGroup_26() { return cGroup_26; }
+		public Group getGroup_23() { return cGroup_23; }
 		
 		//'Port_back'
-		public Keyword getPort_backKeyword_26_0() { return cPort_backKeyword_26_0; }
+		public Keyword getPort_backKeyword_23_0() { return cPort_backKeyword_23_0; }
 		
 		//Port_back=EInt
-		public Assignment getPort_backAssignment_26_1() { return cPort_backAssignment_26_1; }
+		public Assignment getPort_backAssignment_23_1() { return cPort_backAssignment_23_1; }
 		
 		//EInt
-		public RuleCall getPort_backEIntParserRuleCall_26_1_0() { return cPort_backEIntParserRuleCall_26_1_0; }
+		public RuleCall getPort_backEIntParserRuleCall_23_1_0() { return cPort_backEIntParserRuleCall_23_1_0; }
 		
 		//('Port_front' Port_front=EInt)?
-		public Group getGroup_27() { return cGroup_27; }
+		public Group getGroup_24() { return cGroup_24; }
 		
 		//'Port_front'
-		public Keyword getPort_frontKeyword_27_0() { return cPort_frontKeyword_27_0; }
+		public Keyword getPort_frontKeyword_24_0() { return cPort_frontKeyword_24_0; }
 		
 		//Port_front=EInt
-		public Assignment getPort_frontAssignment_27_1() { return cPort_frontAssignment_27_1; }
+		public Assignment getPort_frontAssignment_24_1() { return cPort_frontAssignment_24_1; }
 		
 		//EInt
-		public RuleCall getPort_frontEIntParserRuleCall_27_1_0() { return cPort_frontEIntParserRuleCall_27_1_0; }
+		public RuleCall getPort_frontEIntParserRuleCall_24_1_0() { return cPort_frontEIntParserRuleCall_24_1_0; }
 	}
 	public class EStringElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.EString");
@@ -545,11 +555,9 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	//	'description' description=EString
 	//	'mail' mail=EString
 	//	'telephone' telephone=EString
-	//	'heure_ouverture' heure_ouverture=EInt
-	//	'heure_fermeture' heure_fermeture=EInt
-	//	'nb_Pers' nb_Pers=EInt
 	//	'menu' menu=SourceMenu
-	//	'Selection' Selection=SourceSelection
+	//	'Selection' Selection=SourceSelection ('heure_ouverture' heure_ouverture=EInt)? ('heure_fermeture'
+	//	heure_fermeture=EInt)? ('nb_Pers' nb_Pers=EInt)?
 	//	'presentation' presentation=SourcePres
 	//	'logo' logo=SourceLogo
 	//	'source' source+=Source ("," source+=Source)* ('Port_back' Port_back=EInt)? ('Port_front' Port_front=EInt)?;

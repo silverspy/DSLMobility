@@ -7,7 +7,7 @@
 'Port_back'=25
 'Port_front'=26
 'RDV'=31
-'Selection'=20
+'Selection'=17
 'SideBar'=28
 'Tisseo'=37
 'basique'=32
@@ -15,12 +15,12 @@
 'comute'=34
 'description'=13
 'geolocalisation'=11
-'heure_fermeture'=17
-'heure_ouverture'=16
+'heure_fermeture'=19
+'heure_ouverture'=18
 'logo'=22
 'mail'=14
-'menu'=19
-'nb_Pers'=18
+'menu'=16
+'nb_Pers'=20
 'presentation'=21
 'rdv'=35
 'source'=23

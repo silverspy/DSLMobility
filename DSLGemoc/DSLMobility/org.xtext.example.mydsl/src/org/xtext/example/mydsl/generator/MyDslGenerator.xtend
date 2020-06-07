@@ -27069,9 +27069,7 @@ class MyDslGenerator extends AbstractGenerator {
 		
 
 		var port_back = 8080
-
 		
-
 		var port_front = 80
 
 
@@ -27085,7 +27083,7 @@ class MyDslGenerator extends AbstractGenerator {
 
 		if (mypage.port_front !== 0) {
 
-			port_back = mypage.port_front
+			port_front = mypage.port_front
 
 		}
 
@@ -29634,7 +29632,7 @@ class MyDslGenerator extends AbstractGenerator {
 		
 		        // Start embedded server at this port
 		
-		        port(''' + port_back + ''');
+		        port(8080);
 		
 		
 		
@@ -30914,576 +30912,73 @@ class MyDslGenerator extends AbstractGenerator {
 
 
 
-		fsa.generateFile('Back/pom.xml', '''
-
-
-
-		<?xml version="1.0" encoding="UTF-8"?>
-
-
-
-		
-
-
-
-		<project xmlns="http://maven.apache.org/POM/4.0.0"
-
-
-
-		
-
-
-
-		         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-
-
-
-		
-
-
-
-		         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
-
-
-		
-
-
-
-		    <modelVersion>4.0.0</modelVersion>
-
-
-
-		
-
-
-
-		
-
-
-
-		
-
-
-
-		    <groupId>org.example</groupId>
-
-
-
-		
-
-
-
-		    <artifactId>Back_DSLMobility</artifactId>
-
-
-
-		
-
-
-
-		    <version>1.0-SNAPSHOT</version>
-
-
-
-		
-
-
-
-		
-
-
-
-		
-
-
-
-		    <!-- Spark Java need Java 8 -->
-
-
-
-		
-
-
-
-		    <properties>
-
-
-
-		
-
-
-
-		        <maven.compiler.target>1.8</maven.compiler.target>
-
-
-
-		
-
-
-
-		        <maven.compiler.source>1.8</maven.compiler.source>
-
-
-
-		
-
-
-
-		        <maven.compiler.release>8</maven.compiler.release>
-
-
-
-		
-
-
-
-		    </properties>
-
-
-
-		
-
-
-
-		
-
-
-
-		
-
-
-
-		    <dependencies>
-
-
-
-		
-
-
-
-		        <dependency>
-
-
-
-		
-
-
-
-		            <groupId>com.sparkjava</groupId>
-
-
-
-		
-
-
-
-		            <artifactId>spark-core</artifactId>
-
-
-
-		
-
-
-
-		            <version>2.6.0</version>
-
-
-
-		
-
-
-
-		        </dependency>
-
-
-
-		
-
-
-
-		        <dependency>
-
-
-
-		
-
-
-
-		            <groupId>org.slf4j</groupId>
-
-
-
-		
-
-
-
-		            <artifactId>slf4j-api</artifactId>
-
-
-
-		
-
-
-
-		            <version>1.7.5</version>
-
-
-
-		
-
-
-
-		        </dependency>
-
-
-
-		
-
-
-
-		        <dependency>
-
-
-
-		
-
-
-
-		            <groupId>org.slf4j</groupId>
-
-
-
-		
-
-
-
-		            <artifactId>slf4j-log4j12</artifactId>
-
-
-
-		
-
-
-
-		            <version>1.7.5</version>
-
-
-
-		
-
-
-
-		        </dependency>
-
-
-
-		
-
-
-
-		    </dependencies>
-
-
-
-		
-
-
-
-		
-
-
-
-		
-
-
-
-		    <build>
-
-
-
-		
-
-
-
-		        <plugins>
-
-
-
-		
-
-
-
-		            <plugin>
-
-
-
-		
-
-
-
-		                <!-- Build an executable JAR -->
-
-
-
-		
-
-
-
-		                <groupId>org.apache.maven.plugins</groupId>
-
-
-
-		
-
-
-
-		                <artifactId>maven-jar-plugin</artifactId>
-
-
-
-		
-
-
-
-		                <version>3.1.0</version>
-
-
-
-		
-
-
-
-		                <configuration>
-
-
-
-		
-
-
-
-		                    <archive>
-
-
-
-		
-
-
-
-		                        <manifest>
-
-
-
-		
-
-
-
-		                            <addClasspath>true</addClasspath>
-
-
-
-		
-
-
-
-		                            <mainClass>Main</mainClass>
-
-
-
-		
-
-
-
-		                        </manifest>
-
-
-
-		
-
-
-
-		                    </archive>
-
-
-
-		
-
-
-
-		                </configuration>
-
-
-
-		
-
-
-
-		            </plugin>
-
-
-
-		
-
-
-
-		            <plugin>
-
-
-
-		
-
-
-
-		                <groupId>org.apache.maven.plugins</groupId>
-
-
-
-		
-
-
-
-		                <artifactId>maven-shade-plugin</artifactId>
-
-
-
-		
-
-
-
-		                <version>1.6</version>
-
-
-
-		
-
-
-
-		                <executions>
-
-
-
-		
-
-
-
-		                    <execution>
-
-
-
-		
-
-
-
-		                        <phase>package</phase>
-
-
-
-		
-
-
-
-		                        <goals>
-
-
-
-		
-
-
-
-		                            <goal>shade</goal>
-
-
-
-		
-
-
-
-		                        </goals>
-
-
-
-		
-
-
-
-		                    </execution>
-
-
-
-		
-
-
-
-		                </executions>
-
-
-
-		
-
-
-
-		            </plugin>
-
-
-
-		
-
-
-
-		        </plugins>
-
-
-
-		
-
-
-
-		    </build>
-
-
-
-		
-
-
-
-		
-
-
-
-		
-
-
-
-		
-
-
-
-		
-
-
-
-		
-
-
-
-		
-
-
-
-		</project>''')
-
-
-
-		
+		fsa.generateFile('Back/pom.xml', '''<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.example</groupId>
+    <artifactId>Back_DSLMobility</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <!-- Spark Java need Java 8 -->
+    <properties>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.release>8</maven.compiler.release>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.sparkjava</groupId>
+            <artifactId>spark-core</artifactId>
+            <version>2.6.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.5</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <!-- Build an executable JAR -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>Main</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>''')
 
 
 
 		/** Create .travis file */
-
-
-
-		
-
 
 
 		fsa.generateFile('.travis.yml', '''LANGUAGE:
@@ -31547,110 +31042,33 @@ class MyDslGenerator extends AbstractGenerator {
 
 
 		  fsa.generateFile('docker-compose.yml', '''version: '3.7'
-
-
-
-		  
-
-
-
-		  services:
-
-
-
-		      apache:
-
-
-
-		          image: 'bitnami/apache:latest'
-
-
-
-		          ports:
-
-
-
-		          - "''' + port_front + ''':''' + port_back + '''"
-
-
-
-		          volumes:
-
-
-
-		          - ./front/front-end/home:/app
-
-
-
-		      java:
-
-
-
-		          build: .
-
-
-
-		          ports:
-
-
-
-		              - "''' + port_back + ''':''' + port_back + '''"
-
-
-
-		          command: java -jar ./target/Back_DSLMobility-1.0-SNAPSHOT.jar''')
-
-
-
-		  
-
-
-
-		  fsa.generateFile('DockerFile', '''FROM maven
-
-
-
-		  		  EXPOSE 8888
-
-
-
-		  		  RUN mkdir -p /usr/src/app
-
-
-
-		  		  WORKDIR /usr/src/app
-
-
-
-		  		  ADD ./Back /usr/src/app
-
-
-
-		  		  RUN mvn install
-
-
-
-		  		  RUN ls ./target''')
-
-		  		  
-
-		  		  
-
-		  fsa.generateFile('Back/src/main/resources/Planing.properties', '''
-
-		  
-
-		  openAt=''' + mypage.heure_ouverture + '''
-
-		  
-
-		  closeAt=''' + mypage.heure_fermeture + '''
-
-		  
-
-		  nbPerHour=''' + mypage.nb_Pers + ''' ''')
-
-		  
+services:
+    apache:
+        image: 'bitnami/apache:latest'
+        ports:
+            - "''' + port_front +''':8080"
+        volumes:
+            - ./front/front-end/home:/app
+    java:
+        build: .
+        ports:
+            - "''' + port_back +''':8080"
+        command: java -jar ./target/Back_DSLMobility-1.0-SNAPSHOT.jar
+''')
+
+
+
+		  fsa.generateFile('Dockerfile', '''FROM maven
+EXPOSE 8080
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+ADD ./Back /usr/src/app
+RUN mvn install
+RUN ls ./target''')
+
+		  fsa.generateFile('Back/src/main/resources/Planing.properties', '''openAt=''' + mypage.heure_ouverture + '''
+closeAt=''' + mypage.heure_fermeture + '''
+nbPerHour=''' + mypage.nb_Pers + '''''')
 
 		  fsa.generateFile('Back/src/main/java/Planning.java', '''import java.io.FileInputStream;
 		  
@@ -31664,8 +31082,6 @@ class MyDslGenerator extends AbstractGenerator {
 		  
 		  import java.util.Properties;
 		  
-		  
-		  
 		  public class Planning {
 		  
 		      int hstart;
@@ -31675,8 +31091,6 @@ class MyDslGenerator extends AbstractGenerator {
 		      int nbPers;
 		  
 		      HashMap<String, Meeting> Listerdv = new HashMap<>();
-		  
-		  
 		  
 		  
 		  
@@ -31849,15 +31263,11 @@ class MyDslGenerator extends AbstractGenerator {
 		      }
 		  
 		  
-		  
 		      public String getJsonHoraire(){
 		  
 		          return "{ \"open\" : \"" + hstart + "\", \"close\" : \"" + hend + "\"}";
 		  
 		      }
-		  
-		  
-		  
 		  
 		  
 		      public String JsonListHoraireRDV(){
@@ -31886,24 +31296,8 @@ class MyDslGenerator extends AbstractGenerator {
 		  
 		      }
 		  
-		  
-		  
-		  
-		  
 		  }''')
 
-
-
-		
-
-
-
 	}
-
-	
-
-	
-
-
 
 }

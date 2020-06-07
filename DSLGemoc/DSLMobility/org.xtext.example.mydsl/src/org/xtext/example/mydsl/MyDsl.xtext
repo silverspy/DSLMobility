@@ -30,24 +30,24 @@ Page returns Page:
 
 		'telephone' telephone=EString
 
-		
-
-		'heure_ouverture' heure_ouverture=EInt
-
-		 
-
-		'heure_fermeture' heure_fermeture=EInt
-
-		
-
-		'nb_Pers' nb_Pers=EInt
-
 
 
 		'menu' menu=SourceMenu
 		
 		
 		'Selection' Selection=SourceSelection
+
+		
+
+		('heure_ouverture' heure_ouverture=EInt)?
+
+		 
+
+		('heure_fermeture' heure_fermeture=EInt)?
+
+		
+
+		('nb_Pers' nb_Pers=EInt)?
 
 
 
@@ -78,7 +78,7 @@ EString returns ecore::EString:
 
 
 
-Source returns Source:
+Source returns Source: 
 
 
 
